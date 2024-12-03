@@ -23,13 +23,18 @@ namespace Proyek_PAD
         {
             idTextBox.Text += num;
         }
+
+        //buat jam ini
         private void timer1_Tick(object sender, EventArgs e)
         {
-
+            dayLabel.Text = "Day: " + DateTime.Now.ToString("dddd, d - M - yyyy");
+            timeLabel.Text = "Time: " + DateTime.Now.ToString("HH:mm");
         }
 
         private void Cashier_Load(object sender, EventArgs e)
         {
+            dayLabel.Text = "Day: " + DateTime.Now.ToString("dddd, d - M - yyyy");
+            timeLabel.Text = "Time: " + DateTime.Now.ToString("HH:mm");
             timer1.Start();
         }
 
@@ -103,6 +108,11 @@ namespace Proyek_PAD
                     MessageBox.Show("success"); //Mek gae debugging, lek klian mau ganti yo gpp
                     break;
             }
+        }
+
+        private void acceptButton_Click(object sender, EventArgs e)
+        {
+            idTextBox.Text = "";
         }
     }
 }
