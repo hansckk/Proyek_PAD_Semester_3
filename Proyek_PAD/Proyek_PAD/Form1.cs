@@ -18,6 +18,7 @@ namespace Proyek_PAD
         }
 
         //ini buat nambah number dek textbox1
+        // test
         private void numberButtonClick(string num)
         {
             idTextBox.Text += num;
