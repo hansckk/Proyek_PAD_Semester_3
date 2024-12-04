@@ -9,3 +9,5 @@ C:\Users\Hans Christian\OneDrive\Desktop\Tugas Semester 3\Proyek_PAD_Semester_3\
 C:\Users\Hans Christian\OneDrive\Desktop\Tugas Semester 3\Proyek_PAD_Semester_3\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.exe
 C:\Users\Hans Christian\OneDrive\Desktop\Tugas Semester 3\Proyek_PAD_Semester_3\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.pdb
 C:\Users\Hans Christian\OneDrive\Desktop\Tugas Semester 3\Proyek_PAD_Semester_3\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.Quantity.resources
+C:\Users\Hans Christian\OneDrive\Desktop\Tugas Semester 3\Proyek_PAD_Semester_3\Proyek_PAD\Proyek_PAD\bin\Debug\MySql.Data.dll
+C:\Users\Hans Christian\OneDrive\Desktop\Tugas Semester 3\Proyek_PAD_Semester_3\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.csproj.CopyComplete

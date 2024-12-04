@@ -65,6 +65,7 @@ namespace Proyek_PAD
             this.acceptButton.TabIndex = 2;
             this.acceptButton.Text = "Accept";
             this.acceptButton.UseVisualStyleBackColor = false;
+            this.acceptButton.Click += new System.EventHandler(this.acceptButton_Click);
             // 
             // declineButton
             // 
@@ -77,6 +78,7 @@ namespace Proyek_PAD
             this.declineButton.TabIndex = 3;
             this.declineButton.Text = "Decline";
             this.declineButton.UseVisualStyleBackColor = false;
+            this.declineButton.Click += new System.EventHandler(this.declineButton_Click);
             // 
             // Quantity
             // 
@@ -90,8 +92,11 @@ namespace Proyek_PAD
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Name = "Quantity";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quantity";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Quantity_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -31,7 +31,7 @@ namespace Proyek_PAD
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Cashier));
-            this.displayView = new System.Windows.Forms.DataGridView();
+            this.displayDataGridView = new System.Windows.Forms.DataGridView();
             this.logo = new System.Windows.Forms.PictureBox();
             this.dayLabel = new System.Windows.Forms.Label();
             this.timeLabel = new System.Windows.Forms.Label();
@@ -39,8 +39,9 @@ namespace Proyek_PAD
             this.searchByIdButton = new System.Windows.Forms.Button();
             this.searchByNameButton = new System.Windows.Forms.Button();
             this.searchGroupBox = new System.Windows.Forms.GroupBox();
-            this.idTextBox = new System.Windows.Forms.TextBox();
-            this.clearButton = new System.Windows.Forms.Button();
+            this.clearTextButton = new System.Windows.Forms.Button();
+            this.cashierTextBox = new System.Windows.Forms.TextBox();
+            this.clearDisplayButton = new System.Windows.Forms.Button();
             this.acceptButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.splitPaymentButton = new System.Windows.Forms.Button();
@@ -57,29 +58,39 @@ namespace Proyek_PAD
             this.taxLabel = new System.Windows.Forms.Label();
             this.totalLabel = new System.Windows.Forms.Label();
             this.queueLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.displayView)).BeginInit();
+            this.totalPanel = new System.Windows.Forms.Panel();
+            this.menuDataGridView = new System.Windows.Forms.DataGridView();
+            this.timePanel = new System.Windows.Forms.Panel();
+            this.workerLabel = new System.Windows.Forms.Label();
+            this.searchButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.displayDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.searchGroupBox.SuspendLayout();
+            this.totalPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.menuDataGridView)).BeginInit();
+            this.timePanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // displayView
+            // displayDataGridView
             // 
-            this.displayView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.displayView.Location = new System.Drawing.Point(11, 109);
-            this.displayView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.displayView.Name = "displayView";
-            this.displayView.RowHeadersWidth = 51;
-            this.displayView.RowTemplate.Height = 24;
-            this.displayView.Size = new System.Drawing.Size(799, 579);
-            this.displayView.TabIndex = 1;
+            this.displayDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.displayDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.displayDataGridView.Location = new System.Drawing.Point(11, 62);
+            this.displayDataGridView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.displayDataGridView.Name = "displayDataGridView";
+            this.displayDataGridView.ReadOnly = true;
+            this.displayDataGridView.RowHeadersWidth = 51;
+            this.displayDataGridView.RowTemplate.Height = 24;
+            this.displayDataGridView.Size = new System.Drawing.Size(799, 733);
+            this.displayDataGridView.TabIndex = 1;
             // 
             // logo
             // 
             this.logo.Image = ((System.Drawing.Image)(resources.GetObject("logo.Image")));
-            this.logo.Location = new System.Drawing.Point(12, 12);
+            this.logo.Location = new System.Drawing.Point(11, 9);
             this.logo.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.logo.Name = "logo";
-            this.logo.Size = new System.Drawing.Size(80, 80);
+            this.logo.Size = new System.Drawing.Size(47, 48);
             this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.logo.TabIndex = 16;
             this.logo.TabStop = false;
@@ -87,20 +98,24 @@ namespace Proyek_PAD
             // dayLabel
             // 
             this.dayLabel.AutoSize = true;
-            this.dayLabel.Location = new System.Drawing.Point(977, 9);
+            this.dayLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dayLabel.Location = new System.Drawing.Point(2, 1);
             this.dayLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.dayLabel.Name = "dayLabel";
-            this.dayLabel.Size = new System.Drawing.Size(58, 25);
+            this.dayLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dayLabel.Size = new System.Drawing.Size(42, 18);
             this.dayLabel.TabIndex = 20;
             this.dayLabel.Text = "Day :";
             // 
             // timeLabel
             // 
             this.timeLabel.AutoSize = true;
-            this.timeLabel.Location = new System.Drawing.Point(977, 34);
+            this.timeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.timeLabel.Location = new System.Drawing.Point(2, 29);
             this.timeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.timeLabel.Name = "timeLabel";
-            this.timeLabel.Size = new System.Drawing.Size(67, 25);
+            this.timeLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.timeLabel.Size = new System.Drawing.Size(49, 18);
             this.timeLabel.TabIndex = 21;
             this.timeLabel.Text = "Time: ";
             // 
@@ -113,7 +128,7 @@ namespace Proyek_PAD
             // 
             this.searchByIdButton.BackColor = System.Drawing.Color.GhostWhite;
             this.searchByIdButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchByIdButton.Location = new System.Drawing.Point(815, 694);
+            this.searchByIdButton.Location = new System.Drawing.Point(17, 648);
             this.searchByIdButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.searchByIdButton.Name = "searchByIdButton";
             this.searchByIdButton.Size = new System.Drawing.Size(140, 75);
@@ -126,7 +141,7 @@ namespace Proyek_PAD
             // 
             this.searchByNameButton.BackColor = System.Drawing.Color.GhostWhite;
             this.searchByNameButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchByNameButton.Location = new System.Drawing.Point(1049, 694);
+            this.searchByNameButton.Location = new System.Drawing.Point(212, 648);
             this.searchByNameButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.searchByNameButton.Name = "searchByNameButton";
             this.searchByNameButton.Size = new System.Drawing.Size(140, 75);
@@ -137,10 +152,16 @@ namespace Proyek_PAD
             // 
             // searchGroupBox
             // 
-            this.searchGroupBox.Controls.Add(this.idTextBox);
-            this.searchGroupBox.Controls.Add(this.clearButton);
+            this.searchGroupBox.BackColor = System.Drawing.Color.Gainsboro;
+            this.searchGroupBox.Controls.Add(this.searchButton);
+            this.searchGroupBox.Controls.Add(this.menuDataGridView);
+            this.searchGroupBox.Controls.Add(this.clearTextButton);
+            this.searchGroupBox.Controls.Add(this.cashierTextBox);
+            this.searchGroupBox.Controls.Add(this.clearDisplayButton);
             this.searchGroupBox.Controls.Add(this.acceptButton);
             this.searchGroupBox.Controls.Add(this.deleteButton);
+            this.searchGroupBox.Controls.Add(this.searchByIdButton);
+            this.searchGroupBox.Controls.Add(this.searchByNameButton);
             this.searchGroupBox.Controls.Add(this.splitPaymentButton);
             this.searchGroupBox.Controls.Add(this.buttonNo1);
             this.searchGroupBox.Controls.Add(this.buttonNo8);
@@ -152,42 +173,56 @@ namespace Proyek_PAD
             this.searchGroupBox.Controls.Add(this.buttonNo5);
             this.searchGroupBox.Controls.Add(this.buttonNo0);
             this.searchGroupBox.Controls.Add(this.buttonNo6);
-            this.searchGroupBox.Location = new System.Drawing.Point(815, 109);
+            this.searchGroupBox.Location = new System.Drawing.Point(815, 62);
             this.searchGroupBox.Name = "searchGroupBox";
-            this.searchGroupBox.Size = new System.Drawing.Size(373, 579);
+            this.searchGroupBox.Size = new System.Drawing.Size(373, 733);
             this.searchGroupBox.TabIndex = 24;
             this.searchGroupBox.TabStop = false;
             this.searchGroupBox.Text = "Search by ID";
             // 
-            // idTextBox
+            // clearTextButton
             // 
-            this.idTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idTextBox.Location = new System.Drawing.Point(17, 29);
-            this.idTextBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.idTextBox.Name = "idTextBox";
-            this.idTextBox.Size = new System.Drawing.Size(335, 45);
-            this.idTextBox.TabIndex = 6;
+            this.clearTextButton.BackColor = System.Drawing.Color.GhostWhite;
+            this.clearTextButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clearTextButton.Location = new System.Drawing.Point(17, 324);
+            this.clearTextButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.clearTextButton.Name = "clearTextButton";
+            this.clearTextButton.Size = new System.Drawing.Size(109, 75);
+            this.clearTextButton.TabIndex = 24;
+            this.clearTextButton.Text = "CLEAR";
+            this.clearTextButton.UseVisualStyleBackColor = false;
+            this.clearTextButton.Click += new System.EventHandler(this.clearTextButton_Click);
             // 
-            // clearButton
+            // cashierTextBox
             // 
-            this.clearButton.BackColor = System.Drawing.Color.Red;
-            this.clearButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("clearButton.BackgroundImage")));
-            this.clearButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.clearButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.clearButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.clearButton.Location = new System.Drawing.Point(17, 323);
-            this.clearButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(109, 75);
-            this.clearButton.TabIndex = 2;
-            this.clearButton.UseVisualStyleBackColor = false;
-            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
+            this.cashierTextBox.BackColor = System.Drawing.Color.GhostWhite;
+            this.cashierTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cashierTextBox.Location = new System.Drawing.Point(17, 29);
+            this.cashierTextBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.cashierTextBox.Name = "cashierTextBox";
+            this.cashierTextBox.Size = new System.Drawing.Size(281, 45);
+            this.cashierTextBox.TabIndex = 6;
+            // 
+            // clearDisplayButton
+            // 
+            this.clearDisplayButton.BackColor = System.Drawing.Color.Red;
+            this.clearDisplayButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("clearDisplayButton.BackgroundImage")));
+            this.clearDisplayButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.clearDisplayButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.clearDisplayButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.clearDisplayButton.Location = new System.Drawing.Point(17, 405);
+            this.clearDisplayButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.clearDisplayButton.Name = "clearDisplayButton";
+            this.clearDisplayButton.Size = new System.Drawing.Size(335, 75);
+            this.clearDisplayButton.TabIndex = 2;
+            this.clearDisplayButton.UseVisualStyleBackColor = false;
+            this.clearDisplayButton.Click += new System.EventHandler(this.clearDisplayButton_Click);
             // 
             // acceptButton
             // 
             this.acceptButton.BackColor = System.Drawing.Color.LightGreen;
             this.acceptButton.Image = ((System.Drawing.Image)(resources.GetObject("acceptButton.Image")));
-            this.acceptButton.Location = new System.Drawing.Point(17, 404);
+            this.acceptButton.Location = new System.Drawing.Point(17, 486);
             this.acceptButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.acceptButton.Name = "acceptButton";
             this.acceptButton.Size = new System.Drawing.Size(335, 75);
@@ -199,7 +234,7 @@ namespace Proyek_PAD
             // 
             this.deleteButton.BackColor = System.Drawing.Color.GhostWhite;
             this.deleteButton.Image = ((System.Drawing.Image)(resources.GetObject("deleteButton.Image")));
-            this.deleteButton.Location = new System.Drawing.Point(243, 323);
+            this.deleteButton.Location = new System.Drawing.Point(243, 324);
             this.deleteButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(109, 75);
@@ -211,7 +246,7 @@ namespace Proyek_PAD
             // 
             this.splitPaymentButton.BackColor = System.Drawing.Color.GhostWhite;
             this.splitPaymentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.splitPaymentButton.Location = new System.Drawing.Point(17, 485);
+            this.splitPaymentButton.Location = new System.Drawing.Point(17, 567);
             this.splitPaymentButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.splitPaymentButton.Name = "splitPaymentButton";
             this.splitPaymentButton.Size = new System.Drawing.Size(335, 75);
@@ -221,7 +256,7 @@ namespace Proyek_PAD
             // 
             // buttonNo1
             // 
-            this.buttonNo1.BackColor = System.Drawing.Color.Gainsboro;
+            this.buttonNo1.BackColor = System.Drawing.Color.GhostWhite;
             this.buttonNo1.Location = new System.Drawing.Point(17, 80);
             this.buttonNo1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonNo1.Name = "buttonNo1";
@@ -233,8 +268,8 @@ namespace Proyek_PAD
             // 
             // buttonNo8
             // 
-            this.buttonNo8.BackColor = System.Drawing.Color.Gainsboro;
-            this.buttonNo8.Location = new System.Drawing.Point(130, 242);
+            this.buttonNo8.BackColor = System.Drawing.Color.GhostWhite;
+            this.buttonNo8.Location = new System.Drawing.Point(130, 243);
             this.buttonNo8.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonNo8.Name = "buttonNo8";
             this.buttonNo8.Size = new System.Drawing.Size(109, 75);
@@ -245,7 +280,7 @@ namespace Proyek_PAD
             // 
             // buttonNo2
             // 
-            this.buttonNo2.BackColor = System.Drawing.Color.Gainsboro;
+            this.buttonNo2.BackColor = System.Drawing.Color.GhostWhite;
             this.buttonNo2.Location = new System.Drawing.Point(130, 80);
             this.buttonNo2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonNo2.Name = "buttonNo2";
@@ -257,7 +292,7 @@ namespace Proyek_PAD
             // 
             // buttonNo3
             // 
-            this.buttonNo3.BackColor = System.Drawing.Color.Gainsboro;
+            this.buttonNo3.BackColor = System.Drawing.Color.GhostWhite;
             this.buttonNo3.Location = new System.Drawing.Point(243, 80);
             this.buttonNo3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonNo3.Name = "buttonNo3";
@@ -269,8 +304,8 @@ namespace Proyek_PAD
             // 
             // buttonNo9
             // 
-            this.buttonNo9.BackColor = System.Drawing.Color.Gainsboro;
-            this.buttonNo9.Location = new System.Drawing.Point(243, 242);
+            this.buttonNo9.BackColor = System.Drawing.Color.GhostWhite;
+            this.buttonNo9.Location = new System.Drawing.Point(243, 243);
             this.buttonNo9.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonNo9.Name = "buttonNo9";
             this.buttonNo9.Size = new System.Drawing.Size(109, 75);
@@ -281,8 +316,8 @@ namespace Proyek_PAD
             // 
             // buttonNo4
             // 
-            this.buttonNo4.BackColor = System.Drawing.Color.Gainsboro;
-            this.buttonNo4.Location = new System.Drawing.Point(17, 161);
+            this.buttonNo4.BackColor = System.Drawing.Color.GhostWhite;
+            this.buttonNo4.Location = new System.Drawing.Point(17, 162);
             this.buttonNo4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonNo4.Name = "buttonNo4";
             this.buttonNo4.Size = new System.Drawing.Size(109, 75);
@@ -293,8 +328,8 @@ namespace Proyek_PAD
             // 
             // buttonNo7
             // 
-            this.buttonNo7.BackColor = System.Drawing.Color.Gainsboro;
-            this.buttonNo7.Location = new System.Drawing.Point(17, 242);
+            this.buttonNo7.BackColor = System.Drawing.Color.GhostWhite;
+            this.buttonNo7.Location = new System.Drawing.Point(17, 243);
             this.buttonNo7.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonNo7.Name = "buttonNo7";
             this.buttonNo7.Size = new System.Drawing.Size(109, 75);
@@ -305,7 +340,7 @@ namespace Proyek_PAD
             // 
             // buttonNo5
             // 
-            this.buttonNo5.BackColor = System.Drawing.Color.Gainsboro;
+            this.buttonNo5.BackColor = System.Drawing.Color.GhostWhite;
             this.buttonNo5.Location = new System.Drawing.Point(130, 161);
             this.buttonNo5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonNo5.Name = "buttonNo5";
@@ -317,8 +352,8 @@ namespace Proyek_PAD
             // 
             // buttonNo0
             // 
-            this.buttonNo0.BackColor = System.Drawing.Color.Gainsboro;
-            this.buttonNo0.Location = new System.Drawing.Point(130, 323);
+            this.buttonNo0.BackColor = System.Drawing.Color.GhostWhite;
+            this.buttonNo0.Location = new System.Drawing.Point(130, 324);
             this.buttonNo0.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonNo0.Name = "buttonNo0";
             this.buttonNo0.Size = new System.Drawing.Size(109, 75);
@@ -329,7 +364,7 @@ namespace Proyek_PAD
             // 
             // buttonNo6
             // 
-            this.buttonNo6.BackColor = System.Drawing.Color.Gainsboro;
+            this.buttonNo6.BackColor = System.Drawing.Color.GhostWhite;
             this.buttonNo6.Location = new System.Drawing.Point(243, 161);
             this.buttonNo6.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonNo6.Name = "buttonNo6";
@@ -343,7 +378,7 @@ namespace Proyek_PAD
             // 
             this.taxLabel.AutoSize = true;
             this.taxLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.taxLabel.Location = new System.Drawing.Point(7, 694);
+            this.taxLabel.Location = new System.Drawing.Point(4, 9);
             this.taxLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.taxLabel.Name = "taxLabel";
             this.taxLabel.Size = new System.Drawing.Size(91, 29);
@@ -353,41 +388,96 @@ namespace Proyek_PAD
             // totalLabel
             // 
             this.totalLabel.AutoSize = true;
-            this.totalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalLabel.Location = new System.Drawing.Point(5, 734);
+            this.totalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalLabel.Location = new System.Drawing.Point(3, 49);
             this.totalLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.totalLabel.Name = "totalLabel";
-            this.totalLabel.Size = new System.Drawing.Size(125, 38);
+            this.totalLabel.Size = new System.Drawing.Size(104, 36);
             this.totalLabel.TabIndex = 5;
-            this.totalLabel.Text = "Total: 0";
+            this.totalLabel.Text = "Total: ";
             // 
             // queueLabel
             // 
             this.queueLabel.AutoSize = true;
-            this.queueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 39F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.queueLabel.Location = new System.Drawing.Point(134, 705);
+            this.queueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.queueLabel.Location = new System.Drawing.Point(619, 54);
             this.queueLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.queueLabel.Name = "queueLabel";
-            this.queueLabel.Size = new System.Drawing.Size(245, 74);
+            this.queueLabel.Size = new System.Drawing.Size(101, 29);
             this.queueLabel.TabIndex = 26;
             this.queueLabel.Text = "Queue:";
+            // 
+            // totalPanel
+            // 
+            this.totalPanel.BackColor = System.Drawing.Color.Gainsboro;
+            this.totalPanel.Controls.Add(this.queueLabel);
+            this.totalPanel.Controls.Add(this.taxLabel);
+            this.totalPanel.Controls.Add(this.totalLabel);
+            this.totalPanel.Location = new System.Drawing.Point(11, 708);
+            this.totalPanel.Name = "totalPanel";
+            this.totalPanel.Size = new System.Drawing.Size(814, 87);
+            this.totalPanel.TabIndex = 27;
+            // 
+            // menuDataGridView
+            // 
+            this.menuDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.menuDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.menuDataGridView.Location = new System.Drawing.Point(17, 80);
+            this.menuDataGridView.Name = "menuDataGridView";
+            this.menuDataGridView.ReadOnly = true;
+            this.menuDataGridView.RowHeadersWidth = 51;
+            this.menuDataGridView.RowTemplate.Height = 24;
+            this.menuDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.menuDataGridView.Size = new System.Drawing.Size(335, 319);
+            this.menuDataGridView.TabIndex = 25;
+            this.menuDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.menuDataGridView_CellClick);
+            this.menuDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.menuDataGridView_CellDoubleClick);
+            // 
+            // timePanel
+            // 
+            this.timePanel.BackColor = System.Drawing.Color.Silver;
+            this.timePanel.Controls.Add(this.dayLabel);
+            this.timePanel.Controls.Add(this.timeLabel);
+            this.timePanel.Location = new System.Drawing.Point(1002, 9);
+            this.timePanel.Name = "timePanel";
+            this.timePanel.Size = new System.Drawing.Size(186, 48);
+            this.timePanel.TabIndex = 28;
+            // 
+            // workerLabel
+            // 
+            this.workerLabel.AutoSize = true;
+            this.workerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.workerLabel.Location = new System.Drawing.Point(62, 20);
+            this.workerLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.workerLabel.Name = "workerLabel";
+            this.workerLabel.Size = new System.Drawing.Size(154, 36);
+            this.workerLabel.TabIndex = 29;
+            this.workerLabel.Text = "Welcome,";
+            // 
+            // searchButton
+            // 
+            this.searchButton.BackColor = System.Drawing.Color.GhostWhite;
+            this.searchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchButton.Image = ((System.Drawing.Image)(resources.GetObject("searchButton.Image")));
+            this.searchButton.Location = new System.Drawing.Point(302, 29);
+            this.searchButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(50, 45);
+            this.searchButton.TabIndex = 26;
+            this.searchButton.UseVisualStyleBackColor = false;
             // 
             // Cashier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(1200, 781);
-            this.Controls.Add(this.queueLabel);
-            this.Controls.Add(this.taxLabel);
-            this.Controls.Add(this.displayView);
+            this.ClientSize = new System.Drawing.Size(1200, 809);
+            this.Controls.Add(this.workerLabel);
+            this.Controls.Add(this.timePanel);
+            this.Controls.Add(this.totalPanel);
+            this.Controls.Add(this.displayDataGridView);
             this.Controls.Add(this.searchGroupBox);
-            this.Controls.Add(this.searchByNameButton);
-            this.Controls.Add(this.searchByIdButton);
-            this.Controls.Add(this.timeLabel);
-            this.Controls.Add(this.dayLabel);
             this.Controls.Add(this.logo);
-            this.Controls.Add(this.totalLabel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -397,17 +487,22 @@ namespace Proyek_PAD
             this.Text = "Cashier";
             this.Load += new System.EventHandler(this.Cashier_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Cashier_KeyDown);
-            ((System.ComponentModel.ISupportInitialize)(this.displayView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.displayDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
             this.searchGroupBox.ResumeLayout(false);
             this.searchGroupBox.PerformLayout();
+            this.totalPanel.ResumeLayout(false);
+            this.totalPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.menuDataGridView)).EndInit();
+            this.timePanel.ResumeLayout(false);
+            this.timePanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.DataGridView displayView;
+        private System.Windows.Forms.DataGridView displayDataGridView;
         private System.Windows.Forms.PictureBox logo;
         private System.Windows.Forms.Label dayLabel;
         private System.Windows.Forms.Label timeLabel;
@@ -415,8 +510,8 @@ namespace Proyek_PAD
         private System.Windows.Forms.Button searchByIdButton;
         private System.Windows.Forms.Button searchByNameButton;
         private System.Windows.Forms.GroupBox searchGroupBox;
-        private System.Windows.Forms.TextBox idTextBox;
-        private System.Windows.Forms.Button clearButton;
+        private System.Windows.Forms.TextBox cashierTextBox;
+        private System.Windows.Forms.Button clearDisplayButton;
         private System.Windows.Forms.Button acceptButton;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button splitPaymentButton;
@@ -433,6 +528,12 @@ namespace Proyek_PAD
         private System.Windows.Forms.Label taxLabel;
         private System.Windows.Forms.Label totalLabel;
         private System.Windows.Forms.Label queueLabel;
+        private System.Windows.Forms.Panel totalPanel;
+        private System.Windows.Forms.Button clearTextButton;
+        private System.Windows.Forms.DataGridView menuDataGridView;
+        private System.Windows.Forms.Panel timePanel;
+        private System.Windows.Forms.Label workerLabel;
+        private System.Windows.Forms.Button searchButton;
     }
 }
 
