@@ -41,17 +41,16 @@ CREATE TABLE `kasir` (
   `sex` enum('L','P') NOT NULL,
   `umur` int(11) NOT NULL,
   `nomor_telepon` varchar(15) DEFAULT NULL,
-  `password_kasir` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id_kasir`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `kasir` */
 
-insert  into `kasir`(`id_kasir`,`nama_kasir`,`sex`,`umur`,`nomor_telepon`,`password_kasir`) values 
-(1,'Hans','L',60,'081326507575','hansck'),
-(2,'Irvin','L',19,'085850141312','irvincs'),
-(3,'Jason','L',19,'081259136877','jasonjaj'),
-(4,'Hubert','L',19,'081232328000','hubertsw');
+insert  into `kasir`(`id_kasir`,`nama_kasir`,`sex`,`umur`,`nomor_telepon`) values 
+(1,'Hans','L',60,'081326507575'),
+(2,'Irvin','L',19,'085850141312'),
+(3,'Jason','L',19,'081259136877'),
+(4,'Hubert','L',19,'081232328000');
 
 /*Table structure for table `menu` */
 
