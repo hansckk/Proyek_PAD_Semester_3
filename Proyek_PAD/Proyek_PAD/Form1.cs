@@ -33,9 +33,10 @@ namespace Proyek_PAD
 
         private void Cashier_Load(object sender, EventArgs e)
         {
+            taxLabel.Visible = false;
             dayLabel.Text = "Day: " + DateTime.Now.ToString("dddd, d - M - yyyy");
             timeLabel.Text = "Time: " + DateTime.Now.ToString("HH:mm");
-            timer1.Start();
+            time.Start();
         }
 
         private void buttonNo1_Click(object sender, EventArgs e)
@@ -43,9 +44,14 @@ namespace Proyek_PAD
             numberButtonClick("1");
         }
 
-        private void clearButton_Click(object sender, EventArgs e)
+        private void clearText()
         {
             idTextBox.Text = "";
+        }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            clearText();
         }
 
         private void buttonNo2_Click(object sender, EventArgs e)
@@ -112,7 +118,19 @@ namespace Proyek_PAD
 
         private void acceptButton_Click(object sender, EventArgs e)
         {
-            idTextBox.Text = "";
+            Quantity q = new Quantity();
+            q.ShowDialog();
+            clearText();
+        }
+
+        private void searchByNameButton_Click(object sender, EventArgs e)
+        {
+            searchGroupBox.Text = "Search by Name";
+        }
+
+        private void searchByIdButton_Click(object sender, EventArgs e)
+        {
+            searchGroupBox.Text = "Search by ID";
         }
     }
 }
