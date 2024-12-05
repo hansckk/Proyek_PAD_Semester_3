@@ -39,6 +39,8 @@ namespace Proyek_PAD
             this.searchByIdButton = new System.Windows.Forms.Button();
             this.searchByNameButton = new System.Windows.Forms.Button();
             this.searchGroupBox = new System.Windows.Forms.GroupBox();
+            this.searchButton = new System.Windows.Forms.Button();
+            this.menuDataGridView = new System.Windows.Forms.DataGridView();
             this.clearTextButton = new System.Windows.Forms.Button();
             this.cashierTextBox = new System.Windows.Forms.TextBox();
             this.clearDisplayButton = new System.Windows.Forms.Button();
@@ -59,15 +61,14 @@ namespace Proyek_PAD
             this.totalLabel = new System.Windows.Forms.Label();
             this.queueLabel = new System.Windows.Forms.Label();
             this.totalPanel = new System.Windows.Forms.Panel();
-            this.menuDataGridView = new System.Windows.Forms.DataGridView();
             this.timePanel = new System.Windows.Forms.Panel();
             this.workerLabel = new System.Windows.Forms.Label();
-            this.searchButton = new System.Windows.Forms.Button();
+            this.logoutButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.displayDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.searchGroupBox.SuspendLayout();
-            this.totalPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.menuDataGridView)).BeginInit();
+            this.totalPanel.SuspendLayout();
             this.timePanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -179,6 +180,33 @@ namespace Proyek_PAD
             this.searchGroupBox.TabIndex = 24;
             this.searchGroupBox.TabStop = false;
             this.searchGroupBox.Text = "Search by ID";
+            // 
+            // searchButton
+            // 
+            this.searchButton.BackColor = System.Drawing.Color.GhostWhite;
+            this.searchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchButton.Image = ((System.Drawing.Image)(resources.GetObject("searchButton.Image")));
+            this.searchButton.Location = new System.Drawing.Point(302, 29);
+            this.searchButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(50, 45);
+            this.searchButton.TabIndex = 26;
+            this.searchButton.UseVisualStyleBackColor = false;
+            // 
+            // menuDataGridView
+            // 
+            this.menuDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.menuDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.menuDataGridView.Location = new System.Drawing.Point(17, 80);
+            this.menuDataGridView.Name = "menuDataGridView";
+            this.menuDataGridView.ReadOnly = true;
+            this.menuDataGridView.RowHeadersWidth = 51;
+            this.menuDataGridView.RowTemplate.Height = 24;
+            this.menuDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.menuDataGridView.Size = new System.Drawing.Size(335, 319);
+            this.menuDataGridView.TabIndex = 25;
+            this.menuDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.menuDataGridView_CellClick);
+            this.menuDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.menuDataGridView_CellDoubleClick);
             // 
             // clearTextButton
             // 
@@ -418,27 +446,12 @@ namespace Proyek_PAD
             this.totalPanel.Size = new System.Drawing.Size(814, 87);
             this.totalPanel.TabIndex = 27;
             // 
-            // menuDataGridView
-            // 
-            this.menuDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.menuDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.menuDataGridView.Location = new System.Drawing.Point(17, 80);
-            this.menuDataGridView.Name = "menuDataGridView";
-            this.menuDataGridView.ReadOnly = true;
-            this.menuDataGridView.RowHeadersWidth = 51;
-            this.menuDataGridView.RowTemplate.Height = 24;
-            this.menuDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.menuDataGridView.Size = new System.Drawing.Size(335, 319);
-            this.menuDataGridView.TabIndex = 25;
-            this.menuDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.menuDataGridView_CellClick);
-            this.menuDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.menuDataGridView_CellDoubleClick);
-            // 
             // timePanel
             // 
             this.timePanel.BackColor = System.Drawing.Color.Silver;
             this.timePanel.Controls.Add(this.dayLabel);
             this.timePanel.Controls.Add(this.timeLabel);
-            this.timePanel.Location = new System.Drawing.Point(1002, 9);
+            this.timePanel.Location = new System.Drawing.Point(815, 9);
             this.timePanel.Name = "timePanel";
             this.timePanel.Size = new System.Drawing.Size(186, 48);
             this.timePanel.TabIndex = 28;
@@ -454,17 +467,18 @@ namespace Proyek_PAD
             this.workerLabel.TabIndex = 29;
             this.workerLabel.Text = "Welcome,";
             // 
-            // searchButton
+            // logoutButton
             // 
-            this.searchButton.BackColor = System.Drawing.Color.GhostWhite;
-            this.searchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchButton.Image = ((System.Drawing.Image)(resources.GetObject("searchButton.Image")));
-            this.searchButton.Location = new System.Drawing.Point(302, 29);
-            this.searchButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(50, 45);
-            this.searchButton.TabIndex = 26;
-            this.searchButton.UseVisualStyleBackColor = false;
+            this.logoutButton.BackColor = System.Drawing.Color.GhostWhite;
+            this.logoutButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.logoutButton.Location = new System.Drawing.Point(1049, 9);
+            this.logoutButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.logoutButton.Name = "logoutButton";
+            this.logoutButton.Size = new System.Drawing.Size(140, 48);
+            this.logoutButton.TabIndex = 30;
+            this.logoutButton.Text = "LOGOUT";
+            this.logoutButton.UseVisualStyleBackColor = false;
+            this.logoutButton.Click += new System.EventHandler(this.logoutButton_Click);
             // 
             // Cashier
             // 
@@ -472,6 +486,7 @@ namespace Proyek_PAD
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(1200, 809);
+            this.Controls.Add(this.logoutButton);
             this.Controls.Add(this.workerLabel);
             this.Controls.Add(this.timePanel);
             this.Controls.Add(this.totalPanel);
@@ -491,9 +506,9 @@ namespace Proyek_PAD
             ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
             this.searchGroupBox.ResumeLayout(false);
             this.searchGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.menuDataGridView)).EndInit();
             this.totalPanel.ResumeLayout(false);
             this.totalPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.menuDataGridView)).EndInit();
             this.timePanel.ResumeLayout(false);
             this.timePanel.PerformLayout();
             this.ResumeLayout(false);
@@ -534,6 +549,7 @@ namespace Proyek_PAD
         private System.Windows.Forms.Panel timePanel;
         private System.Windows.Forms.Label workerLabel;
         private System.Windows.Forms.Button searchButton;
+        private System.Windows.Forms.Button logoutButton;
     }
 }
 

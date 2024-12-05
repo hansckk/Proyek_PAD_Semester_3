@@ -1,25 +1,36 @@
 ﻿using System;
-using MySql.Data.MySqlClient;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Proyek_PAD
 {
-    public partial class Form3 : Form
+    public partial class loginForm : Form
     {
         private string connectionString = "Server=localhost;Database=mcd_pad;Uid=root;Pwd=;";
 
-        public Form3()
+        public loginForm()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void clear()
         {
-            string username = textBox1.Text.Trim();
-            string password = textBox2.Text.Trim();
+            usernameTextBox.Text = "";
+            passwordTextBox.Text = "";
+        }
 
+        private void checkLogin()
+        {
+            string username = usernameTextBox.Text.Trim();
+            string password = passwordTextBox.Text.Trim();
             string query = "SELECT COUNT(1) FROM kasir WHERE nama_kasir = @username AND password_kasir = @password";
-
             try
             {
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -36,11 +47,18 @@ namespace Proyek_PAD
                         if (count == 1)
                         {
                             MessageBox.Show("Login berhasil!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                            Cashier form1 = new Cashier();
-                            form1.Show();
-
+                            Cashier form1 = new Cashier(username);
+                            clear();
                             this.Hide();
+                            DialogResult res = form1.ShowDialog();
+                            if(res == DialogResult.OK)
+                            {
+                                this.Show();
+                            }
+                            else
+                            {
+                                this.Close();
+                            }
                         }
                         else
                         {
@@ -53,6 +71,21 @@ namespace Proyek_PAD
             {
                 MessageBox.Show($"Terjadi kesalahan: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void loginForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    checkLogin();
+                    break;
+            }
+        }
+
+        private void loginButton_Click(object sender, EventArgs e)
+        {
+            checkLogin();
         }
     }
 }

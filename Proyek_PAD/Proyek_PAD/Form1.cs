@@ -15,8 +15,10 @@ namespace Proyek_PAD
     {
         MySqlConnection con;
         string query;
-        public Cashier()
+        string worker;
+        public Cashier(string u)
         {
+            worker = u;
             query = "";
             con = new MySqlConnection("Server=localhost;Database=mcd_pad;User Id=root;Password=;");
             InitializeComponent();
@@ -42,6 +44,7 @@ namespace Proyek_PAD
         }
         private void Cashier_Load(object sender, EventArgs e)
         {
+            workerLabel.Text = "Welcome, " + worker;
             menuDataGridView.Visible = false;
             totalPanel.Visible = false;
             dayLabel.Text = "Day: " + DateTime.Now.ToString("dddd, d - M - yyyy");
@@ -212,6 +215,12 @@ namespace Proyek_PAD
             {
                 cashierTextBox.Text = menuDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
             }
+        }
+
+        private void logoutButton_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }
