@@ -16,8 +16,13 @@ namespace Proyek_PAD
         MySqlConnection con;
         string query;
         string worker;
+        string[] food;
         public Cashier(string u)
         {
+            food = new string[3];
+            food[0] = "MAKAN";
+            food[1] = "MINUM";
+            food[2] = "SNACK";
             worker = u;
             query = "";
             con = new MySqlConnection("Server=localhost;Database=mcd_pad;User Id=root;Password=;");
@@ -28,7 +33,14 @@ namespace Proyek_PAD
         // test
         private void numberButtonClick(string num)
         {
-            cashierTextBox.Text += num;
+            foreach (var f in food)
+            {
+                if (cashierTextBox.Text.Contains(f))
+                {
+                    cashierTextBox.Text += num;
+                    break;
+                }
+            }  
         }
 
         //buat jam ini
@@ -108,9 +120,18 @@ namespace Proyek_PAD
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(cashierTextBox.Text))
+            if (cashierTextBox.Text.Any(char.IsDigit))
             {
                 cashierTextBox.Text = cashierTextBox.Text.Substring(0, cashierTextBox.Text.Length - 1);
+            }
+            else {
+                foreach (var f in food)
+                {
+                    if (cashierTextBox.Text.Contains(f))
+                    {
+                        cashierTextBox.Text = "";
+                    }
+                }
             }
         }
         
@@ -157,6 +178,9 @@ namespace Proyek_PAD
             buttonNo8.Visible = s1;
             buttonNo9.Visible = s1;
             buttonNo0.Visible = s1;
+            makanButton.Visible = s1;
+            minumButton.Visible = s1;
+            snackButton.Visible = s1;
             clearTextButton.Visible = s1;
             deleteButton.Visible = s1;
             menuDataGridView.Visible = s2;
@@ -172,13 +196,21 @@ namespace Proyek_PAD
 
         private void loadMenu()
         {
-            query = "SELECT nama_menu AS 'Menu', harga_menu AS 'Harga Menu' FROM menu";
+            query = "SELECT nama_menu AS 'Menu', harga_menu AS 'Harga Menu', quantity AS 'Quantity' FROM menu";
             MySqlCommand cmd = new MySqlCommand(query, con);
             con.Open();
-            MySqlDataReader r = cmd.ExecuteReader();
-            DataTable dt = new DataTable();
-            dt.Load(r);
-            menuDataGridView.DataSource = dt;
+            try
+            {
+                MySqlDataReader r = cmd.ExecuteReader();
+                DataTable dt = new DataTable();
+                dt.Load(r);
+                menuDataGridView.DataSource = dt;
+                r.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR! " + ex.Message);
+            }
             con.Close();
         }
         private void searchByNameButton_Click(object sender, EventArgs e)
@@ -221,6 +253,59 @@ namespace Proyek_PAD
         {
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private void isiCashierTextbox(string t)
+        {
+            cashierTextBox.Text = "";
+            cashierTextBox.Text = t;
+        }
+        private void makanButton_Click(object sender, EventArgs e)
+        {
+            isiCashierTextbox("MAKAN");
+        }
+
+        private void minumButton_Click(object sender, EventArgs e)
+        {
+            isiCashierTextbox("MINUM");
+        }
+
+        private void snackButton_Click(object sender, EventArgs e)
+        {
+            isiCashierTextbox("SNACK");
+        }
+
+        private void search() 
+        {
+            query = "SELECT nama_menu AS 'Menu', harga_menu AS 'Harga Menu', quantity AS 'Quantity' FROM menu WHERE nama_menu LIKE '@namaMakan' OR id_menu LIKE '@idMakan'";
+            con.Open();
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@namaMakan",cashierTextBox);
+                cmd.Parameters.AddWithValue("@idMakan",cashierTextBox);
+                MySqlDataReader r = cmd.ExecuteReader();
+                DataTable res = new DataTable();
+                res.Load(r);
+                menuDataGridView.DataSource = res;
+                r.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR! " + ex.Message);
+            }
+            con.Close();
+        }
+        private void cashierTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if(cashierTextBox.Text == "")
+            {
+                loadMenu();
+            }
+            else
+            {
+                search();
+            }
         }
     }
 }

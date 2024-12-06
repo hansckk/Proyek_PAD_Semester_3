@@ -64,6 +64,9 @@ namespace Proyek_PAD
             this.timePanel = new System.Windows.Forms.Panel();
             this.workerLabel = new System.Windows.Forms.Label();
             this.logoutButton = new System.Windows.Forms.Button();
+            this.makanButton = new System.Windows.Forms.Button();
+            this.minumButton = new System.Windows.Forms.Button();
+            this.snackButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.displayDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.searchGroupBox.SuspendLayout();
@@ -154,8 +157,10 @@ namespace Proyek_PAD
             // searchGroupBox
             // 
             this.searchGroupBox.BackColor = System.Drawing.Color.Gainsboro;
-            this.searchGroupBox.Controls.Add(this.searchButton);
             this.searchGroupBox.Controls.Add(this.menuDataGridView);
+            this.searchGroupBox.Controls.Add(this.minumButton);
+            this.searchGroupBox.Controls.Add(this.makanButton);
+            this.searchGroupBox.Controls.Add(this.searchButton);
             this.searchGroupBox.Controls.Add(this.clearTextButton);
             this.searchGroupBox.Controls.Add(this.cashierTextBox);
             this.searchGroupBox.Controls.Add(this.clearDisplayButton);
@@ -174,6 +179,7 @@ namespace Proyek_PAD
             this.searchGroupBox.Controls.Add(this.buttonNo5);
             this.searchGroupBox.Controls.Add(this.buttonNo0);
             this.searchGroupBox.Controls.Add(this.buttonNo6);
+            this.searchGroupBox.Controls.Add(this.snackButton);
             this.searchGroupBox.Location = new System.Drawing.Point(815, 62);
             this.searchGroupBox.Name = "searchGroupBox";
             this.searchGroupBox.Size = new System.Drawing.Size(373, 733);
@@ -186,10 +192,10 @@ namespace Proyek_PAD
             this.searchButton.BackColor = System.Drawing.Color.GhostWhite;
             this.searchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchButton.Image = ((System.Drawing.Image)(resources.GetObject("searchButton.Image")));
-            this.searchButton.Location = new System.Drawing.Point(302, 29);
+            this.searchButton.Location = new System.Drawing.Point(302, 24);
             this.searchButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(50, 45);
+            this.searchButton.Size = new System.Drawing.Size(50, 50);
             this.searchButton.TabIndex = 26;
             this.searchButton.UseVisualStyleBackColor = false;
             // 
@@ -212,10 +218,10 @@ namespace Proyek_PAD
             // 
             this.clearTextButton.BackColor = System.Drawing.Color.GhostWhite;
             this.clearTextButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clearTextButton.Location = new System.Drawing.Point(17, 324);
+            this.clearTextButton.Location = new System.Drawing.Point(17, 340);
             this.clearTextButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.clearTextButton.Name = "clearTextButton";
-            this.clearTextButton.Size = new System.Drawing.Size(109, 75);
+            this.clearTextButton.Size = new System.Drawing.Size(109, 60);
             this.clearTextButton.TabIndex = 24;
             this.clearTextButton.Text = "CLEAR";
             this.clearTextButton.UseVisualStyleBackColor = false;
@@ -230,6 +236,7 @@ namespace Proyek_PAD
             this.cashierTextBox.Name = "cashierTextBox";
             this.cashierTextBox.Size = new System.Drawing.Size(281, 45);
             this.cashierTextBox.TabIndex = 6;
+            this.cashierTextBox.TextChanged += new System.EventHandler(this.cashierTextBox_TextChanged);
             // 
             // clearDisplayButton
             // 
@@ -262,10 +269,10 @@ namespace Proyek_PAD
             // 
             this.deleteButton.BackColor = System.Drawing.Color.GhostWhite;
             this.deleteButton.Image = ((System.Drawing.Image)(resources.GetObject("deleteButton.Image")));
-            this.deleteButton.Location = new System.Drawing.Point(243, 324);
+            this.deleteButton.Location = new System.Drawing.Point(243, 340);
             this.deleteButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(109, 75);
+            this.deleteButton.Size = new System.Drawing.Size(109, 60);
             this.deleteButton.TabIndex = 4;
             this.deleteButton.UseVisualStyleBackColor = false;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
@@ -285,10 +292,10 @@ namespace Proyek_PAD
             // buttonNo1
             // 
             this.buttonNo1.BackColor = System.Drawing.Color.GhostWhite;
-            this.buttonNo1.Location = new System.Drawing.Point(17, 80);
+            this.buttonNo1.Location = new System.Drawing.Point(17, 142);
             this.buttonNo1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonNo1.Name = "buttonNo1";
-            this.buttonNo1.Size = new System.Drawing.Size(109, 75);
+            this.buttonNo1.Size = new System.Drawing.Size(109, 60);
             this.buttonNo1.TabIndex = 7;
             this.buttonNo1.Text = "1";
             this.buttonNo1.UseVisualStyleBackColor = false;
@@ -297,10 +304,10 @@ namespace Proyek_PAD
             // buttonNo8
             // 
             this.buttonNo8.BackColor = System.Drawing.Color.GhostWhite;
-            this.buttonNo8.Location = new System.Drawing.Point(130, 243);
+            this.buttonNo8.Location = new System.Drawing.Point(130, 274);
             this.buttonNo8.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonNo8.Name = "buttonNo8";
-            this.buttonNo8.Size = new System.Drawing.Size(109, 75);
+            this.buttonNo8.Size = new System.Drawing.Size(109, 60);
             this.buttonNo8.TabIndex = 18;
             this.buttonNo8.Text = "8";
             this.buttonNo8.UseVisualStyleBackColor = false;
@@ -309,10 +316,10 @@ namespace Proyek_PAD
             // buttonNo2
             // 
             this.buttonNo2.BackColor = System.Drawing.Color.GhostWhite;
-            this.buttonNo2.Location = new System.Drawing.Point(130, 80);
+            this.buttonNo2.Location = new System.Drawing.Point(130, 142);
             this.buttonNo2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonNo2.Name = "buttonNo2";
-            this.buttonNo2.Size = new System.Drawing.Size(109, 75);
+            this.buttonNo2.Size = new System.Drawing.Size(109, 60);
             this.buttonNo2.TabIndex = 8;
             this.buttonNo2.Text = "2";
             this.buttonNo2.UseVisualStyleBackColor = false;
@@ -321,10 +328,10 @@ namespace Proyek_PAD
             // buttonNo3
             // 
             this.buttonNo3.BackColor = System.Drawing.Color.GhostWhite;
-            this.buttonNo3.Location = new System.Drawing.Point(243, 80);
+            this.buttonNo3.Location = new System.Drawing.Point(243, 142);
             this.buttonNo3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonNo3.Name = "buttonNo3";
-            this.buttonNo3.Size = new System.Drawing.Size(109, 75);
+            this.buttonNo3.Size = new System.Drawing.Size(109, 60);
             this.buttonNo3.TabIndex = 9;
             this.buttonNo3.Text = "3";
             this.buttonNo3.UseVisualStyleBackColor = false;
@@ -333,10 +340,10 @@ namespace Proyek_PAD
             // buttonNo9
             // 
             this.buttonNo9.BackColor = System.Drawing.Color.GhostWhite;
-            this.buttonNo9.Location = new System.Drawing.Point(243, 243);
+            this.buttonNo9.Location = new System.Drawing.Point(243, 274);
             this.buttonNo9.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonNo9.Name = "buttonNo9";
-            this.buttonNo9.Size = new System.Drawing.Size(109, 75);
+            this.buttonNo9.Size = new System.Drawing.Size(109, 60);
             this.buttonNo9.TabIndex = 15;
             this.buttonNo9.Text = "9";
             this.buttonNo9.UseVisualStyleBackColor = false;
@@ -345,10 +352,10 @@ namespace Proyek_PAD
             // buttonNo4
             // 
             this.buttonNo4.BackColor = System.Drawing.Color.GhostWhite;
-            this.buttonNo4.Location = new System.Drawing.Point(17, 162);
+            this.buttonNo4.Location = new System.Drawing.Point(17, 208);
             this.buttonNo4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonNo4.Name = "buttonNo4";
-            this.buttonNo4.Size = new System.Drawing.Size(109, 75);
+            this.buttonNo4.Size = new System.Drawing.Size(109, 60);
             this.buttonNo4.TabIndex = 10;
             this.buttonNo4.Text = "4";
             this.buttonNo4.UseVisualStyleBackColor = false;
@@ -357,10 +364,10 @@ namespace Proyek_PAD
             // buttonNo7
             // 
             this.buttonNo7.BackColor = System.Drawing.Color.GhostWhite;
-            this.buttonNo7.Location = new System.Drawing.Point(17, 243);
+            this.buttonNo7.Location = new System.Drawing.Point(17, 274);
             this.buttonNo7.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonNo7.Name = "buttonNo7";
-            this.buttonNo7.Size = new System.Drawing.Size(109, 75);
+            this.buttonNo7.Size = new System.Drawing.Size(109, 60);
             this.buttonNo7.TabIndex = 14;
             this.buttonNo7.Text = "7";
             this.buttonNo7.UseVisualStyleBackColor = false;
@@ -369,10 +376,10 @@ namespace Proyek_PAD
             // buttonNo5
             // 
             this.buttonNo5.BackColor = System.Drawing.Color.GhostWhite;
-            this.buttonNo5.Location = new System.Drawing.Point(130, 161);
+            this.buttonNo5.Location = new System.Drawing.Point(130, 208);
             this.buttonNo5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonNo5.Name = "buttonNo5";
-            this.buttonNo5.Size = new System.Drawing.Size(109, 75);
+            this.buttonNo5.Size = new System.Drawing.Size(109, 60);
             this.buttonNo5.TabIndex = 11;
             this.buttonNo5.Text = "5";
             this.buttonNo5.UseVisualStyleBackColor = false;
@@ -381,10 +388,10 @@ namespace Proyek_PAD
             // buttonNo0
             // 
             this.buttonNo0.BackColor = System.Drawing.Color.GhostWhite;
-            this.buttonNo0.Location = new System.Drawing.Point(130, 324);
+            this.buttonNo0.Location = new System.Drawing.Point(130, 340);
             this.buttonNo0.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonNo0.Name = "buttonNo0";
-            this.buttonNo0.Size = new System.Drawing.Size(109, 75);
+            this.buttonNo0.Size = new System.Drawing.Size(109, 60);
             this.buttonNo0.TabIndex = 13;
             this.buttonNo0.Text = "0";
             this.buttonNo0.UseVisualStyleBackColor = false;
@@ -393,10 +400,10 @@ namespace Proyek_PAD
             // buttonNo6
             // 
             this.buttonNo6.BackColor = System.Drawing.Color.GhostWhite;
-            this.buttonNo6.Location = new System.Drawing.Point(243, 161);
+            this.buttonNo6.Location = new System.Drawing.Point(243, 208);
             this.buttonNo6.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonNo6.Name = "buttonNo6";
-            this.buttonNo6.Size = new System.Drawing.Size(109, 75);
+            this.buttonNo6.Size = new System.Drawing.Size(109, 60);
             this.buttonNo6.TabIndex = 12;
             this.buttonNo6.Text = "6";
             this.buttonNo6.UseVisualStyleBackColor = false;
@@ -480,6 +487,45 @@ namespace Proyek_PAD
             this.logoutButton.UseVisualStyleBackColor = false;
             this.logoutButton.Click += new System.EventHandler(this.logoutButton_Click);
             // 
+            // makanButton
+            // 
+            this.makanButton.BackColor = System.Drawing.Color.GhostWhite;
+            this.makanButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.makanButton.Location = new System.Drawing.Point(17, 80);
+            this.makanButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.makanButton.Name = "makanButton";
+            this.makanButton.Size = new System.Drawing.Size(109, 60);
+            this.makanButton.TabIndex = 27;
+            this.makanButton.Text = "MAKAN";
+            this.makanButton.UseVisualStyleBackColor = false;
+            this.makanButton.Click += new System.EventHandler(this.makanButton_Click);
+            // 
+            // minumButton
+            // 
+            this.minumButton.BackColor = System.Drawing.Color.GhostWhite;
+            this.minumButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.minumButton.Location = new System.Drawing.Point(130, 80);
+            this.minumButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.minumButton.Name = "minumButton";
+            this.minumButton.Size = new System.Drawing.Size(109, 60);
+            this.minumButton.TabIndex = 28;
+            this.minumButton.Text = "MINUM";
+            this.minumButton.UseVisualStyleBackColor = false;
+            this.minumButton.Click += new System.EventHandler(this.minumButton_Click);
+            // 
+            // snackButton
+            // 
+            this.snackButton.BackColor = System.Drawing.Color.GhostWhite;
+            this.snackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.snackButton.Location = new System.Drawing.Point(243, 80);
+            this.snackButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.snackButton.Name = "snackButton";
+            this.snackButton.Size = new System.Drawing.Size(109, 60);
+            this.snackButton.TabIndex = 29;
+            this.snackButton.Text = "SNACK";
+            this.snackButton.UseVisualStyleBackColor = false;
+            this.snackButton.Click += new System.EventHandler(this.snackButton_Click);
+            // 
             // Cashier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -550,6 +596,9 @@ namespace Proyek_PAD
         private System.Windows.Forms.Label workerLabel;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.Button logoutButton;
+        private System.Windows.Forms.Button snackButton;
+        private System.Windows.Forms.Button minumButton;
+        private System.Windows.Forms.Button makanButton;
     }
 }
 
