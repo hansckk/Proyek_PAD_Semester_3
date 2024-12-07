@@ -25,8 +25,7 @@ namespace Proyek_PAD
             AssignButtonTagsAndEvents();
             AddTextBoxFocusEvents();
 
-            // Sembunyikan panel1 saat pertama kali form dimuat
-            panel1.Visible = false;
+            
         }
 
         private void clear()
@@ -39,6 +38,15 @@ namespace Proyek_PAD
         {
             string username = usernameTextBox.Text.Trim();
             string password = passwordTextBox.Text.Trim();
+
+            if (username == "admin" && password == "admin")
+            {
+                Form4 form4 = new Form4();
+                form4.Show();
+                this.Hide();
+                return; 
+            }
+
             string query = "SELECT COUNT(1) FROM kasir WHERE nama_kasir = @username AND password_kasir = @password";
             try
             {
@@ -81,6 +89,7 @@ namespace Proyek_PAD
                 MessageBox.Show($"Terjadi kesalahan: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void loginForm_KeyDown(object sender, KeyEventArgs e)
         {
@@ -257,32 +266,43 @@ namespace Proyek_PAD
             usernameTextBox.GotFocus += (s, e) =>
             {
                 activeTextBox = usernameTextBox;
-                panel1.Visible = true; // Menampilkan panel1 ketika usernameTextBox mendapatkan fokus
+               
             };
 
             passwordTextBox.GotFocus += (s, e) =>
             {
                 activeTextBox = passwordTextBox;
-                panel1.Visible = true; // Menampilkan panel1 ketika passwordTextBox mendapatkan fokus
+               
             };
 
-            // Menyembunyikan panel1 ketika kehilangan fokus (opsional)
             usernameTextBox.LostFocus += (s, e) =>
             {
-                if (string.IsNullOrEmpty(usernameTextBox.Text) && string.IsNullOrEmpty(passwordTextBox.Text))
-                    panel1.Visible = false; // Menyembunyikan panel jika tidak ada input
+                
+                    
             };
 
             passwordTextBox.LostFocus += (s, e) =>
             {
-                if (string.IsNullOrEmpty(usernameTextBox.Text) && string.IsNullOrEmpty(passwordTextBox.Text))
-                    panel1.Visible = false; // Menyembunyikan panel jika tidak ada input
+               
+                 
             };
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            panel1.Visible = false;
+            
+        }
+
+        private void button45_Click(object sender, EventArgs e)
+        {
+            if (passwordTextBox.PasswordChar == '\0')
+            {
+                passwordTextBox.PasswordChar = '•'; 
+            }
+            else
+            {
+                passwordTextBox.PasswordChar = '\0'; 
+            }
         }
     }
 }

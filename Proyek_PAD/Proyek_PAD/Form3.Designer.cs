@@ -80,7 +80,10 @@ namespace Proyek_PAD
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.button45 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // loginLabel
@@ -141,6 +144,7 @@ namespace Proyek_PAD
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.button41);
             this.panel1.Controls.Add(this.button42);
             this.panel1.Controls.Add(this.button43);
@@ -232,7 +236,6 @@ namespace Proyek_PAD
             this.button40.Name = "button40";
             this.button40.Size = new System.Drawing.Size(470, 70);
             this.button40.TabIndex = 39;
-            this.button40.Text = "SPACE";
             this.button40.UseVisualStyleBackColor = true;
             // 
             // button37
@@ -587,11 +590,33 @@ namespace Proyek_PAD
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button45
+            // 
+            this.button45.Location = new System.Drawing.Point(593, 117);
+            this.button45.Name = "button45";
+            this.button45.Size = new System.Drawing.Size(38, 24);
+            this.button45.TabIndex = 7;
+            this.button45.Text = "( . )";
+            this.button45.UseVisualStyleBackColor = true;
+            this.button45.Click += new System.EventHandler(this.button45_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.Image = global::Proyek_PAD.Properties.Resources.space;
+            this.pictureBox1.Location = new System.Drawing.Point(427, 245);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 42);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            // 
             // loginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 585);
+            this.Controls.Add(this.button45);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.loginButton);
             this.Controls.Add(this.passwordTextBox);
@@ -606,6 +631,7 @@ namespace Proyek_PAD
             this.Text = "Login";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.loginForm_KeyDown);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -664,5 +690,7 @@ namespace Proyek_PAD
         private System.Windows.Forms.Button button37;
         private System.Windows.Forms.Button button38;
         private System.Windows.Forms.Button button39;
+        private System.Windows.Forms.Button button45;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
