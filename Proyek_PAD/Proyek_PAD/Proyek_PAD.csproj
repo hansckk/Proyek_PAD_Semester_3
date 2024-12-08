@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connection.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +86,12 @@
     <Compile Include="Form5.Designer.cs">
       <DependentUpon>Form5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form6.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form6.Designer.cs">
+      <DependentUpon>Form6.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -101,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form5.resx">
       <DependentUpon>Form5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form6.resx">
+      <DependentUpon>Form6.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -123,6 +133,35 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="asset\DollarMenu.jpg" />
+    <Content Include="asset\icons\cash_register_icon_135801.ico" />
+    <Content Include="asset\icons\checkmark_83735.png" />
+    <Content Include="asset\icons\eye.png" />
+    <Content Include="asset\icons\ic-back_97586.png" />
+    <Content Include="asset\icons\Plus_icon-icons.com_71848.ico" />
+    <Content Include="asset\icons\searchmagnifierinterfacesymbol1_79893.png" />
+    <Content Include="asset\icons\space.png" />
+    <Content Include="asset\icons\trash_can_icon_198337.png" />
+    <Content Include="asset\Logo.jpg" />
+    <Content Include="asset\logo_mcdonald.png" />
+    <Content Include="asset\menuDeals.jpg" />
+    <Content Include="asset\menu\menu1.jpg" />
+    <Content Include="asset\menu\menu2.jpg" />
+    <Content Include="asset\menu\menu3.jpg" />
+    <Content Include="asset\menu\menu4.jpg" />
+    <Content Include="asset\menu\menu5.jpg" />
+    <Content Include="asset\menu\menu6.jpg" />
+    <Content Include="asset\menu\menu7.jpg" />
+    <Content Include="asset\menu\menu8.jpg" />
+    <Content Include="asset\menu\menu9.jpg" />
+    <Content Include="asset\payment\bca.png" />
+    <Content Include="asset\payment\bri.png" />
+    <Content Include="asset\payment\gopay.png" />
+    <Content Include="asset\payment\ovo.png" />
+    <Content Include="asset\payment\qris.png" />
+    <Content Include="asset\payment\shopeepay.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

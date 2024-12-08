@@ -56,5 +56,25 @@ namespace Proyek_PAD
         {
             // Jika Anda ingin menangani klik pada DataGridView, tambahkan kode di sini
         }
+
+        private void button1_Click(object sender, EventArgs e) // INSERT
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e) // UPDATE
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e) // DELTE
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e) // CLEAR
+        {
+
+        }
     }
 }

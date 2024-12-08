@@ -304,5 +304,10 @@ namespace Proyek_PAD
                 passwordTextBox.PasswordChar = '\0'; 
             }
         }
+
+        private void loginForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
