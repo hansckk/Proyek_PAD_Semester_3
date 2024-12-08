@@ -18,14 +18,19 @@ namespace Proyek_PAD
         private TextBox activeTextBox;
         private bool isCapsLockActive = false;
         private bool isShiftActive = false;
+        private Timer loadingTimer; 
+        private int loadingDuration = 3000;
 
         public loginForm()
         {
             InitializeComponent();
             AssignButtonTagsAndEvents();
             AddTextBoxFocusEvents();
+            pictureBox2.Visible = false;
+            loadingTimer = new Timer();
+            loadingTimer.Interval = 100; 
+            loadingTimer.Tick += LoadingTimer_Tick;
 
-            
         }
 
         private void clear()
@@ -44,7 +49,7 @@ namespace Proyek_PAD
                 Form4 form4 = new Form4();
                 form4.Show();
                 this.Hide();
-                return; 
+                return;
             }
 
             string query = "SELECT COUNT(1) FROM kasir WHERE nama_kasir = @username AND password_kasir = @password";
@@ -63,19 +68,10 @@ namespace Proyek_PAD
 
                         if (count == 1)
                         {
-                            MessageBox.Show("Login berhasil!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Cashier form1 = new Cashier(username);
-                            clear();
-                            this.Hide();
-                            DialogResult res = form1.ShowDialog();
-                            if (res == DialogResult.OK)
-                            {
-                                this.Show();
-                            }
-                            else
-                            {
-                                this.Close();
-                            }
+                            pictureBox2.Visible = true; 
+
+                            loadingDuration = 3000;
+                            loadingTimer.Start();
                         }
                         else
                         {
@@ -90,6 +86,30 @@ namespace Proyek_PAD
             }
         }
 
+        private void LoadingTimer_Tick(object sender, EventArgs e)
+        {
+            loadingDuration -= loadingTimer.Interval; 
+
+            if (loadingDuration <= 0)
+            {
+                loadingTimer.Stop(); 
+                pictureBox2.Visible = false; 
+
+                Cashier form1 = new Cashier(usernameTextBox.Text.Trim());
+                clear();
+                this.Hide();
+
+                DialogResult res = form1.ShowDialog();
+                if (res == DialogResult.OK)
+                {
+                    this.Show();
+                }
+                else
+                {
+                    this.Close();
+                }
+            }
+        }
 
         private void loginForm_KeyDown(object sender, KeyEventArgs e)
         {
@@ -98,6 +118,9 @@ namespace Proyek_PAD
                 checkLogin();
             }
         }
+
+
+    
 
         private void loginButton_Click(object sender, EventArgs e)
         {
@@ -306,6 +329,11 @@ namespace Proyek_PAD
         }
 
         private void loginForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
         {
 
         }

@@ -96,3 +96,4 @@ C:\Users\User\Desktop\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.csproj.CopyComp
 C:\Users\User\Desktop\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.exe
 C:\Users\User\Desktop\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.pdb
 C:\Users\User\Desktop\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.Form6.resources
+D:\KULIAH\SEMESTER  3\PROJECT_PAD\Proyek_PAD_Semester_3\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.Form6.resources

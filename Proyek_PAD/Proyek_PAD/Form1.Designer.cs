@@ -39,8 +39,10 @@ namespace Proyek_PAD
             this.searchByIdButton = new System.Windows.Forms.Button();
             this.searchByNameButton = new System.Windows.Forms.Button();
             this.searchGroupBox = new System.Windows.Forms.GroupBox();
-            this.searchButton = new System.Windows.Forms.Button();
             this.menuDataGridView = new System.Windows.Forms.DataGridView();
+            this.minumButton = new System.Windows.Forms.Button();
+            this.makanButton = new System.Windows.Forms.Button();
+            this.searchButton = new System.Windows.Forms.Button();
             this.clearTextButton = new System.Windows.Forms.Button();
             this.cashierTextBox = new System.Windows.Forms.TextBox();
             this.clearDisplayButton = new System.Windows.Forms.Button();
@@ -57,6 +59,7 @@ namespace Proyek_PAD
             this.buttonNo5 = new System.Windows.Forms.Button();
             this.buttonNo0 = new System.Windows.Forms.Button();
             this.buttonNo6 = new System.Windows.Forms.Button();
+            this.snackButton = new System.Windows.Forms.Button();
             this.taxLabel = new System.Windows.Forms.Label();
             this.totalLabel = new System.Windows.Forms.Label();
             this.queueLabel = new System.Windows.Forms.Label();
@@ -64,9 +67,6 @@ namespace Proyek_PAD
             this.timePanel = new System.Windows.Forms.Panel();
             this.workerLabel = new System.Windows.Forms.Label();
             this.logoutButton = new System.Windows.Forms.Button();
-            this.makanButton = new System.Windows.Forms.Button();
-            this.minumButton = new System.Windows.Forms.Button();
-            this.snackButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.displayDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.searchGroupBox.SuspendLayout();
@@ -187,18 +187,6 @@ namespace Proyek_PAD
             this.searchGroupBox.TabStop = false;
             this.searchGroupBox.Text = "Search by ID";
             // 
-            // searchButton
-            // 
-            this.searchButton.BackColor = System.Drawing.Color.GhostWhite;
-            this.searchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchButton.Image = ((System.Drawing.Image)(resources.GetObject("searchButton.Image")));
-            this.searchButton.Location = new System.Drawing.Point(302, 24);
-            this.searchButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(50, 50);
-            this.searchButton.TabIndex = 26;
-            this.searchButton.UseVisualStyleBackColor = false;
-            // 
             // menuDataGridView
             // 
             this.menuDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -213,6 +201,44 @@ namespace Proyek_PAD
             this.menuDataGridView.TabIndex = 25;
             this.menuDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.menuDataGridView_CellClick);
             this.menuDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.menuDataGridView_CellDoubleClick);
+            // 
+            // minumButton
+            // 
+            this.minumButton.BackColor = System.Drawing.Color.GhostWhite;
+            this.minumButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.minumButton.Location = new System.Drawing.Point(130, 80);
+            this.minumButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.minumButton.Name = "minumButton";
+            this.minumButton.Size = new System.Drawing.Size(109, 60);
+            this.minumButton.TabIndex = 28;
+            this.minumButton.Text = "MINUM";
+            this.minumButton.UseVisualStyleBackColor = false;
+            this.minumButton.Click += new System.EventHandler(this.minumButton_Click);
+            // 
+            // makanButton
+            // 
+            this.makanButton.BackColor = System.Drawing.Color.GhostWhite;
+            this.makanButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.makanButton.Location = new System.Drawing.Point(17, 80);
+            this.makanButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.makanButton.Name = "makanButton";
+            this.makanButton.Size = new System.Drawing.Size(109, 60);
+            this.makanButton.TabIndex = 27;
+            this.makanButton.Text = "MAKAN";
+            this.makanButton.UseVisualStyleBackColor = false;
+            this.makanButton.Click += new System.EventHandler(this.makanButton_Click);
+            // 
+            // searchButton
+            // 
+            this.searchButton.BackColor = System.Drawing.Color.GhostWhite;
+            this.searchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchButton.Image = ((System.Drawing.Image)(resources.GetObject("searchButton.Image")));
+            this.searchButton.Location = new System.Drawing.Point(302, 24);
+            this.searchButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(50, 50);
+            this.searchButton.TabIndex = 26;
+            this.searchButton.UseVisualStyleBackColor = false;
             // 
             // clearTextButton
             // 
@@ -409,6 +435,19 @@ namespace Proyek_PAD
             this.buttonNo6.UseVisualStyleBackColor = false;
             this.buttonNo6.Click += new System.EventHandler(this.buttonNo6_Click);
             // 
+            // snackButton
+            // 
+            this.snackButton.BackColor = System.Drawing.Color.GhostWhite;
+            this.snackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.snackButton.Location = new System.Drawing.Point(243, 80);
+            this.snackButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.snackButton.Name = "snackButton";
+            this.snackButton.Size = new System.Drawing.Size(109, 60);
+            this.snackButton.TabIndex = 29;
+            this.snackButton.Text = "SNACK";
+            this.snackButton.UseVisualStyleBackColor = false;
+            this.snackButton.Click += new System.EventHandler(this.snackButton_Click);
+            // 
             // taxLabel
             // 
             this.taxLabel.AutoSize = true;
@@ -487,45 +526,6 @@ namespace Proyek_PAD
             this.logoutButton.UseVisualStyleBackColor = false;
             this.logoutButton.Click += new System.EventHandler(this.logoutButton_Click);
             // 
-            // makanButton
-            // 
-            this.makanButton.BackColor = System.Drawing.Color.GhostWhite;
-            this.makanButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.makanButton.Location = new System.Drawing.Point(17, 80);
-            this.makanButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.makanButton.Name = "makanButton";
-            this.makanButton.Size = new System.Drawing.Size(109, 60);
-            this.makanButton.TabIndex = 27;
-            this.makanButton.Text = "MAKAN";
-            this.makanButton.UseVisualStyleBackColor = false;
-            this.makanButton.Click += new System.EventHandler(this.makanButton_Click);
-            // 
-            // minumButton
-            // 
-            this.minumButton.BackColor = System.Drawing.Color.GhostWhite;
-            this.minumButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.minumButton.Location = new System.Drawing.Point(130, 80);
-            this.minumButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.minumButton.Name = "minumButton";
-            this.minumButton.Size = new System.Drawing.Size(109, 60);
-            this.minumButton.TabIndex = 28;
-            this.minumButton.Text = "MINUM";
-            this.minumButton.UseVisualStyleBackColor = false;
-            this.minumButton.Click += new System.EventHandler(this.minumButton_Click);
-            // 
-            // snackButton
-            // 
-            this.snackButton.BackColor = System.Drawing.Color.GhostWhite;
-            this.snackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.snackButton.Location = new System.Drawing.Point(243, 80);
-            this.snackButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.snackButton.Name = "snackButton";
-            this.snackButton.Size = new System.Drawing.Size(109, 60);
-            this.snackButton.TabIndex = 29;
-            this.snackButton.Text = "SNACK";
-            this.snackButton.UseVisualStyleBackColor = false;
-            this.snackButton.Click += new System.EventHandler(this.snackButton_Click);
-            // 
             // Cashier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -540,11 +540,11 @@ namespace Proyek_PAD
             this.Controls.Add(this.searchGroupBox);
             this.Controls.Add(this.logo);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Cashier";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cashier";
             this.Load += new System.EventHandler(this.Cashier_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Cashier_KeyDown);
