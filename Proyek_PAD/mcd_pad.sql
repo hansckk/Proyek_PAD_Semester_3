@@ -160,6 +160,43 @@ insert  into `menu`(`id_menu`,`nama_menu`,`harga_menu`,`quantity`,`kategori`) va
 ('SNACK027','Seasonal Fries',25000.00,30,'Snack'),
 ('SNACK028','Spicy Fries',30000.00,40,'Snack');
 
+/*Table structure for table `transaksi` */
+
+DROP TABLE IF EXISTS `transaksi`;
+
+CREATE TABLE `transaksi` (
+  `transaksi_id` int(11) NOT NULL AUTO_INCREMENT,
+  `quantity` int(11) NOT NULL,
+  `employee_id` int(11) NOT NULL,
+  `menu` text NOT NULL,
+  `payment_id` int(11) NOT NULL,
+  PRIMARY KEY (`transaksi_id`),
+  KEY `employee_id` (`employee_id`),
+  KEY `payment_id` (`payment_id`),
+  CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `kasir` (`id_kasir`),
+  CONSTRAINT `transaksi_ibfk_2` FOREIGN KEY (`payment_id`) REFERENCES `transaksi_payment` (`payment_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `transaksi` */
+
+/*Table structure for table `transaksi_payment` */
+
+DROP TABLE IF EXISTS `transaksi_payment`;
+
+CREATE TABLE `transaksi_payment` (
+  `payment_id` int(11) NOT NULL AUTO_INCREMENT,
+  `total` int(11) NOT NULL,
+  `bca` int(11) NOT NULL,
+  `gopay` int(11) NOT NULL,
+  `ovo` int(11) NOT NULL,
+  `shopeepay` int(11) NOT NULL,
+  `bri` int(11) NOT NULL,
+  `tunai` int(11) NOT NULL,
+  PRIMARY KEY (`payment_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `transaksi_payment` */
+
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
