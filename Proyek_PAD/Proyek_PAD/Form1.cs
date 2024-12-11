@@ -17,8 +17,10 @@ namespace Proyek_PAD
         string query;
         string worker;
         string[] food;
+        List<image> menuImg;
         public Cashier(string u)
         {
+            menuImg = new List<image>();
             food = new string[3];
             food[0] = "MAKAN";
             food[1] = "MINUM";
@@ -41,6 +43,28 @@ namespace Proyek_PAD
                     break;
                 }
             }  
+        }
+
+        private void showDisplay()
+        {
+            displayDataGridView.ColumnCount = 2;
+            displayDataGridView.Columns[0].HeaderText = "Menu Name";
+            displayDataGridView.Columns[1].HeaderText = "Quantity";
+            DataGridViewButtonColumn btn_column_add = new DataGridViewButtonColumn();
+            btn_column_add.HeaderText = "Add";
+            btn_column_add.Text = "Add";
+            btn_column_add.UseColumnTextForButtonValue = true;
+            displayDataGridView.Columns.Add(btn_column_add);
+            DataGridViewButtonColumn btn_column_remove = new DataGridViewButtonColumn();
+            btn_column_remove.HeaderText = "Remove";
+            btn_column_remove.Text = "Remove";
+            btn_column_remove.UseColumnTextForButtonValue = true;
+            displayDataGridView.Columns.Add(btn_column_remove);
+            DataGridViewButtonColumn btn_column_clear = new DataGridViewButtonColumn();
+            btn_column_clear.HeaderText = "Clear";
+            btn_column_clear.Text = "Clear";
+            btn_column_clear.UseColumnTextForButtonValue = true;
+            displayDataGridView.Columns.Add(btn_column_clear);
         }
 
         //buat jam ini
@@ -241,14 +265,6 @@ namespace Proyek_PAD
 
         }
 
-        private void menuDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                cashierTextBox.Text = menuDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
-            }
-        }
-
         private void logoutButton_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
@@ -306,6 +322,12 @@ namespace Proyek_PAD
             {
                 search();
             }
+        }
+
+        private void laporanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form7 f7 = new Form7();
+            f7.ShowDialog();
         }
     }
 }

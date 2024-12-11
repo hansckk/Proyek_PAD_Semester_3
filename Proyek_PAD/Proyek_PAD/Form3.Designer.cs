@@ -669,7 +669,7 @@ namespace Proyek_PAD
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Proyek_PAD.Properties.Resources.loading;
-            this.pictureBox2.Location = new System.Drawing.Point(-9, -2);
+            this.pictureBox2.Location = new System.Drawing.Point(-9, -5);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(1209, 809);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

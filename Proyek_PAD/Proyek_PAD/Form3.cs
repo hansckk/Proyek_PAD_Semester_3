@@ -78,6 +78,7 @@ namespace Proyek_PAD
                             MessageBox.Show("Username atau password salah.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
+                    connection.Close();
                 }
             }
             catch (Exception ex)
@@ -118,9 +119,6 @@ namespace Proyek_PAD
                 checkLogin();
             }
         }
-
-
-    
 
         private void loginButton_Click(object sender, EventArgs e)
         {
