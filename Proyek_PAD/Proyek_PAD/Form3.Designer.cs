@@ -36,7 +36,6 @@ namespace Proyek_PAD
             this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.loginButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button41 = new System.Windows.Forms.Button();
             this.button42 = new System.Windows.Forms.Button();
             this.button43 = new System.Windows.Forms.Button();
@@ -81,11 +80,12 @@ namespace Proyek_PAD
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.button45 = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.button45 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // loginLabel
@@ -202,18 +202,6 @@ namespace Proyek_PAD
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1200, 407);
             this.panel1.TabIndex = 6;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.Image = global::Proyek_PAD.Properties.Resources.space;
-            this.pictureBox1.Location = new System.Drawing.Point(512, 327);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 42);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
             // 
             // button41
             // 
@@ -529,7 +517,7 @@ namespace Proyek_PAD
             this.button13.Location = new System.Drawing.Point(2, 109);
             this.button13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(92, 90);
+            this.button13.Size = new System.Drawing.Size(98, 90);
             this.button13.TabIndex = 12;
             this.button13.Text = "CAPSLOCK";
             this.button13.UseVisualStyleBackColor = true;
@@ -655,27 +643,39 @@ namespace Proyek_PAD
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button45
-            // 
-            this.button45.Location = new System.Drawing.Point(775, 265);
-            this.button45.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button45.Name = "button45";
-            this.button45.Size = new System.Drawing.Size(44, 31);
-            this.button45.TabIndex = 7;
-            this.button45.Text = "( . )";
-            this.button45.UseVisualStyleBackColor = true;
-            this.button45.Click += new System.EventHandler(this.button45_Click);
-            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Proyek_PAD.Properties.Resources.loading;
-            this.pictureBox2.Location = new System.Drawing.Point(-9, -5);
+            this.pictureBox2.Location = new System.Drawing.Point(-6, -2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(1209, 809);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 8;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // button45
+            // 
+            this.button45.ImageKey = "(none)";
+            this.button45.Location = new System.Drawing.Point(775, 263);
+            this.button45.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button45.Name = "button45";
+            this.button45.Size = new System.Drawing.Size(45, 31);
+            this.button45.TabIndex = 7;
+            this.button45.UseVisualStyleBackColor = true;
+            this.button45.Click += new System.EventHandler(this.button45_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.Image = global::Proyek_PAD.Properties.Resources.space;
+            this.pictureBox1.Location = new System.Drawing.Point(512, 327);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 42);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
             // 
             // loginForm
             // 
@@ -700,8 +700,8 @@ namespace Proyek_PAD
             this.Load += new System.EventHandler(this.loginForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.loginForm_KeyDown);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -23,5 +23,12 @@ namespace Proyek_PAD
             form5.Show();
             this.Close();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form8 form8 = new Form8();
+            form8.Show();
+            this.Close();
+        }
     }
 }
