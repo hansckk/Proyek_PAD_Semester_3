@@ -31,27 +31,61 @@ CREATE TABLE `customers` (
 
 /*Data for the table `customers` */
 
-/*Table structure for table `kasir` */
+/*Table structure for table `diskon` */
 
-DROP TABLE IF EXISTS `kasir`;
+DROP TABLE IF EXISTS `diskon`;
 
-CREATE TABLE `kasir` (
-  `id_kasir` int(11) NOT NULL AUTO_INCREMENT,
-  `nama_kasir` varchar(50) NOT NULL,
+CREATE TABLE `diskon` (
+  `diskon_id` int(11) NOT NULL AUTO_INCREMENT,
+  `diskon_kode` varchar(255) NOT NULL,
+  `diskon_name` text NOT NULL,
+  PRIMARY KEY (`diskon_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `diskon` */
+
+insert  into `diskon`(`diskon_id`,`diskon_kode`,`diskon_name`) values 
+(1,'DISC10','10% off'),
+(2,'DISC20','20% off'),
+(3,'DISC50','50% off');
+
+/*Table structure for table `extra_charge` */
+
+DROP TABLE IF EXISTS `extra_charge`;
+
+CREATE TABLE `extra_charge` (
+  `extra_charge_id` int(11) NOT NULL AUTO_INCREMENT,
+  `extra_name` varchar(255) NOT NULL,
+  PRIMARY KEY (`extra_charge_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `extra_charge` */
+
+/*Table structure for table `karyawan` */
+
+DROP TABLE IF EXISTS `karyawan`;
+
+CREATE TABLE `karyawan` (
+  `crew_id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama` varchar(50) NOT NULL,
   `sex` enum('L','P') NOT NULL,
   `umur` int(11) NOT NULL,
-  `nomor_telepon` varchar(15) DEFAULT NULL,
-  `password_kasir` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`id_kasir`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `nomor_telepon` varchar(15) NOT NULL,
+  `password` varchar(10) NOT NULL,
+  `role_id` int(11) NOT NULL,
+  PRIMARY KEY (`crew_id`),
+  KEY `role_id` (`role_id`),
+  CONSTRAINT `karyawan_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-/*Data for the table `kasir` */
+/*Data for the table `karyawan` */
 
-insert  into `kasir`(`id_kasir`,`nama_kasir`,`sex`,`umur`,`nomor_telepon`,`password_kasir`) values 
-(1,'Hans','L',60,'081326507575','hansck'),
-(2,'Irvin','L',19,'085850141312','irvincs'),
-(3,'Jason','L',19,'081259136877','jasonjaj'),
-(4,'Hubert','L',19,'081232328000','hubertsw');
+insert  into `karyawan`(`crew_id`,`nama`,`sex`,`umur`,`nomor_telepon`,`password`,`role_id`) values 
+(1,'Hans','L',60,'081326507575','hansck',2),
+(2,'Irvin','L',19,'085850141312','irvincs',2),
+(3,'Jason','L',19,'081259136877','jasonjaj',2),
+(4,'Hubert','L',19,'081232328000','hubertsw',2),
+(5,'test','L',69,'081234567890','123',1);
 
 /*Table structure for table `menu` */
 
@@ -160,6 +194,43 @@ insert  into `menu`(`id_menu`,`nama_menu`,`harga_menu`,`quantity`,`kategori`) va
 ('SNACK027','Seasonal Fries',25000.00,30,'Snack'),
 ('SNACK028','Spicy Fries',30000.00,40,'Snack');
 
+/*Table structure for table `payment_method` */
+
+DROP TABLE IF EXISTS `payment_method`;
+
+CREATE TABLE `payment_method` (
+  `payment_id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_payment` varchar(255) NOT NULL,
+  PRIMARY KEY (`payment_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `payment_method` */
+
+insert  into `payment_method`(`payment_id`,`nama_payment`) values 
+(1,'tunai'),
+(2,'gopay'),
+(3,'ovo'),
+(4,'bca'),
+(5,'mandiri'),
+(6,'bni'),
+(7,'dana');
+
+/*Table structure for table `role` */
+
+DROP TABLE IF EXISTS `role`;
+
+CREATE TABLE `role` (
+  `role_id` int(11) NOT NULL AUTO_INCREMENT,
+  `role_name` varchar(255) NOT NULL,
+  PRIMARY KEY (`role_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `role` */
+
+insert  into `role`(`role_id`,`role_name`) values 
+(1,'manager'),
+(2,'kasir');
+
 /*Table structure for table `transaksi` */
 
 DROP TABLE IF EXISTS `transaksi`;
@@ -168,34 +239,29 @@ CREATE TABLE `transaksi` (
   `transaksi_id` int(11) NOT NULL AUTO_INCREMENT,
   `quantity` int(11) NOT NULL,
   `employee_id` int(11) NOT NULL,
-  `menu` text NOT NULL,
+  `menu_id` varchar(10) NOT NULL,
   `payment_id` int(11) NOT NULL,
+  `status` enum('berhasil','gagal') NOT NULL,
+  `diskon_id` int(11) NOT NULL,
+  `second_payment` int(11) DEFAULT NULL,
+  `total_transaksi` int(11) NOT NULL,
+  `extra_charge` int(11) NOT NULL,
   PRIMARY KEY (`transaksi_id`),
   KEY `employee_id` (`employee_id`),
   KEY `payment_id` (`payment_id`),
-  CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `kasir` (`id_kasir`),
-  CONSTRAINT `transaksi_ibfk_2` FOREIGN KEY (`payment_id`) REFERENCES `transaksi_payment` (`payment_id`)
+  KEY `menu_id` (`menu_id`),
+  KEY `diskon_id` (`diskon_id`),
+  KEY `second_payment` (`second_payment`),
+  KEY `extra_charge` (`extra_charge`),
+  CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `karyawan` (`crew_id`),
+  CONSTRAINT `transaksi_ibfk_2` FOREIGN KEY (`payment_id`) REFERENCES `payment_method` (`payment_id`),
+  CONSTRAINT `transaksi_ibfk_3` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id_menu`),
+  CONSTRAINT `transaksi_ibfk_4` FOREIGN KEY (`diskon_id`) REFERENCES `diskon` (`diskon_id`),
+  CONSTRAINT `transaksi_ibfk_5` FOREIGN KEY (`second_payment`) REFERENCES `payment_method` (`payment_id`),
+  CONSTRAINT `transaksi_ibfk_6` FOREIGN KEY (`extra_charge`) REFERENCES `extra_charge` (`extra_charge_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `transaksi` */
-
-/*Table structure for table `transaksi_payment` */
-
-DROP TABLE IF EXISTS `transaksi_payment`;
-
-CREATE TABLE `transaksi_payment` (
-  `payment_id` int(11) NOT NULL AUTO_INCREMENT,
-  `total` int(11) NOT NULL,
-  `bca` int(11) NOT NULL,
-  `gopay` int(11) NOT NULL,
-  `ovo` int(11) NOT NULL,
-  `shopeepay` int(11) NOT NULL,
-  `bri` int(11) NOT NULL,
-  `tunai` int(11) NOT NULL,
-  PRIMARY KEY (`payment_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-/*Data for the table `transaksi_payment` */
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
