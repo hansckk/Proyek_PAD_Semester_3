@@ -30,5 +30,17 @@ namespace Proyek_PAD
             form8.Show();
             this.Close();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form7 f7 = new Form7();
+            f7.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
     }
 }

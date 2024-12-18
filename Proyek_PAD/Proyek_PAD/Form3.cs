@@ -20,9 +20,13 @@ namespace Proyek_PAD
         private bool isShiftActive = false;
         private Timer loadingTimer; 
         private int loadingDuration = 3000;
+        MySqlConnection con;
+        string query;
 
         public loginForm()
         {
+            con = new MySqlConnection(connectionString);
+            query = "";
             InitializeComponent();
             AssignButtonTagsAndEvents();
             AddTextBoxFocusEvents();
@@ -39,52 +43,123 @@ namespace Proyek_PAD
             passwordTextBox.Text = "";
         }
 
+        private bool checkManager(string u, string p)
+        {
+            bool c = false;
+            using(MySqlConnection con = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    query = "SELECT * FROM karyawan k JOIN ROLE r ON k.role_id = r.role_id WHERE nama = @username AND PASSWORD = @password AND r.role_name = 'manager'";
+                    MySqlCommand cmd = new MySqlCommand(query, con);
+                    con.Open();
+                    cmd.Parameters.AddWithValue("@username", u);
+                    cmd.Parameters.AddWithValue("@password", p);
+                    MySqlDataReader r = cmd.ExecuteReader();
+                    c = r.HasRows;
+                    r.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            return c;
+        }
+
         private void checkLogin()
         {
             string username = usernameTextBox.Text.Trim();
             string password = passwordTextBox.Text.Trim();
 
-            if (username == "admin" && password == "admin")
-            {
-                Form4 form4 = new Form4();
-                form4.Show();
-                this.Hide();
-                return;
-            }
-
-            string query = "SELECT COUNT(1) FROM kasir WHERE nama_kasir = @username AND password_kasir = @password";
+            //if (username == "admin" && password == "admin")
+            //{
+            //    Form4 form4 = new Form4();
+            //    form4.Show();
+            //    this.Hide();
+            //    return;
+            //}
             try
             {
-                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                query = "SELECT* FROM karyawan WHERE nama = @username AND password = @password";
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                con.Open();
+                cmd.Parameters.AddWithValue("@username", username);
+                cmd.Parameters.AddWithValue("@password", password);
+                MySqlDataReader r = cmd.ExecuteReader();
+                if (r.HasRows)
                 {
-                    connection.Open();
-
-                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    r.Close();
+                    bool isManager = checkManager(username, password);
+                    if (isManager)
                     {
-                        command.Parameters.AddWithValue("@username", username);
-                        command.Parameters.AddWithValue("@password", password);
-
-                        int count = Convert.ToInt32(command.ExecuteScalar());
-
-                        if (count == 1)
+                        Form4 f4 = new Form4();
+                        clear();
+                        this.Hide();
+                        DialogResult res = f4.ShowDialog();
+                        if(res == DialogResult.OK)
                         {
-                            pictureBox2.Visible = true; 
-
-                            loadingDuration = 3000;
-                            loadingTimer.Start();
+                            this.Show();
                         }
                         else
                         {
-                            MessageBox.Show("Username atau password salah.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            this.Close();
                         }
+                        return;
                     }
-                    connection.Close();
+                    else
+                    {
+                        pictureBox2.Visible = true;
+                        loadingDuration = 3000;
+                        loadingTimer.Start();
+                    }
                 }
+                else
+                {
+                    MessageBox.Show("Username / Password salah!");
+                }
+                r.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Terjadi kesalahan: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message);
             }
+            finally
+            {
+                con.Close();
+            }
+            //try
+            //{
+            //    using (MySqlConnection connection = new MySqlConnection(connectionString))
+            //    {
+            //        connection.Open();
+
+            //        using (MySqlCommand command = new MySqlCommand(query, connection))
+            //        {
+            //            command.Parameters.AddWithValue("@username", username);
+            //            command.Parameters.AddWithValue("@password", password);
+
+            //            int count = Convert.ToInt32(command.ExecuteScalar());
+
+            //            if (count == 1)
+            //            {
+            //                pictureBox2.Visible = true; 
+
+            //                loadingDuration = 3000;
+            //                loadingTimer.Start();
+            //            }
+            //            else
+            //            {
+            //                MessageBox.Show("Username atau password salah.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //            }
+            //        }
+            //        connection.Close();
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show($"Terjadi kesalahan: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         private void LoadingTimer_Tick(object sender, EventArgs e)

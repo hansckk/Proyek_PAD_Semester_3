@@ -220,11 +220,11 @@ namespace Proyek_PAD
 
         private void loadMenu()
         {
-            query = "SELECT nama_menu AS 'Menu', harga_menu AS 'Harga Menu', quantity AS 'Quantity' FROM menu";
-            MySqlCommand cmd = new MySqlCommand(query, con);
-            con.Open();
             try
             {
+                query = "SELECT nama_menu AS 'Menu', harga_menu AS 'Harga Menu', quantity AS 'Quantity' FROM menu";
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                con.Open();
                 MySqlDataReader r = cmd.ExecuteReader();
                 DataTable dt = new DataTable();
                 dt.Load(r);

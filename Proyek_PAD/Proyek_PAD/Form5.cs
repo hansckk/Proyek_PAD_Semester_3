@@ -35,7 +35,7 @@ namespace Proyek_PAD
                 {
                     connection.Open();
                   
-                    string query = "SELECT * FROM kasir";
+                    string query = "SELECT * FROM karyawan";
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
                         MySqlDataAdapter adapter = new MySqlDataAdapter(command);
@@ -84,8 +84,8 @@ namespace Proyek_PAD
                 {
                     connection.Open();
 
-                    string query = @"INSERT INTO kasir (nama_kasir, sex, umur, nomor_telepon, password_kasir) 
-                             VALUES (@nama, @sex, @umur, @nomor_telepon, @password)";
+                    string query = @"INSERT INTO karyawan (nama, sex, umur, nomor_telepon, password,role_id) 
+                             VALUES (@nama, @sex, @umur, @nomor_telepon, @password,2)";
 
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
@@ -144,8 +144,8 @@ namespace Proyek_PAD
                 {
                     connection.Open();
 
-                    string query = @"UPDATE kasir SET nama_kasir = @nama, sex = @sex, umur = @umur, 
-                             nomor_telepon = @nomor_telepon, password_kasir = @password WHERE id_kasir = @id";
+                    string query = @"UPDATE karyawan SET nama = @nama, sex = @sex, umur = @umur, 
+                             nomor_telepon = @nomor_telepon, password_kasir = @password WHERE crew_id = @id";
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@id", idKasir);
