@@ -264,6 +264,8 @@ CREATE TABLE `transaksi` (
   `total_transaksi` int(11) NOT NULL,
   `extra_charge` int(11) NOT NULL,
   `queue` int(11) NOT NULL,
+  `payment_pertama` int(11) DEFAULT NULL,
+  `payment_kedua` int(11) DEFAULT NULL,
   PRIMARY KEY (`transaksi_id`),
   KEY `employee_id` (`employee_id`),
   KEY `payment_id` (`payment_id`),
