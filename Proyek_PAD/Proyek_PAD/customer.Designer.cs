@@ -49,8 +49,9 @@ namespace Proyek_PAD
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Location = new System.Drawing.Point(12, 78);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(608, 388);
+            this.panel1.Size = new System.Drawing.Size(658, 388);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // pictureBox1
             // 
@@ -61,6 +62,7 @@ namespace Proyek_PAD
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label1
             // 
@@ -119,7 +121,7 @@ namespace Proyek_PAD
             this.panel2.Controls.Add(this.radioButton1);
             this.panel2.Controls.Add(this.radioButton3);
             this.panel2.Controls.Add(this.radioButton2);
-            this.panel2.Location = new System.Drawing.Point(626, 78);
+            this.panel2.Location = new System.Drawing.Point(676, 78);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(178, 115);
             this.panel2.TabIndex = 1;
@@ -128,23 +130,23 @@ namespace Proyek_PAD
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(651, 31);
+            this.label2.Location = new System.Drawing.Point(701, 31);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(122, 29);
             this.label2.TabIndex = 3;
             this.label2.Text = "Category :";
             // 
-            // Form6
+            // customer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(816, 478);
+            this.ClientSize = new System.Drawing.Size(864, 478);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
-            this.Name = "Form6";
+            this.Name = "customer";
             this.Text = "Customer";
             this.Load += new System.EventHandler(this.Form6_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

@@ -155,6 +155,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="asset\bone.png" />
     <Content Include="asset\DollarMenu.jpg" />
     <Content Include="asset\icons\cash_register_icon_135801.ico" />
     <Content Include="asset\icons\checkmark_83735.png" />
@@ -182,6 +183,9 @@
     <Content Include="asset\payment\ovo.png" />
     <Content Include="asset\payment\qris.png" />
     <Content Include="asset\payment\shopeepay.png" />
+    <None Include="Resources\Image1.bmp" />
+    <None Include="Resources\bone.bmp" />
+    <Content Include="Resources\bone.png" />
     <None Include="Resources\logo_mcdonald1.png" />
     <None Include="Resources\logo_mcdonald.png" />
     <None Include="Resources\mcd1.jpg" />
