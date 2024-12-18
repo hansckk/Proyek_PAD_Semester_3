@@ -1,7 +1,7 @@
 ﻿
 namespace Proyek_PAD
 {
-    partial class Form5
+    partial class karyawan_form
     {
         /// <summary>
         /// Required designer variable.
@@ -71,11 +71,11 @@ namespace Proyek_PAD
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(44, 42);
+            this.label1.Location = new System.Drawing.Point(15, 40);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(121, 29);
+            this.label1.Size = new System.Drawing.Size(174, 29);
             this.label1.TabIndex = 1;
-            this.label1.Text = "List Kasir";
+            this.label1.Text = "List Karyawan";
             // 
             // button1
             // 
@@ -217,7 +217,7 @@ namespace Proyek_PAD
             this.textBox3.Size = new System.Drawing.Size(147, 26);
             this.textBox3.TabIndex = 17;
             // 
-            // Form5
+            // karyawan_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -239,7 +239,7 @@ namespace Proyek_PAD
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "Form5";
+            this.Name = "karyawan_form";
             this.Text = "Form5";
             this.Load += new System.EventHandler(this.Form5_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

@@ -11,12 +11,12 @@ using MySql.Data.MySqlClient;
 
 namespace Proyek_PAD
 {
-    public partial class Form6 : Form
+    public partial class customer : Form
     {
 
         string currentselected = "Makanan"; // DEFAULT
 
-        public Form6()
+        public customer()
         {
             InitializeComponent();
             LoadMenus();

@@ -12,9 +12,9 @@ using MySql.Data.MySqlClient;
 
 namespace Proyek_PAD
 {
-    public partial class Form8 : Form
+    public partial class makanan_form : Form
     {
-        public Form8()
+        public makanan_form()
         {
             InitializeComponent();
         }
@@ -284,9 +284,7 @@ namespace Proyek_PAD
 
         private void button5_Click(object sender, EventArgs e)
         {
-            this.Close();
-            Form4 form4 = new Form4();
-            form4.Show();
+            this.DialogResult = DialogResult.OK;
         }
     }
 }

@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace Proyek_PAD
 {
-    public partial class Form7 : Form
+    public partial class laporan : Form
     {
-        public Form7()
+        public laporan()
         {
             InitializeComponent();
+        }
+
+        private void back_button_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
         }
     }
 }

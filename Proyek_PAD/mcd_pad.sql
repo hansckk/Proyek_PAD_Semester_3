@@ -16,6 +16,22 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`mcd_pad` /*!40100 DEFAULT CHARACTER SET
 
 USE `mcd_pad`;
 
+/*Table structure for table `checklog` */
+
+DROP TABLE IF EXISTS `checklog`;
+
+CREATE TABLE `checklog` (
+  `log_id` int(11) NOT NULL AUTO_INCREMENT,
+  `crew_id` int(11) NOT NULL,
+  `start_time` datetime NOT NULL,
+  `end_time` datetime NOT NULL,
+  PRIMARY KEY (`log_id`),
+  KEY `crew_id` (`crew_id`),
+  CONSTRAINT `checklog_ibfk_1` FOREIGN KEY (`crew_id`) REFERENCES `karyawan` (`crew_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `checklog` */
+
 /*Table structure for table `customers` */
 
 DROP TABLE IF EXISTS `customers`;

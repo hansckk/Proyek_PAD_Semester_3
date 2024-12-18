@@ -11,14 +11,14 @@ using MySql.Data.MySqlClient;
 
 namespace Proyek_PAD
 {
-    public partial class Cashier : Form
+    public partial class cashier : Form
     {
         MySqlConnection con;
         string query;
         string worker;
         string[] food;
         List<image> menuImg;
-        public Cashier(string u)
+        public cashier(string u)
         {
             menuImg = new List<image>();
             food = new string[3];
@@ -322,12 +322,6 @@ namespace Proyek_PAD
             {
                 search();
             }
-        }
-
-        private void laporanToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form7 f7 = new Form7();
-            f7.ShowDialog();
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 namespace Proyek_PAD
 {
-    partial class Form4
+    partial class manager
     {
         /// <summary>
         /// Required designer variable.

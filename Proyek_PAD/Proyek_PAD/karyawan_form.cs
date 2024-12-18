@@ -11,11 +11,11 @@ using MySql.Data.MySqlClient;
 
 namespace Proyek_PAD
 {
-    public partial class Form5 : Form
+    public partial class karyawan_form : Form
     {
         private string connectionString = "Server=localhost;Database=mcd_pad;Uid=root;Pwd=;";
 
-        public Form5()
+        public karyawan_form()
         {
             InitializeComponent();
             button2.Enabled = false;
@@ -231,9 +231,7 @@ namespace Proyek_PAD
 
         private void button5_Click(object sender, EventArgs e)
         {
-            this.Close();
-            Form4 form4 = new Form4();
-            form4.Show();
+            this.DialogResult = DialogResult.OK;   
         }
     }
 }

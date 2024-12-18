@@ -1,7 +1,7 @@
 ﻿
 namespace Proyek_PAD
 {
-    partial class Form6
+    partial class customer
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace Proyek_PAD
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form6));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(customer));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();

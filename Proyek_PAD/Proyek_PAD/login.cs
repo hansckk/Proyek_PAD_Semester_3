@@ -93,7 +93,7 @@ namespace Proyek_PAD
                     bool isManager = checkManager(username, password);
                     if (isManager)
                     {
-                        Form4 f4 = new Form4();
+                        manager f4 = new manager();
                         clear();
                         this.Hide();
                         DialogResult res = f4.ShowDialog();
@@ -171,7 +171,7 @@ namespace Proyek_PAD
                 loadingTimer.Stop(); 
                 pictureBox2.Visible = false; 
 
-                Cashier form1 = new Cashier(usernameTextBox.Text.Trim());
+                cashier form1 = new cashier(usernameTextBox.Text.Trim());
                 clear();
                 this.Hide();
 

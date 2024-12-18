@@ -1,7 +1,7 @@
 ﻿
 namespace Proyek_PAD
 {
-    partial class Form7
+    partial class laporan
     {
         /// <summary>
         /// Required designer variable.
@@ -35,6 +35,7 @@ namespace Proyek_PAD
             this.best_seller_btn = new System.Windows.Forms.Button();
             this.laporan_btn = new System.Windows.Forms.Button();
             this.checklog_btn = new System.Windows.Forms.Button();
+            this.back_button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // laporan_label
@@ -43,14 +44,14 @@ namespace Proyek_PAD
             this.laporan_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.laporan_label.Location = new System.Drawing.Point(255, 9);
             this.laporan_label.Name = "laporan_label";
-            this.laporan_label.Size = new System.Drawing.Size(188, 39);
+            this.laporan_label.Size = new System.Drawing.Size(182, 38);
             this.laporan_label.TabIndex = 0;
             this.laporan_label.Text = "LAPORAN";
             // 
             // laporan_transaksi_btn
             // 
             this.laporan_transaksi_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.laporan_transaksi_btn.Location = new System.Drawing.Point(474, 157);
+            this.laporan_transaksi_btn.Location = new System.Drawing.Point(476, 157);
             this.laporan_transaksi_btn.Name = "laporan_transaksi_btn";
             this.laporan_transaksi_btn.Size = new System.Drawing.Size(225, 100);
             this.laporan_transaksi_btn.TabIndex = 1;
@@ -97,11 +98,23 @@ namespace Proyek_PAD
             this.checklog_btn.Text = "CHECKLOG";
             this.checklog_btn.UseVisualStyleBackColor = true;
             // 
-            // Form7
+            // back_button
+            // 
+            this.back_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.back_button.Location = new System.Drawing.Point(619, 9);
+            this.back_button.Name = "back_button";
+            this.back_button.Size = new System.Drawing.Size(80, 30);
+            this.back_button.TabIndex = 6;
+            this.back_button.Text = "Back";
+            this.back_button.UseVisualStyleBackColor = true;
+            this.back_button.Click += new System.EventHandler(this.back_button_Click);
+            // 
+            // laporan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(713, 273);
+            this.Controls.Add(this.back_button);
             this.Controls.Add(this.checklog_btn);
             this.Controls.Add(this.laporan_btn);
             this.Controls.Add(this.best_seller_btn);
@@ -109,7 +122,7 @@ namespace Proyek_PAD
             this.Controls.Add(this.laporan_transaksi_btn);
             this.Controls.Add(this.laporan_label);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "Form7";
+            this.Name = "laporan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form7";
             this.ResumeLayout(false);
@@ -125,5 +138,6 @@ namespace Proyek_PAD
         private System.Windows.Forms.Button best_seller_btn;
         private System.Windows.Forms.Button laporan_btn;
         private System.Windows.Forms.Button checklog_btn;
+        private System.Windows.Forms.Button back_button;
     }
 }
