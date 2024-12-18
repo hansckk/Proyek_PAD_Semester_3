@@ -61,6 +61,23 @@ CREATE TABLE `extra_charge` (
 
 /*Data for the table `extra_charge` */
 
+/*Table structure for table `extra_charge_trans` */
+
+DROP TABLE IF EXISTS `extra_charge_trans`;
+
+CREATE TABLE `extra_charge_trans` (
+  `transaksi_id` int(11) NOT NULL,
+  `extra_charge_id` int(11) NOT NULL,
+  `extra_charge_trans_id` int(11) NOT NULL,
+  PRIMARY KEY (`extra_charge_trans_id`),
+  KEY `transaksi_id` (`transaksi_id`),
+  KEY `extra_charge_id` (`extra_charge_id`),
+  CONSTRAINT `extra_charge_trans_ibfk_1` FOREIGN KEY (`transaksi_id`) REFERENCES `transaksi` (`transaksi_id`),
+  CONSTRAINT `extra_charge_trans_ibfk_2` FOREIGN KEY (`extra_charge_id`) REFERENCES `extra_charge` (`extra_charge_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `extra_charge_trans` */
+
 /*Table structure for table `karyawan` */
 
 DROP TABLE IF EXISTS `karyawan`;
@@ -252,13 +269,13 @@ CREATE TABLE `transaksi` (
   KEY `menu_id` (`menu_id`),
   KEY `diskon_id` (`diskon_id`),
   KEY `second_payment` (`second_payment`),
-  KEY `extra_charge` (`extra_charge`),
+  KEY `transaksi_ibfk_6` (`extra_charge`),
   CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `karyawan` (`crew_id`),
   CONSTRAINT `transaksi_ibfk_2` FOREIGN KEY (`payment_id`) REFERENCES `payment_method` (`payment_id`),
   CONSTRAINT `transaksi_ibfk_3` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id_menu`),
   CONSTRAINT `transaksi_ibfk_4` FOREIGN KEY (`diskon_id`) REFERENCES `diskon` (`diskon_id`),
   CONSTRAINT `transaksi_ibfk_5` FOREIGN KEY (`second_payment`) REFERENCES `payment_method` (`payment_id`),
-  CONSTRAINT `transaksi_ibfk_6` FOREIGN KEY (`extra_charge`) REFERENCES `extra_charge` (`extra_charge_id`)
+  CONSTRAINT `transaksi_ibfk_6` FOREIGN KEY (`extra_charge`) REFERENCES `extra_charge_trans` (`extra_charge_trans_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `transaksi` */
