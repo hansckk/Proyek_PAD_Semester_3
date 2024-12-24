@@ -13,8 +13,10 @@ namespace Proyek_PAD
 {
     public partial class customer : Form
     {
-
         string currentselected = "Makanan"; // DEFAULT
+        decimal totalPrice = 0;
+        private Dictionary<string, int> itemQuantities = new Dictionary<string, int>();
+        private List<OrderedItem> orderedItems = new List<OrderedItem>();
 
         public customer()
         {
@@ -44,6 +46,9 @@ namespace Proyek_PAD
                         string name = reader["nama_menu"].ToString();
                         decimal price = Convert.ToDecimal(reader["harga_menu"]);
 
+                        // Get the saved quantity or default to 0
+                        int qty = itemQuantities.ContainsKey(id) ? itemQuantities[id] : 0;
+
                         Panel menuPanel = new Panel
                         {
                             Size = new Size(panelWidth, panelHeight),
@@ -70,7 +75,7 @@ namespace Proyek_PAD
 
                         Label qtyLabel = new Label
                         {
-                            Text = "0",
+                            Text = qty.ToString(),
                             Location = new Point(menuPanel.Width - 55, 155),
                             AutoSize = true,
                             Font = new Font("Arial", 12, FontStyle.Regular)
@@ -89,25 +94,41 @@ namespace Proyek_PAD
                             Location = new Point(menuPanel.Width - 80, 155),
                             Size = new Size(20, 20)
                         };
+
                         PictureBox Thumbnail = new PictureBox
                         {
-                            Size = new Size(120, 120), // Adjust size
-                            Location = new Point(40, 0), // Adjust location
+                            Size = new Size(120, 120),
+                            Location = new Point(40, 0),
                             Image = Properties.Resources.bone,
-                            SizeMode = PictureBoxSizeMode.Zoom // Optional: Adjust the image display mode
+                            SizeMode = PictureBoxSizeMode.Zoom
                         };
-
-                        int qty = 0;
 
                         increaseQty.Click += (s, e) =>
                         {
-                            qty++;
+                            qty++;  // Increment the quantity
                             qtyLabel.Text = qty.ToString();
 
-                            if (qty > 99)
+                            if (!itemQuantities.ContainsKey(id))
                             {
-                                qty--;
-                                qtyLabel.Text = qty.ToString();
+                                itemQuantities[id] = 0;
+                            }
+
+                            itemQuantities[id] = qty;
+
+                            totalPrice += price;
+                            UpdateTotalLabel();
+
+                            // Check if the item already exists in orderedItems
+                            var existingItem = orderedItems.FirstOrDefault(i => i.MenuId == id);
+                            if (existingItem != null)
+                            {
+                                // If item already exists, update the quantity
+                                existingItem.Quantity = qty;
+                            }
+                            else
+                            {
+                                // If item doesn't exist, add it to the orderedItems list
+                                AddItemToOrder(id, name, price, qty);
                             }
                         };
 
@@ -117,8 +138,25 @@ namespace Proyek_PAD
                             {
                                 qty--;
                                 qtyLabel.Text = qty.ToString();
+                                itemQuantities[id] = qty;
+
+                                // Update or remove the item from orderedItems
+                                var orderedItem = orderedItems.FirstOrDefault(i => i.MenuId == id);
+                                if (orderedItem != null)
+                                {
+                                    orderedItem.Quantity = qty;
+                                    if (qty == 0)
+                                    {
+                                        orderedItems.Remove(orderedItem);
+                                    }
+                                }
+
+                                totalPrice -= price;
+                                UpdateTotalLabel();
                             }
                         };
+
+
 
                         menuPanel.Controls.Add(nameLabel);
                         menuPanel.Controls.Add(priceLabel);
@@ -151,9 +189,103 @@ namespace Proyek_PAD
             }
         }
 
+
+
+        private void PlaceOrderToDatabase()
+        {
+            try
+            {
+                string customerName = ORDER_NUMBER.Text;  // Use the generated order number as the customer name
+
+                Connection.open();
+                foreach (var item in orderedItems) // Assuming orderedItems is a list of OrderedItem
+                {
+                    // Check if the item already exists in the database by customer name (order number) and menu name
+                    string checkQuery = "SELECT COUNT(*) FROM pending_transactions WHERE customer_name = @customerName AND menu_name = @menuName";
+                    MySqlCommand checkCmd = new MySqlCommand(checkQuery, Connection.conn);
+                    checkCmd.Parameters.AddWithValue("@customerName", customerName); // Use actual customer name (order number)
+                    checkCmd.Parameters.AddWithValue("@menuName", item.MenuName);
+
+                    int itemCount = Convert.ToInt32(checkCmd.ExecuteScalar());
+
+                    if (itemCount == 0) // If item does not exist in the table, insert it
+                    {
+                        string insertQuery = "INSERT INTO pending_transactions (customer_name, menu_name, quantity, price, total_price) " +
+                                             "VALUES (@customerName, @menuName, @quantity, @price, @totalPrice)";
+                        MySqlCommand insertCmd = new MySqlCommand(insertQuery, Connection.conn);
+                        insertCmd.Parameters.AddWithValue("@customerName", customerName); // Use actual customer name (order number)
+                        insertCmd.Parameters.AddWithValue("@menuName", item.MenuName);
+                        insertCmd.Parameters.AddWithValue("@quantity", item.Quantity);
+                        insertCmd.Parameters.AddWithValue("@price", item.Price);
+                        insertCmd.Parameters.AddWithValue("@totalPrice", item.Price * item.Quantity);
+                        insertCmd.ExecuteNonQuery();
+                    }
+                    else // If item exists, update the quantity and total price
+                    {
+                        string updateQuery = "UPDATE pending_transactions SET quantity = quantity + @quantity, total_price = total_price + @totalPrice " +
+                                             "WHERE customer_name = @customerName AND menu_name = @menuName";
+                        MySqlCommand updateCmd = new MySqlCommand(updateQuery, Connection.conn);
+                        updateCmd.Parameters.AddWithValue("@customerName", customerName); // Use actual customer name (order number)
+                        updateCmd.Parameters.AddWithValue("@menuName", item.MenuName);
+                        updateCmd.Parameters.AddWithValue("@quantity", item.Quantity);
+                        updateCmd.Parameters.AddWithValue("@totalPrice", item.Price * item.Quantity);
+                        updateCmd.ExecuteNonQuery();
+                    }
+                }
+                MessageBox.Show("Order placed successfully!");
+                orderedItems.Clear(); // Clear the in-memory list
+                LoadMenus(); // Refresh the UI
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error placing order: {ex.Message}");
+            }
+            finally
+            {
+                Connection.close();
+            }
+        }
+
+
+
+
+
+        private void AddItemToOrder(string menuId, string menuName, decimal price, int quantity)
+        {
+            OrderedItem item = new OrderedItem
+            {
+                MenuId = menuId,
+                MenuName = menuName,
+                Price = price,
+                Quantity = quantity
+            };
+
+            orderedItems.Add(item);
+        }
+
+
+
+
+
+        private void UpdateTotalLabel()
+        {
+            Total_label.Text = $"{totalPrice:N0}";
+        }
+
+        public class OrderedItem
+        {
+            public string MenuId { get; set; }
+            public string MenuName { get; set; }
+            public int Quantity { get; set; }
+            public decimal Price { get; set; }
+            public decimal TotalPrice => Price * Quantity;
+        }
+
+
+
         private void Form6_Load(object sender, EventArgs e)
         {
-
+            GenerateOrderNumber();
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -176,12 +308,45 @@ namespace Proyek_PAD
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void Total_label_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void placeOrderButton_Click(object sender, EventArgs e)
+        {
+            if (orderedItems.Count > 0)
+            {
+                PlaceOrderToDatabase();
+            }
+            else
+            {
+                MessageBox.Show("No items in the order!");
+            }
+        }
+
+        private void ORDER_NUMBER_Click(object sender, EventArgs e)
+        {
 
         }
+
+        private void GenerateOrderNumber()
+        {
+            Random random = new Random();
+            int orderNumber = random.Next(1000, 9999); // Generate a 4-digit random number
+            ORDER_NUMBER.Text = orderNumber.ToString(); // Display it in the ORDER_NUMBER label
+        }
+
     }
+
+
 }

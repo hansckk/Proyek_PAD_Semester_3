@@ -96,7 +96,7 @@ namespace Proyek_PAD
             this.dayLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.dayLabel.Name = "dayLabel";
             this.dayLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dayLabel.Size = new System.Drawing.Size(42, 18);
+            this.dayLabel.Size = new System.Drawing.Size(34, 15);
             this.dayLabel.TabIndex = 20;
             this.dayLabel.Text = "Day :";
             // 
@@ -108,7 +108,7 @@ namespace Proyek_PAD
             this.timeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.timeLabel.Name = "timeLabel";
             this.timeLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.timeLabel.Size = new System.Drawing.Size(49, 18);
+            this.timeLabel.Size = new System.Drawing.Size(41, 15);
             this.timeLabel.TabIndex = 21;
             this.timeLabel.Text = "Time: ";
             // 
@@ -223,7 +223,7 @@ namespace Proyek_PAD
             this.cashierTextBox.Location = new System.Drawing.Point(17, 29);
             this.cashierTextBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.cashierTextBox.Name = "cashierTextBox";
-            this.cashierTextBox.Size = new System.Drawing.Size(281, 45);
+            this.cashierTextBox.Size = new System.Drawing.Size(281, 37);
             this.cashierTextBox.TabIndex = 6;
             this.cashierTextBox.TextChanged += new System.EventHandler(this.cashierTextBox_TextChanged);
             // 
@@ -445,7 +445,7 @@ namespace Proyek_PAD
             this.taxLabel.Location = new System.Drawing.Point(4, 9);
             this.taxLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.taxLabel.Name = "taxLabel";
-            this.taxLabel.Size = new System.Drawing.Size(91, 29);
+            this.taxLabel.Size = new System.Drawing.Size(72, 25);
             this.taxLabel.TabIndex = 25;
             this.taxLabel.Text = "Pajak: ";
             // 
@@ -456,7 +456,7 @@ namespace Proyek_PAD
             this.totalLabel.Location = new System.Drawing.Point(3, 49);
             this.totalLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.totalLabel.Name = "totalLabel";
-            this.totalLabel.Size = new System.Drawing.Size(104, 36);
+            this.totalLabel.Size = new System.Drawing.Size(87, 29);
             this.totalLabel.TabIndex = 5;
             this.totalLabel.Text = "Total: ";
             // 
@@ -467,7 +467,7 @@ namespace Proyek_PAD
             this.queueLabel.Location = new System.Drawing.Point(619, 54);
             this.queueLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.queueLabel.Name = "queueLabel";
-            this.queueLabel.Size = new System.Drawing.Size(101, 29);
+            this.queueLabel.Size = new System.Drawing.Size(84, 25);
             this.queueLabel.TabIndex = 26;
             this.queueLabel.Text = "Queue:";
             // 
@@ -499,7 +499,7 @@ namespace Proyek_PAD
             this.workerLabel.Location = new System.Drawing.Point(62, 43);
             this.workerLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.workerLabel.Name = "workerLabel";
-            this.workerLabel.Size = new System.Drawing.Size(154, 36);
+            this.workerLabel.Size = new System.Drawing.Size(129, 29);
             this.workerLabel.TabIndex = 29;
             this.workerLabel.Text = "Welcome,";
             // 
@@ -529,10 +529,10 @@ namespace Proyek_PAD
             // 
             // cashier
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(1200, 831);
+            this.ClientSize = new System.Drawing.Size(1200, 749);
             this.Controls.Add(this.logoutButton);
             this.Controls.Add(this.workerLabel);
             this.Controls.Add(this.timePanel);

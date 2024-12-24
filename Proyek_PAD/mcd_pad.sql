@@ -1,5 +1,5 @@
 /*
-SQLyog Community v13.2.1 (64 bit)
+SQLyog Ultimate v12.5.1 (64 bit)
 MySQL - 10.4.32-MariaDB : Database - mcd_pad
 *********************************************************************
 */
@@ -261,6 +261,30 @@ CREATE TABLE `payment_trans` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `payment_trans` */
+
+/*Table structure for table `pending_transactions` */
+
+DROP TABLE IF EXISTS `pending_transactions`;
+
+CREATE TABLE `pending_transactions` (
+  `transaction_id` int(11) NOT NULL AUTO_INCREMENT,
+  `customer_name` varchar(255) DEFAULT NULL,
+  `menu_name` varchar(255) DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL,
+  `price` decimal(10,2) DEFAULT NULL,
+  `total_price` decimal(10,2) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`transaction_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `pending_transactions` */
+
+insert  into `pending_transactions`(`transaction_id`,`customer_name`,`menu_name`,`quantity`,`price`,`total_price`,`created_at`) values 
+(1,'Customer Name','Quarter Pounder',7,45000.00,315000.00,'2024-12-24 20:40:36'),
+(2,'Customer Name','Cheeseburger',1,30000.00,30000.00,'2024-12-24 20:40:36'),
+(19,'9365','Quarter Pounder',1,45000.00,45000.00,'2024-12-24 22:01:53'),
+(20,'9365','Chicken Nuggets Happy Meal',2,25000.00,50000.00,'2024-12-24 22:02:02'),
+(21,'9365','Filet-O-Fish',3,40000.00,120000.00,'2024-12-24 22:02:09');
 
 /*Table structure for table `role` */
 

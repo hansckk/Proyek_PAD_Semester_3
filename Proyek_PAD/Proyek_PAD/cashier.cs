@@ -51,28 +51,97 @@ namespace Proyek_PAD
             displayDataGridView.Rows.Clear();
         }
 
-        private void showDisplay()
+        private void CustomizeDataGridView()
         {
-            clearDisplay();
-            displayDataGridView.ColumnCount = 2;
-            displayDataGridView.Columns[0].HeaderText = "Menu Name";
-            displayDataGridView.Columns[1].HeaderText = "Quantity";
-            DataGridViewButtonColumn btn_column_add = new DataGridViewButtonColumn();
-            btn_column_add.HeaderText = "Add";
-            btn_column_add.Text = "Add";
-            btn_column_add.UseColumnTextForButtonValue = true;
-            displayDataGridView.Columns.Add(btn_column_add);
-            DataGridViewButtonColumn btn_column_remove = new DataGridViewButtonColumn();
-            btn_column_remove.HeaderText = "Remove";
-            btn_column_remove.Text = "Remove";
-            btn_column_remove.UseColumnTextForButtonValue = true;
-            displayDataGridView.Columns.Add(btn_column_remove);
-            DataGridViewButtonColumn btn_column_clear = new DataGridViewButtonColumn();
-            btn_column_clear.HeaderText = "Clear";
-            btn_column_clear.Text = "Clear";
-            btn_column_clear.UseColumnTextForButtonValue = true;
-            displayDataGridView.Columns.Add(btn_column_clear);
+            // Customize column headers based on the table structure
+            displayDataGridView.Columns[0].HeaderText = "ID";
+            displayDataGridView.Columns[1].HeaderText = "Order NUMBER";
+            displayDataGridView.Columns[2].HeaderText = "Item Name";
+            displayDataGridView.Columns[3].HeaderText = "Quantity";
+            displayDataGridView.Columns[4].HeaderText = "Price";
+            displayDataGridView.Columns[5].HeaderText = "Total Price";
+            displayDataGridView.Columns[6].HeaderText = "Order Date";
+
+            // Optional: Format the price and total_price columns as currency
+            displayDataGridView.Columns[4].DefaultCellStyle.Format = "C3"; // Format as currency
+            displayDataGridView.Columns[5].DefaultCellStyle.Format = "C3"; // Format as currency
+
+            // Optional: Adjust column widths for better readability
+            displayDataGridView.Columns[0].Width = 100;
+            displayDataGridView.Columns[1].Width = 150;
+            displayDataGridView.Columns[2].Width = 200;
+            displayDataGridView.Columns[3].Width = 80;
+            displayDataGridView.Columns[4].Width = 100;
+            displayDataGridView.Columns[5].Width = 150;
+            displayDataGridView.Columns[6].Width = 100;
         }
+
+
+        // BANGSAT TESSSS
+        private void LoadPendingTransactions()
+        {
+            try
+            {
+                // Query to get data from the pending_transactions table
+                query = "SELECT transaction_id, customer_name, menu_name, quantity, price, total_price, created_at FROM pending_transactions";
+                MySqlCommand cmd = new MySqlCommand(query, con);
+
+                // Open connection to the database
+                con.Open();
+
+                // Execute the query and get the data
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                // Create a DataTable to hold the result
+                DataTable dt = new DataTable();
+                dt.Load(reader);
+
+                // Set the data source of the DataGridView
+                displayDataGridView.DataSource = dt;
+
+                // Close the reader
+                reader.Close();
+
+                // Customize the DataGridView after the data has been loaded
+                CustomizeDataGridView();
+            }
+            catch (Exception ex)
+            {
+                // Handle any errors
+                MessageBox.Show("Error loading pending transactions: " + ex.Message);
+            }
+            finally
+            {
+                // Close the connection
+                con.Close();
+            }
+        }
+
+
+
+        // ~ dikomen irvin
+        //private void showDisplay()    
+        //{
+        //    clearDisplay();
+        //    displayDataGridView.ColumnCount = 2;
+        //    displayDataGridView.Columns[0].HeaderText = "Menu Name";
+        //    displayDataGridView.Columns[1].HeaderText = "Quantity";
+        //    DataGridViewButtonColumn btn_column_add = new DataGridViewButtonColumn();
+        //    btn_column_add.HeaderText = "Add";
+        //    btn_column_add.Text = "Add";
+        //    btn_column_add.UseColumnTextForButtonValue = true;
+        //    displayDataGridView.Columns.Add(btn_column_add);
+        //    DataGridViewButtonColumn btn_column_remove = new DataGridViewButtonColumn();
+        //    btn_column_remove.HeaderText = "Remove";
+        //    btn_column_remove.Text = "Remove";
+        //    btn_column_remove.UseColumnTextForButtonValue = true;
+        //    displayDataGridView.Columns.Add(btn_column_remove);
+        //    DataGridViewButtonColumn btn_column_clear = new DataGridViewButtonColumn();
+        //    btn_column_clear.HeaderText = "Clear";
+        //    btn_column_clear.Text = "Clear";
+        //    btn_column_clear.UseColumnTextForButtonValue = true;
+        //    displayDataGridView.Columns.Add(btn_column_clear);
+        //}
 
         //buat jam ini
         private void timer1_Tick(object sender, EventArgs e)
@@ -92,6 +161,7 @@ namespace Proyek_PAD
             totalPanel.Visible = false;
             dayLabel.Text = "Day: " + DateTime.Now.ToString("dddd, d - M - yyyy");
             timeLabel.Text = "Time: " + DateTime.Now.ToString("HH:mm");
+            LoadPendingTransactions();
             time.Start();
         }
         private void clearText()
@@ -181,7 +251,7 @@ namespace Proyek_PAD
                 {
                     int quantity = q.selectedQuantity;
                     showTotal();
-                    showDisplay();
+                    // showDisplay();   ~ dikomen irvin 
                     displayDataGridView.Size = new Size(displayDataGridView.Width, 640);
                 }
                 clearText();
