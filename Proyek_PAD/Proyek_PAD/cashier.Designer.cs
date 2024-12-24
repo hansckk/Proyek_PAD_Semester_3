@@ -201,6 +201,7 @@ namespace Proyek_PAD
             this.searchButton.Size = new System.Drawing.Size(50, 50);
             this.searchButton.TabIndex = 26;
             this.searchButton.UseVisualStyleBackColor = false;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // clearTextButton
             // 
@@ -302,6 +303,7 @@ namespace Proyek_PAD
             this.splitPaymentButton.TabIndex = 19;
             this.splitPaymentButton.Text = "SPLIT PAYMENT";
             this.splitPaymentButton.UseVisualStyleBackColor = false;
+            this.splitPaymentButton.Click += new System.EventHandler(this.splitPaymentButton_Click);
             // 
             // buttonNo1
             // 

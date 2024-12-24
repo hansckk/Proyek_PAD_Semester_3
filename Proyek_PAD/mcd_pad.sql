@@ -84,8 +84,6 @@ DROP TABLE IF EXISTS `extra_charge_trans`;
 CREATE TABLE `extra_charge_trans` (
   `transaksi_id` int(11) NOT NULL,
   `extra_charge_id` int(11) NOT NULL,
-  `extra_charge_trans_id` int(11) NOT NULL,
-  PRIMARY KEY (`extra_charge_trans_id`),
   KEY `transaksi_id` (`transaksi_id`),
   KEY `extra_charge_id` (`extra_charge_id`),
   CONSTRAINT `extra_charge_trans_ibfk_1` FOREIGN KEY (`transaksi_id`) REFERENCES `transaksi` (`transaksi_id`),
@@ -114,7 +112,7 @@ CREATE TABLE `karyawan` (
 /*Data for the table `karyawan` */
 
 insert  into `karyawan`(`crew_id`,`nama`,`sex`,`umur`,`nomor_telepon`,`password`,`role_id`) values 
-(1,'Hans','L',60,'081326507575','hansck',2),
+(1,'a','L',70,'081326507575','b',2),
 (2,'Irvin','L',19,'085850141312','irvincs',2),
 (3,'Jason','L',19,'081259136877','jasonjaj',2),
 (4,'Hubert','L',19,'081232328000','hubertsw',2),
@@ -248,6 +246,22 @@ insert  into `payment_method`(`payment_id`,`nama_payment`) values
 (6,'bni'),
 (7,'dana');
 
+/*Table structure for table `payment_trans` */
+
+DROP TABLE IF EXISTS `payment_trans`;
+
+CREATE TABLE `payment_trans` (
+  `transaksi_id` int(11) NOT NULL,
+  `payment_method` int(11) NOT NULL,
+  `total` int(11) NOT NULL,
+  KEY `transaksi_id` (`transaksi_id`),
+  KEY `payment_method` (`payment_method`),
+  CONSTRAINT `payment_trans_ibfk_1` FOREIGN KEY (`transaksi_id`) REFERENCES `transaksi` (`transaksi_id`),
+  CONSTRAINT `payment_trans_ibfk_2` FOREIGN KEY (`payment_method`) REFERENCES `payment_method` (`payment_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `payment_trans` */
+
 /*Table structure for table `role` */
 
 DROP TABLE IF EXISTS `role`;
@@ -273,29 +287,18 @@ CREATE TABLE `transaksi` (
   `quantity` int(11) NOT NULL,
   `employee_id` int(11) NOT NULL,
   `menu_id` varchar(10) NOT NULL,
-  `payment_id` int(11) NOT NULL,
   `status` enum('berhasil','gagal') NOT NULL,
   `diskon_id` int(11) NOT NULL,
-  `second_payment` int(11) DEFAULT NULL,
   `total_transaksi` int(11) NOT NULL,
-  `extra_charge` int(11) NOT NULL,
   `queue` int(11) NOT NULL,
-  `payment_pertama` int(11) DEFAULT NULL,
-  `payment_kedua` int(11) DEFAULT NULL,
   PRIMARY KEY (`transaksi_id`),
   KEY `employee_id` (`employee_id`),
-  KEY `payment_id` (`payment_id`),
   KEY `menu_id` (`menu_id`),
   KEY `diskon_id` (`diskon_id`),
-  KEY `second_payment` (`second_payment`),
-  KEY `transaksi_ibfk_6` (`extra_charge`),
   CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `karyawan` (`crew_id`),
-  CONSTRAINT `transaksi_ibfk_2` FOREIGN KEY (`payment_id`) REFERENCES `payment_method` (`payment_id`),
   CONSTRAINT `transaksi_ibfk_3` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id_menu`),
-  CONSTRAINT `transaksi_ibfk_4` FOREIGN KEY (`diskon_id`) REFERENCES `diskon` (`diskon_id`),
-  CONSTRAINT `transaksi_ibfk_5` FOREIGN KEY (`second_payment`) REFERENCES `payment_method` (`payment_id`),
-  CONSTRAINT `transaksi_ibfk_6` FOREIGN KEY (`extra_charge`) REFERENCES `extra_charge_trans` (`extra_charge_trans_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  CONSTRAINT `transaksi_ibfk_4` FOREIGN KEY (`diskon_id`) REFERENCES `diskon` (`diskon_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `transaksi` */
 

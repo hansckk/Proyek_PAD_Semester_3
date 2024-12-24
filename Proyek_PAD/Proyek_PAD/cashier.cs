@@ -45,8 +45,15 @@ namespace Proyek_PAD
             }  
         }
 
+        private void clearDisplay()
+        {
+            displayDataGridView.Columns.Clear();
+            displayDataGridView.Rows.Clear();
+        }
+
         private void showDisplay()
         {
+            clearDisplay();
             displayDataGridView.ColumnCount = 2;
             displayDataGridView.Columns[0].HeaderText = "Menu Name";
             displayDataGridView.Columns[1].HeaderText = "Quantity";
@@ -159,15 +166,25 @@ namespace Proyek_PAD
             }
         }
         
+        private void showOrder()
+        {
+
+        }
+
         private void order()
         {
             if (cashierTextBox.Text != "")
             {
                 Quantity q = new Quantity();
-                q.ShowDialog();
+                DialogResult dr = q.ShowDialog();
+                if(dr == DialogResult.OK)
+                {
+                    int quantity = q.selectedQuantity;
+                    showTotal();
+                    showDisplay();
+                    displayDataGridView.Size = new Size(displayDataGridView.Width, 640);
+                }
                 clearText();
-                showTotal();
-                displayDataGridView.Size = new Size(displayDataGridView.Width, 640);
             }
             else
             {
@@ -250,9 +267,15 @@ namespace Proyek_PAD
 
         private void clearDisplayButton_Click(object sender, EventArgs e)
         {
-            clearText();
-            totalPanel.Visible = false;
-            displayDataGridView.Size = new Size(displayDataGridView.Width, 733); //iki height e jok diganti, lek diganti ntik elek
+            //lek ad sg buat buat cek lek misale data grid view display kosong, monggo wkwkw, aku lagi mw fokus sg laen (hans)
+            DialogResult dr = MessageBox.Show("Apakah anda yakin ingin men-delete order?", "Konfirmasi",MessageBoxButtons.YesNo);
+            if(dr == DialogResult.Yes)
+            {
+                clearDisplay();
+                clearText();
+                totalPanel.Visible = false;
+                displayDataGridView.Size = new Size(displayDataGridView.Width, 733); //iki height e jok diganti, lek diganti ntik elek
+            }
         }
 
         private void clearTextButton_Click(object sender, EventArgs e)
@@ -293,13 +316,13 @@ namespace Proyek_PAD
 
         private void search() 
         {
-            query = "SELECT nama_menu AS 'Menu', harga_menu AS 'Harga Menu', quantity AS 'Quantity' FROM menu WHERE nama_menu LIKE '@namaMakan' OR id_menu LIKE '@idMakan'";
+            query = "SELECT nama_menu AS 'Menu', harga_menu AS 'Harga Menu', quantity AS 'Quantity' FROM menu WHERE nama_menu LIKE @namaMakan OR id_menu LIKE @idMakan";
             con.Open();
             try
             {
                 MySqlCommand cmd = new MySqlCommand(query, con);
-                cmd.Parameters.AddWithValue("@namaMakan",cashierTextBox);
-                cmd.Parameters.AddWithValue("@idMakan",cashierTextBox);
+                cmd.Parameters.AddWithValue("@namaMakan", "%" + cashierTextBox.Text + "%");
+                cmd.Parameters.AddWithValue("@idMakan", "%" + cashierTextBox.Text + "%");
                 MySqlDataReader r = cmd.ExecuteReader();
                 DataTable res = new DataTable();
                 res.Load(r);
@@ -322,6 +345,16 @@ namespace Proyek_PAD
             {
                 search();
             }
+        }
+
+        private void splitPaymentButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

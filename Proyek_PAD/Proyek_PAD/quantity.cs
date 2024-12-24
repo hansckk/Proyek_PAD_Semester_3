@@ -13,6 +13,7 @@ namespace Proyek_PAD
 {
     public partial class Quantity : Form
     {
+        public int selectedQuantity { get; private set; }
         public Quantity()
         {
             InitializeComponent();
@@ -20,11 +21,22 @@ namespace Proyek_PAD
 
         private void acceptButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if((int)numericUpDown1.Value > 1)
+            {
+                selectedQuantity = (int)numericUpDown1.Value;
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Please enter a valid quantity!");
+            }
+            
         }
 
         private void declineButton_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
@@ -33,7 +45,7 @@ namespace Proyek_PAD
             switch (e.KeyCode)
             {
                 case Keys.Enter:
-                    this.Close();
+                    acceptButton.PerformClick();
                     break;
             }
         }
