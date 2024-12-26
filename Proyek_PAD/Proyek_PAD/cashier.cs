@@ -360,8 +360,57 @@ namespace Proyek_PAD
 
         private void logoutButton_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            DialogResult dr = MessageBox.Show($"Apakah {worker} yakin untuk logout?", "Konfirmasi Logout", MessageBoxButtons.YesNo);
+
+            if (dr == DialogResult.Yes)
+            {
+                try
+                {
+                    string getInfoQuery = "SELECT cl.log_id, c.crew_id, c.nama, cl.start_time FROM karyawan c JOIN checklog cl ON c.crew_id = cl.crew_id WHERE c.nama = @worker AND cl.end_time = '0000-00-00 00:00:00'";
+                    MySqlCommand cmd = new MySqlCommand(getInfoQuery, con);
+                    cmd.Parameters.AddWithValue("@worker", worker);
+
+                    con.Open();
+                    MySqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        string logId = reader.GetString("log_id");
+                        int crewId = reader.GetInt32("crew_id");
+                        string nama = reader.GetString("nama");
+                        DateTime startTime = reader.GetDateTime("start_time");
+
+                        reader.Close();
+
+                        string updateQuery = "UPDATE checklog SET end_time = @end_time WHERE log_id = @log_id";
+                        MySqlCommand updateCmd = new MySqlCommand(updateQuery, con);
+                        DateTime endTime = DateTime.Now;
+                        updateCmd.Parameters.AddWithValue("@end_time", endTime);
+                        updateCmd.Parameters.AddWithValue("@log_id", logId);
+                        updateCmd.ExecuteNonQuery();
+
+                        string hari = DateTime.Now.ToString("dddd, d - M - yyyy");
+                        string pesan = $"Name: {nama}\nCrew ID: {crewId}\nDay: {hari}\nWaktu Mulai: {startTime}\nWaktu Selesai: {endTime}";
+                        MessageBox.Show(pesan, "Informasi Logout");
+
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Data log tidak ditemukan untuk pengguna ini.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        reader.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error saat logout: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    con.Close();
+                }
+            }
         }
 
         private void isiCashierTextbox(string t)

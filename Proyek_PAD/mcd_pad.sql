@@ -1,5 +1,5 @@
 /*
-SQLyog Ultimate v12.5.1 (64 bit)
+SQLyog Community v13.2.1 (64 bit)
 MySQL - 10.4.32-MariaDB : Database - mcd_pad
 *********************************************************************
 */
@@ -21,7 +21,7 @@ USE `mcd_pad`;
 DROP TABLE IF EXISTS `checklog`;
 
 CREATE TABLE `checklog` (
-  `log_id` int(11) NOT NULL AUTO_INCREMENT,
+  `log_id` varchar(20) NOT NULL,
   `crew_id` int(11) NOT NULL,
   `start_time` datetime NOT NULL,
   `end_time` datetime NOT NULL,

@@ -60,8 +60,6 @@ D:\KULIAH\SEMESTER  3\PROJECT_PAD\Proyek_PAD_Semester_3\Proyek_PAD\Proyek_PAD\ob
 D:\KULIAH\SEMESTER  3\PROJECT_PAD\Proyek_PAD_Semester_3\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.csproj.CopyComplete
 D:\KULIAH\SEMESTER  3\PROJECT_PAD\Proyek_PAD_Semester_3\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.exe
 D:\KULIAH\SEMESTER  3\PROJECT_PAD\Proyek_PAD_Semester_3\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.pdb
-D:\KULIAH\SEMESTER  3\PROJECT_PAD\Proyek_PAD_Semester_3\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.Form4.resources
-D:\KULIAH\SEMESTER  3\PROJECT_PAD\Proyek_PAD_Semester_3\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.Form5.resources
 C:\Users\User\Desktop\Proyek_PAD\Proyek_PAD\bin\Debug\Proyek_PAD.exe.config
 C:\Users\User\Desktop\Proyek_PAD\Proyek_PAD\bin\Debug\Proyek_PAD.exe
 C:\Users\User\Desktop\Proyek_PAD\Proyek_PAD\bin\Debug\Proyek_PAD.pdb
@@ -92,9 +90,6 @@ C:\Users\User\Desktop\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.csproj.CoreComp
 C:\Users\User\Desktop\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.csproj.CopyComplete
 C:\Users\User\Desktop\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.exe
 C:\Users\User\Desktop\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.pdb
-D:\KULIAH\SEMESTER  3\PROJECT_PAD\Proyek_PAD_Semester_3\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.Form6.resources
-D:\KULIAH\SEMESTER  3\PROJECT_PAD\Proyek_PAD_Semester_3\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.Form7.resources
-D:\KULIAH\SEMESTER  3\PROJECT_PAD\Proyek_PAD_Semester_3\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.Form8.resources
 C:\Users\Hans Christian\OneDrive\Desktop\Tugas Semester 3\Proyek_PAD_Semester_3\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.manager.resources
 C:\Users\Hans Christian\OneDrive\Desktop\Tugas Semester 3\Proyek_PAD_Semester_3\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.karyawan_form.resources
 C:\Users\Hans Christian\OneDrive\Desktop\Tugas Semester 3\Proyek_PAD_Semester_3\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.customer.resources
@@ -106,3 +101,8 @@ C:\Users\User\Desktop\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.customer.resour
 C:\Users\User\Desktop\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.laporan.resources
 C:\Users\User\Desktop\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.makanan_form.resources
 C:\Users\User\Desktop\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.csproj.AssemblyReference.cache
+D:\KULIAH\SEMESTER  3\PROJECT_PAD\Proyek_PAD_Semester_3\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.manager.resources
+D:\KULIAH\SEMESTER  3\PROJECT_PAD\Proyek_PAD_Semester_3\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.karyawan_form.resources
+D:\KULIAH\SEMESTER  3\PROJECT_PAD\Proyek_PAD_Semester_3\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.customer.resources
+D:\KULIAH\SEMESTER  3\PROJECT_PAD\Proyek_PAD_Semester_3\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.laporan.resources
+D:\KULIAH\SEMESTER  3\PROJECT_PAD\Proyek_PAD_Semester_3\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.makanan_form.resources

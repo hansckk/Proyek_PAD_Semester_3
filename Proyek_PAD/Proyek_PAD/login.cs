@@ -162,14 +162,57 @@ namespace Proyek_PAD
             //}
         }
 
+        private void InsertCheckLog(int crewId)
+        {
+            string dayPrefix = DateTime.Now.ToString("ddd").ToUpper(); // 3 huruf awal hari (e.g., THU)
+            DateTime now = DateTime.Now;
+            string timeNow = now.ToString("yyyy-MM-dd HH:mm:ss");
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // Cari log_id terakhir dengan prefix hari ini
+                    string selectQuery = $"SELECT COUNT(*) FROM checklog WHERE log_id LIKE '{dayPrefix}%'";
+                    MySqlCommand selectCmd = new MySqlCommand(selectQuery, connection);
+                    int logCount = Convert.ToInt32(selectCmd.ExecuteScalar());
+
+                    // Buat log_id baru dengan format <3huruf hari><angka urut>
+                    string logId = $"{dayPrefix}{logCount + 1}";
+
+                    // Insert data ke tabel checklog
+                    string insertQuery = "INSERT INTO checklog (log_id, crew_id, start_time) VALUES (@log_id, @crew_id, @start_time)";
+                    MySqlCommand insertCmd = new MySqlCommand(insertQuery, connection);
+                    insertCmd.Parameters.AddWithValue("@log_id", logId);
+                    insertCmd.Parameters.AddWithValue("@crew_id", crewId);
+                    insertCmd.Parameters.AddWithValue("@start_time", timeNow);
+
+                    insertCmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Terjadi kesalahan saat menyimpan log: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void LoadingTimer_Tick(object sender, EventArgs e)
         {
-            loadingDuration -= loadingTimer.Interval; 
+            loadingDuration -= loadingTimer.Interval;
 
             if (loadingDuration <= 0)
             {
-                loadingTimer.Stop(); 
-                pictureBox2.Visible = false; 
+                loadingTimer.Stop();
+                pictureBox2.Visible = false;
+
+                // Dapatkan crew_id dari username
+                int crewId = GetCrewId(usernameTextBox.Text.Trim());
+                if (crewId > 0)
+                {
+                    InsertCheckLog(crewId); // Insert log ke tabel checklog
+                }
 
                 cashier form1 = new cashier(usernameTextBox.Text.Trim());
                 clear();
@@ -186,6 +229,33 @@ namespace Proyek_PAD
                 }
             }
         }
+
+        private int GetCrewId(string username)
+        {
+            int crewId = -1;
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT crew_id FROM karyawan WHERE nama = @username";
+                    MySqlCommand cmd = new MySqlCommand(query, connection);
+                    cmd.Parameters.AddWithValue("@username", username);
+
+                    object result = cmd.ExecuteScalar();
+                    if (result != null)
+                    {
+                        crewId = Convert.ToInt32(result);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Terjadi kesalahan saat mengambil crew_id: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return crewId;
+        }
+
 
         private void loginForm_KeyDown(object sender, KeyEventArgs e)
         {
