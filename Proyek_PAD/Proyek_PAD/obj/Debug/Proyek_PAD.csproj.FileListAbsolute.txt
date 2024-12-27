@@ -106,3 +106,4 @@ D:\KULIAH\SEMESTER  3\PROJECT_PAD\Proyek_PAD_Semester_3\Proyek_PAD\Proyek_PAD\ob
 D:\KULIAH\SEMESTER  3\PROJECT_PAD\Proyek_PAD_Semester_3\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.customer.resources
 D:\KULIAH\SEMESTER  3\PROJECT_PAD\Proyek_PAD_Semester_3\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.laporan.resources
 D:\KULIAH\SEMESTER  3\PROJECT_PAD\Proyek_PAD_Semester_3\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.makanan_form.resources
+C:\Users\Hans Christian\OneDrive\Desktop\Tugas Semester 3\Proyek_PAD_Semester_3\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.details_form.resources

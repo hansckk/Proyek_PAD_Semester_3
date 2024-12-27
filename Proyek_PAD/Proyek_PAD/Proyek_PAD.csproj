@@ -55,6 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="detail_form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="detail_form.Designer.cs">
+      <DependentUpon>detail_form.cs</DependentUpon>
+    </Compile>
     <Compile Include="makanan_form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +115,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="cashier.resx">
       <DependentUpon>cashier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="detail_form.resx">
+      <DependentUpon>detail_form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="quantity.resx">
       <DependentUpon>quantity.cs</DependentUpon>

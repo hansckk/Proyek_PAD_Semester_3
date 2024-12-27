@@ -55,7 +55,7 @@ namespace Proyek_PAD
             this.laporan_transaksi_btn.Name = "laporan_transaksi_btn";
             this.laporan_transaksi_btn.Size = new System.Drawing.Size(225, 100);
             this.laporan_transaksi_btn.TabIndex = 1;
-            this.laporan_transaksi_btn.Text = "LAPORAN TRANSAKSI";
+            this.laporan_transaksi_btn.Text = "LAPORAN TRANSAKSI GAGAL";
             this.laporan_transaksi_btn.UseVisualStyleBackColor = true;
             // 
             // selled_menu_btn
