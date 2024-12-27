@@ -32,6 +32,16 @@ CREATE TABLE `checklog` (
 
 /*Data for the table `checklog` */
 
+insert  into `checklog`(`log_id`,`crew_id`,`start_time`,`end_time`) values 
+('FRI1',1,'2024-12-27 17:18:38','2024-12-27 17:18:54'),
+('FRI2',1,'2024-12-27 17:31:18','2024-12-27 17:34:10'),
+('FRI3',1,'2024-12-27 17:33:31','0000-00-00 00:00:00'),
+('FRI4',1,'2024-12-27 17:34:02','0000-00-00 00:00:00'),
+('FRI5',1,'2024-12-27 17:37:23','0000-00-00 00:00:00'),
+('FRI6',1,'2024-12-27 17:38:12','0000-00-00 00:00:00'),
+('FRI7',1,'2024-12-27 17:47:24','0000-00-00 00:00:00'),
+('FRI8',1,'2024-12-27 17:48:50','0000-00-00 00:00:00');
+
 /*Table structure for table `customers` */
 
 DROP TABLE IF EXISTS `customers`;
@@ -55,15 +65,16 @@ CREATE TABLE `diskon` (
   `diskon_id` int(11) NOT NULL AUTO_INCREMENT,
   `diskon_kode` varchar(255) NOT NULL,
   `diskon_name` text NOT NULL,
+  `diskon_percent` int(11) NOT NULL,
   PRIMARY KEY (`diskon_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `diskon` */
 
-insert  into `diskon`(`diskon_id`,`diskon_kode`,`diskon_name`) values 
-(1,'DISC10','10% off'),
-(2,'DISC20','20% off'),
-(3,'DISC50','50% off');
+insert  into `diskon`(`diskon_id`,`diskon_kode`,`diskon_name`,`diskon_percent`) values 
+(1,'DISC10','10% off',10),
+(2,'DISC20','20% off',20),
+(3,'DISC50','50% off',50);
 
 /*Table structure for table `extra_charge` */
 
@@ -262,30 +273,6 @@ CREATE TABLE `payment_trans` (
 
 /*Data for the table `payment_trans` */
 
-/*Table structure for table `pending_transactions` */
-
-DROP TABLE IF EXISTS `pending_transactions`;
-
-CREATE TABLE `pending_transactions` (
-  `transaction_id` int(11) NOT NULL AUTO_INCREMENT,
-  `customer_name` varchar(255) DEFAULT NULL,
-  `menu_name` varchar(255) DEFAULT NULL,
-  `quantity` int(11) DEFAULT NULL,
-  `price` decimal(10,2) DEFAULT NULL,
-  `total_price` decimal(10,2) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`transaction_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-/*Data for the table `pending_transactions` */
-
-insert  into `pending_transactions`(`transaction_id`,`customer_name`,`menu_name`,`quantity`,`price`,`total_price`,`created_at`) values 
-(1,'Customer Name','Quarter Pounder',7,45000.00,315000.00,'2024-12-24 20:40:36'),
-(2,'Customer Name','Cheeseburger',1,30000.00,30000.00,'2024-12-24 20:40:36'),
-(19,'9365','Quarter Pounder',1,45000.00,45000.00,'2024-12-24 22:01:53'),
-(20,'9365','Chicken Nuggets Happy Meal',2,25000.00,50000.00,'2024-12-24 22:02:02'),
-(21,'9365','Filet-O-Fish',3,40000.00,120000.00,'2024-12-24 22:02:09');
-
 /*Table structure for table `role` */
 
 DROP TABLE IF EXISTS `role`;
@@ -308,23 +295,34 @@ DROP TABLE IF EXISTS `transaksi`;
 
 CREATE TABLE `transaksi` (
   `transaksi_id` int(11) NOT NULL AUTO_INCREMENT,
-  `quantity` int(11) NOT NULL,
   `employee_id` int(11) NOT NULL,
-  `menu_id` varchar(10) NOT NULL,
-  `status` enum('berhasil','gagal') NOT NULL,
-  `diskon_id` int(11) NOT NULL,
-  `total_transaksi` int(11) NOT NULL,
+  `status` enum('berhasil','gagal','pending') NOT NULL,
+  `diskon_id` int(11) DEFAULT NULL,
   `queue` int(11) NOT NULL,
   PRIMARY KEY (`transaksi_id`),
   KEY `employee_id` (`employee_id`),
-  KEY `menu_id` (`menu_id`),
   KEY `diskon_id` (`diskon_id`),
   CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `karyawan` (`crew_id`),
-  CONSTRAINT `transaksi_ibfk_3` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id_menu`),
   CONSTRAINT `transaksi_ibfk_4` FOREIGN KEY (`diskon_id`) REFERENCES `diskon` (`diskon_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `transaksi` */
+
+/*Table structure for table `transaksi_details` */
+
+DROP TABLE IF EXISTS `transaksi_details`;
+
+CREATE TABLE `transaksi_details` (
+  `customer_name` varchar(255) DEFAULT NULL,
+  `menu_id` varchar(255) DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL,
+  `price` int(11) DEFAULT NULL,
+  `transaksi_id` int(11) DEFAULT NULL,
+  KEY `transaksi_id` (`transaksi_id`),
+  CONSTRAINT `transaksi_details_ibfk_1` FOREIGN KEY (`transaksi_id`) REFERENCES `transaksi` (`transaksi_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `transaksi_details` */
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
