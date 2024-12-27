@@ -327,9 +327,20 @@ namespace Proyek_PAD
 
         private void placeOrderButton_Click(object sender, EventArgs e)
         {
+
+        
+
             if (orderedItems.Count > 0)
             {
-                PlaceOrderToDatabase();
+                // PlaceOrderToDatabase();
+                Form7 form7 = new Form7();
+                foreach (var item in orderedItems)
+                {
+                    form7.textBox2.Text += $"{item.MenuName}\r\n";
+                }
+                this.Hide();
+                form7.Show();
+                
             }
             else
             {
