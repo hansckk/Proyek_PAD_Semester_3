@@ -39,19 +39,19 @@ namespace Proyek_PAD
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.placeOrderButton = new System.Windows.Forms.Button();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.Total_label = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.ORDER_NUMBER = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.Total_label = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.placeOrderButton = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -142,7 +142,7 @@ namespace Proyek_PAD
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(701, 31);
+            this.label2.Location = new System.Drawing.Point(703, 31);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(122, 29);
             this.label2.TabIndex = 3;
@@ -161,61 +161,6 @@ namespace Proyek_PAD
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(178, 267);
             this.panel3.TabIndex = 4;
-            // 
-            // placeOrderButton
-            // 
-            this.placeOrderButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.placeOrderButton.Location = new System.Drawing.Point(3, 212);
-            this.placeOrderButton.Name = "placeOrderButton";
-            this.placeOrderButton.Size = new System.Drawing.Size(168, 46);
-            this.placeOrderButton.TabIndex = 0;
-            this.placeOrderButton.Text = "Place Order";
-            this.placeOrderButton.UseVisualStyleBackColor = true;
-            this.placeOrderButton.Click += new System.EventHandler(this.placeOrderButton_Click);
-            // 
-            // panel4
-            // 
-            this.panel4.AutoScroll = true;
-            this.panel4.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel4.Controls.Add(this.Total_label);
-            this.panel4.Controls.Add(this.label3);
-            this.panel4.Location = new System.Drawing.Point(3, 164);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(166, 42);
-            this.panel4.TabIndex = 5;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(3, 9);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(34, 20);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Rp.";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // Total_label
-            // 
-            this.Total_label.AutoSize = true;
-            this.Total_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Total_label.Location = new System.Drawing.Point(43, 9);
-            this.Total_label.Name = "Total_label";
-            this.Total_label.Size = new System.Drawing.Size(18, 20);
-            this.Total_label.TabIndex = 7;
-            this.Total_label.Text = "0";
-            this.Total_label.Click += new System.EventHandler(this.Total_label_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(13, 14);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(146, 20);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "ORDER NUMBER:";
             // 
             // panel5
             // 
@@ -239,6 +184,61 @@ namespace Proyek_PAD
             this.ORDER_NUMBER.Text = "0000";
             this.ORDER_NUMBER.Click += new System.EventHandler(this.ORDER_NUMBER_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(13, 14);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(146, 20);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "ORDER NUMBER:";
+            // 
+            // panel4
+            // 
+            this.panel4.AutoScroll = true;
+            this.panel4.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel4.Controls.Add(this.Total_label);
+            this.panel4.Controls.Add(this.label3);
+            this.panel4.Location = new System.Drawing.Point(3, 164);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(166, 42);
+            this.panel4.TabIndex = 5;
+            // 
+            // Total_label
+            // 
+            this.Total_label.AutoSize = true;
+            this.Total_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Total_label.Location = new System.Drawing.Point(43, 9);
+            this.Total_label.Name = "Total_label";
+            this.Total_label.Size = new System.Drawing.Size(18, 20);
+            this.Total_label.TabIndex = 7;
+            this.Total_label.Text = "0";
+            this.Total_label.Click += new System.EventHandler(this.Total_label_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(3, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(34, 20);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Rp.";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // placeOrderButton
+            // 
+            this.placeOrderButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.placeOrderButton.Location = new System.Drawing.Point(3, 212);
+            this.placeOrderButton.Name = "placeOrderButton";
+            this.placeOrderButton.Size = new System.Drawing.Size(168, 46);
+            this.placeOrderButton.TabIndex = 0;
+            this.placeOrderButton.Text = "Place Order";
+            this.placeOrderButton.UseVisualStyleBackColor = true;
+            this.placeOrderButton.Click += new System.EventHandler(this.placeOrderButton_Click);
+            // 
             // customer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -258,10 +258,10 @@ namespace Proyek_PAD
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

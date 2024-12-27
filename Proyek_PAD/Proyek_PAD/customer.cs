@@ -310,8 +310,11 @@ namespace Proyek_PAD
         {
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void pictureBox1_Click(object sender, EventArgs e) // logo mcd ne
         {
+            loginForm logform = new loginForm();
+            this.Dispose();
+            logform.Show();
         }
 
         private void label3_Click(object sender, EventArgs e)
