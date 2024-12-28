@@ -65,9 +65,21 @@ namespace Proyek_PAD
         private void button3_Click(object sender, EventArgs e)
         {
             // Tambahkan logika lain jika diperlukan, misalnya konfirmasi pembayaran.
+            MessageBox.Show("Order Sukses!!");
+
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

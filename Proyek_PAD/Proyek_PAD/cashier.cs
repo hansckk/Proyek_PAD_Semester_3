@@ -55,25 +55,22 @@ namespace Proyek_PAD
         {
             // Customize column headers based on the table structure
             displayDataGridView.Columns[0].HeaderText = "ID";
-            displayDataGridView.Columns[1].HeaderText = "Order NUMBER";
-            displayDataGridView.Columns[2].HeaderText = "Item Name";
+            displayDataGridView.Columns[1].HeaderText = "Customer Name";
+            displayDataGridView.Columns[2].HeaderText = "Order Number";
             displayDataGridView.Columns[3].HeaderText = "Quantity";
             displayDataGridView.Columns[4].HeaderText = "Price";
-            displayDataGridView.Columns[5].HeaderText = "Total Price";
-            displayDataGridView.Columns[6].HeaderText = "Order Date";
+
 
             // Optional: Format the price and total_price columns as currency
             displayDataGridView.Columns[4].DefaultCellStyle.Format = "C3"; // Format as currency
-            displayDataGridView.Columns[5].DefaultCellStyle.Format = "C3"; // Format as currency
 
             // Optional: Adjust column widths for better readability
-            displayDataGridView.Columns[0].Width = 100;
-            displayDataGridView.Columns[1].Width = 150;
-            displayDataGridView.Columns[2].Width = 200;
-            displayDataGridView.Columns[3].Width = 80;
-            displayDataGridView.Columns[4].Width = 100;
-            displayDataGridView.Columns[5].Width = 150;
-            displayDataGridView.Columns[6].Width = 100;
+            displayDataGridView.Columns[0].Width = 150;
+            displayDataGridView.Columns[1].Width = 300;
+            displayDataGridView.Columns[2].Width = 150;
+            displayDataGridView.Columns[3].Width = 100;
+            displayDataGridView.Columns[4].Width = 350;
+
         }
 
 
@@ -83,7 +80,7 @@ namespace Proyek_PAD
             try
             {
                 // Query to get data from the pending_transactions table
-                query = "SELECT transaction_id, customer_name, menu_name, quantity, price, total_price, created_at FROM pending_transactions";
+                query = "SELECT transaksi_id, customer_name, menu_id, quantity, price FROM transaksi_details";
                 MySqlCommand cmd = new MySqlCommand(query, con);
 
                 // Open connection to the database

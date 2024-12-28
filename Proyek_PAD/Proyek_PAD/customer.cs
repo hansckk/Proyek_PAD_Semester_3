@@ -102,10 +102,9 @@ namespace Proyek_PAD
                             Image = Properties.Resources.bone,
                             SizeMode = PictureBoxSizeMode.Zoom
                         };
-
                         increaseQty.Click += (s, e) =>
                         {
-                            qty++;  // Increment the quantity
+                            qty++; // Increment the quantity
                             qtyLabel.Text = qty.ToString();
 
                             if (!itemQuantities.ContainsKey(id))
@@ -130,6 +129,9 @@ namespace Proyek_PAD
                                 // If item doesn't exist, add it to the orderedItems list
                                 AddItemToOrder(id, name, price, qty);
                             }
+
+                            // Update the ListBox
+                            UpdateListBox();
                         };
 
                         decreaseQty.Click += (s, e) =>
@@ -153,8 +155,12 @@ namespace Proyek_PAD
 
                                 totalPrice -= price;
                                 UpdateTotalLabel();
+
+                                // Update the ListBox
+                                UpdateListBox();
                             }
                         };
+
 
 
 
@@ -281,6 +287,16 @@ namespace Proyek_PAD
             public decimal TotalPrice => Price * Quantity;
         }
 
+        private void UpdateListBox()
+        {
+            listBox1.Items.Clear(); // Clear existing items
+
+            foreach (var item in orderedItems)
+            {
+                string listItem = $"{item.MenuName} x{item.Quantity}";
+                listBox1.Items.Add(listItem);
+            }
+        }
 
 
         private void Form6_Load(object sender, EventArgs e)
@@ -360,6 +376,15 @@ namespace Proyek_PAD
             ORDER_NUMBER.Text = orderNumber.ToString(); // Display it in the ORDER_NUMBER label
         }
 
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 

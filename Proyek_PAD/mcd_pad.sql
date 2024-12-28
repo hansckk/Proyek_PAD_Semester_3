@@ -1,5 +1,5 @@
 /*
-SQLyog Community v13.2.1 (64 bit)
+SQLyog Ultimate v12.5.1 (64 bit)
 MySQL - 10.4.32-MariaDB : Database - mcd_pad
 *********************************************************************
 */
@@ -40,7 +40,12 @@ insert  into `checklog`(`log_id`,`crew_id`,`start_time`,`end_time`) values
 ('FRI5',1,'2024-12-27 17:37:23','0000-00-00 00:00:00'),
 ('FRI6',1,'2024-12-27 17:38:12','0000-00-00 00:00:00'),
 ('FRI7',1,'2024-12-27 17:47:24','0000-00-00 00:00:00'),
-('FRI8',1,'2024-12-27 17:48:50','0000-00-00 00:00:00');
+('FRI8',1,'2024-12-27 17:48:50','0000-00-00 00:00:00'),
+('SAT1',1,'2024-12-28 22:41:48','0000-00-00 00:00:00'),
+('SAT2',1,'2024-12-28 22:44:17','0000-00-00 00:00:00'),
+('SAT3',1,'2024-12-28 23:15:56','0000-00-00 00:00:00'),
+('SAT4',1,'2024-12-28 23:16:48','0000-00-00 00:00:00'),
+('SAT5',1,'2024-12-28 23:18:35','0000-00-00 00:00:00');
 
 /*Table structure for table `customers` */
 
@@ -295,10 +300,10 @@ DROP TABLE IF EXISTS `transaksi`;
 
 CREATE TABLE `transaksi` (
   `transaksi_id` int(11) NOT NULL AUTO_INCREMENT,
-  `employee_id` int(11) NOT NULL,
+  `employee_id` int(11) DEFAULT NULL,
   `status` enum('berhasil','gagal','pending') NOT NULL,
   `diskon_id` int(11) DEFAULT NULL,
-  `queue` int(11) NOT NULL,
+  `queue` int(11) DEFAULT NULL,
   PRIMARY KEY (`transaksi_id`),
   KEY `employee_id` (`employee_id`),
   KEY `diskon_id` (`diskon_id`),
