@@ -11,6 +11,7 @@ using MySql.Data.MySqlClient;
 
 namespace Proyek_PAD
 {
+    
     public partial class customer : Form
     {
         string currentselected = "Makanan"; // DEFAULT
@@ -354,9 +355,14 @@ namespace Proyek_PAD
                 {
                     form7.textBox2.Text += $"{item.MenuName}\r\n";
                 }
-                this.Hide();
-                form7.Show();
-                
+                DialogResult res = form7.ShowDialog();
+                if(res == DialogResult.OK)
+                {
+                    //tolong lek isa buatno total e ilang dr screen sapa
+                    orderedItems.Clear();
+                    listBox1.Items.Clear();
+                    GenerateOrderNumber();
+                }
             }
             else
             {

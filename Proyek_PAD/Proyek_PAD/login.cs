@@ -490,7 +490,16 @@ namespace Proyek_PAD
         {
             customer Cust = new customer();
             this.Hide();
-            Cust.Show();
+            DialogResult res = Cust.ShowDialog();
+
+            if(res == DialogResult.OK)
+            {
+                this.Show();
+            }
+            else
+            {
+                this.Close();
+            }
         }
     }
 }

@@ -1,5 +1,5 @@
 /*
-SQLyog Ultimate v12.5.1 (64 bit)
+SQLyog Community v13.2.1 (64 bit)
 MySQL - 10.4.32-MariaDB : Database - mcd_pad
 *********************************************************************
 */
@@ -34,18 +34,7 @@ CREATE TABLE `checklog` (
 
 insert  into `checklog`(`log_id`,`crew_id`,`start_time`,`end_time`) values 
 ('FRI1',1,'2024-12-27 17:18:38','2024-12-27 17:18:54'),
-('FRI2',1,'2024-12-27 17:31:18','2024-12-27 17:34:10'),
-('FRI3',1,'2024-12-27 17:33:31','0000-00-00 00:00:00'),
-('FRI4',1,'2024-12-27 17:34:02','0000-00-00 00:00:00'),
-('FRI5',1,'2024-12-27 17:37:23','0000-00-00 00:00:00'),
-('FRI6',1,'2024-12-27 17:38:12','0000-00-00 00:00:00'),
-('FRI7',1,'2024-12-27 17:47:24','0000-00-00 00:00:00'),
-('FRI8',1,'2024-12-27 17:48:50','0000-00-00 00:00:00'),
-('SAT1',1,'2024-12-28 22:41:48','0000-00-00 00:00:00'),
-('SAT2',1,'2024-12-28 22:44:17','0000-00-00 00:00:00'),
-('SAT3',1,'2024-12-28 23:15:56','0000-00-00 00:00:00'),
-('SAT4',1,'2024-12-28 23:16:48','0000-00-00 00:00:00'),
-('SAT5',1,'2024-12-28 23:18:35','0000-00-00 00:00:00');
+('FRI2',1,'2024-12-27 17:31:18','2024-12-27 17:34:10');
 
 /*Table structure for table `customers` */
 
@@ -88,10 +77,15 @@ DROP TABLE IF EXISTS `extra_charge`;
 CREATE TABLE `extra_charge` (
   `extra_charge_id` int(11) NOT NULL AUTO_INCREMENT,
   `extra_name` varchar(255) NOT NULL,
+  `extra_charge_harga` int(11) NOT NULL,
   PRIMARY KEY (`extra_charge_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `extra_charge` */
+
+insert  into `extra_charge`(`extra_charge_id`,`extra_name`,`extra_charge_harga`) values 
+(1,'Paper Bag',1000),
+(2,'Fabric Bag',5000);
 
 /*Table structure for table `extra_charge_trans` */
 
@@ -254,13 +248,13 @@ CREATE TABLE `payment_method` (
 /*Data for the table `payment_method` */
 
 insert  into `payment_method`(`payment_id`,`nama_payment`) values 
-(1,'tunai'),
-(2,'gopay'),
-(3,'ovo'),
-(4,'bca'),
-(5,'mandiri'),
-(6,'bni'),
-(7,'dana');
+(1,'Tunai'),
+(2,'GoPay'),
+(3,'OVO'),
+(4,'BCA'),
+(5,'Mandiri'),
+(6,'BNI'),
+(7,'Dana');
 
 /*Table structure for table `payment_trans` */
 
@@ -303,15 +297,19 @@ CREATE TABLE `transaksi` (
   `employee_id` int(11) DEFAULT NULL,
   `status` enum('berhasil','gagal','pending') NOT NULL,
   `diskon_id` int(11) DEFAULT NULL,
-  `queue` int(11) DEFAULT NULL,
   PRIMARY KEY (`transaksi_id`),
   KEY `employee_id` (`employee_id`),
   KEY `diskon_id` (`diskon_id`),
   CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `karyawan` (`crew_id`),
   CONSTRAINT `transaksi_ibfk_4` FOREIGN KEY (`diskon_id`) REFERENCES `diskon` (`diskon_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `transaksi` */
+
+insert  into `transaksi`(`transaksi_id`,`employee_id`,`status`,`diskon_id`) values 
+(5,NULL,'pending',NULL),
+(6,NULL,'pending',1),
+(7,NULL,'pending',NULL);
 
 /*Table structure for table `transaksi_details` */
 
