@@ -115,6 +115,7 @@ namespace Proyek_PAD
             comboBox1.SelectedIndex = -1;
             textBox1.Clear();
             textBox3.Text = "";
+            listBox1.Items.Clear();
         }
 
         private void insertExtraCharge()
@@ -253,6 +254,11 @@ namespace Proyek_PAD
         {
             string item = comboBox3.GetItemText(comboBox3.SelectedItem);
             listBox1.Items.Add(item);
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

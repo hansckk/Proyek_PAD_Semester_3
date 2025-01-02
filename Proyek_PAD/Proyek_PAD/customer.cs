@@ -391,6 +391,35 @@ namespace Proyek_PAD
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            orderedItems.Clear(); // Clear the list of ordered items
+            listBox1.Items.Clear(); // Clear the ListBox
+            totalPrice = 0; // Reset total price to 0
+            UpdateTotalLabel(); // Update the total price label
+
+            // Reset all quantities in the dictionary
+            foreach (var key in itemQuantities.Keys.ToList())
+            {
+                itemQuantities[key] = 0;
+            }
+
+            // Update the quantity labels in the UI without refreshing
+            foreach (Control control in panel1.Controls)
+            {
+                if (control is Panel menuPanel)
+                {
+                    foreach (Control menuControl in menuPanel.Controls)
+                    {
+                        if (menuControl is Label qtyLabel && qtyLabel.Font.Size == 12) // Assuming qtyLabel is the quantity label
+                        {
+                            qtyLabel.Text = "0"; // Set quantity to 0
+                        }
+                    }
+                }
+            }
+        }
     }
 
 
