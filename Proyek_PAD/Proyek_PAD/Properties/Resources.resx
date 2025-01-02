@@ -148,4 +148,121 @@
   <data name="bone" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bone.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="MAKAN001" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MAKAN001.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MAKAN002" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MAKAN002.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MAKAN003" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MAKAN003.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MAKAN004" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MAKAN004.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MAKAN005" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MAKAN005.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MAKAN006" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MAKAN006.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MAKAN007" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MAKAN007.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MAKAN008" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MAKAN008.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MAKAN009" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MAKAN009.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MAKAN010" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MAKAN010.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MAKAN011" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MAKAN011.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MAKAN012" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MAKAN012.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MAKAN013" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MAKAN013.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MAKAN014" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MAKAN014.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MAKAN015" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MAKAN015.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MAKAN016" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MAKAN016.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MAKAN017" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MAKAN017.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MAKAN018" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MAKAN018.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MAKAN019" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MAKAN019.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MINUM001" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MINUM001.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MINUM002" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MINUM002.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MINUM003" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MINUM003.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MINUM004" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MINUM004.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MINUM005" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MINUM005.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MINUM006" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MINUM006.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MINUM007" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MINUM007.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MINUM008" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MINUM008.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MINUM009" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MINUM009.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MINUM010" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MINUM010.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SNACK001" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SNACK001.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SNACK002" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SNACK002.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SNACK003" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SNACK003.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SNACK004" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SNACK004.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SNACK005" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SNACK005.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SNACK006" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SNACK006.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SNACK007" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SNACK007.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SNACK008" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SNACK008.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SNACK009" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SNACK009.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SNACK010" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SNACK010.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

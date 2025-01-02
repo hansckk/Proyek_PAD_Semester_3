@@ -19,6 +19,14 @@ namespace Proyek_PAD
         private Dictionary<string, int> itemQuantities = new Dictionary<string, int>();
         private List<OrderedItem> orderedItems = new List<OrderedItem>();
 
+        private int counter = 1; // Counter for tracking the image sequence
+        Dictionary<string, string> categoryToPrefix = new Dictionary<string, string>
+        {
+            { "makanan", "MAKAN" },
+            { "minuman", "MINUM" },
+            { "snack", "SNACK" }
+        };
+
         public customer()
         {
             InitializeComponent();
@@ -28,11 +36,14 @@ namespace Proyek_PAD
         private void LoadMenus()
         {
             panel1.Controls.Clear();
+            counter = 1; // Reset the counter whenever the menu is reloaded
+
             try
             {
                 Connection.open();
                 string query = $"SELECT id_menu, nama_menu, harga_menu FROM menu WHERE kategori = '{currentselected}'";
                 MySqlCommand cmd = new MySqlCommand(query, Connection.conn);
+
                 using (MySqlDataReader reader = cmd.ExecuteReader())
                 {
                     int yOffset = 0;
@@ -40,6 +51,14 @@ namespace Proyek_PAD
                     int columnCount = 0;
                     int panelWidth = 200;
                     int panelHeight = 180;
+
+                    // Map category to resource prefix
+                    Dictionary<string, string> categoryToPrefix = new Dictionary<string, string>
+            {
+                { "makanan", "MAKAN" },
+                { "minuman", "MINUM" },
+                { "snack", "SNACK" }
+            };
 
                     while (reader.Read())
                     {
@@ -100,9 +119,27 @@ namespace Proyek_PAD
                         {
                             Size = new Size(120, 120),
                             Location = new Point(40, 0),
-                            Image = Properties.Resources.bone,
                             SizeMode = PictureBoxSizeMode.Zoom
                         };
+
+                        // Get the prefix based on the current selected category
+                        string resourcePrefix = categoryToPrefix.ContainsKey(currentselected.ToLower())
+                            ? categoryToPrefix[currentselected.ToLower()]
+                            : "DEFAULT";
+
+                        string resourceName = $"{resourcePrefix}{counter:D3}"; // Construct the resource name
+                        Image img = (Image)Properties.Resources.ResourceManager.GetObject(resourceName); // Get the image from resources
+                        if (img != null)
+                        {
+                            Thumbnail.Image = img; // Set the image if found
+                        }
+                        else
+                        {
+                            Thumbnail.Image = Properties.Resources.bone; // Default image if not found
+                        }
+
+                        counter++; // Increment the counter for the next menu item
+
                         increaseQty.Click += (s, e) =>
                         {
                             qty++; // Increment the quantity
@@ -162,9 +199,6 @@ namespace Proyek_PAD
                             }
                         };
 
-
-
-
                         menuPanel.Controls.Add(nameLabel);
                         menuPanel.Controls.Add(priceLabel);
                         menuPanel.Controls.Add(increaseQty);
@@ -195,6 +229,7 @@ namespace Proyek_PAD
                 Connection.close();
             }
         }
+
 
 
 
