@@ -16,7 +16,7 @@ namespace Proyek_PAD
             transId = 0;
             discountId = 0;
             InitializeComponent();
-            textBox2.Enabled = false;
+            
         }
 
 
@@ -192,20 +192,6 @@ namespace Proyek_PAD
             MessageBox.Show("Order Sukses!");     
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
@@ -271,6 +257,9 @@ namespace Proyek_PAD
                 return name;
             }
         }
+
+
+
         private void button5_Click(object sender, EventArgs e)
         {
             if(comboBox3.SelectedItem != null)
@@ -285,9 +274,5 @@ namespace Proyek_PAD
             }
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

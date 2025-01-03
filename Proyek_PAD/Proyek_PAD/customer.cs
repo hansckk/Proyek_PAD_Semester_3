@@ -233,80 +233,26 @@ namespace Proyek_PAD
 
 
 
-        private void PlaceOrderToDatabase()
-        {
-            try
-            {
-                string customerName = ORDER_NUMBER.Text;  // Use the generated order number as the customer name
-
-                Connection.open();
-                foreach (var item in orderedItems) // Assuming orderedItems is a list of OrderedItem
-                {
-                    // Check if the item already exists in the database by customer name (order number) and menu name
-                    string checkQuery = "SELECT COUNT(*) FROM pending_transactions WHERE customer_name = @customerName AND menu_name = @menuName";
-                    MySqlCommand checkCmd = new MySqlCommand(checkQuery, Connection.conn);
-                    checkCmd.Parameters.AddWithValue("@customerName", customerName); // Use actual customer name (order number)
-                    checkCmd.Parameters.AddWithValue("@menuName", item.MenuName);
-
-                    int itemCount = Convert.ToInt32(checkCmd.ExecuteScalar());
-
-                    if (itemCount == 0) // If item does not exist in the table, insert it
-                    {
-                        string insertQuery = "INSERT INTO pending_transactions (customer_name, menu_name, quantity, price, total_price) " +
-                                             "VALUES (@customerName, @menuName, @quantity, @price, @totalPrice)";
-                        MySqlCommand insertCmd = new MySqlCommand(insertQuery, Connection.conn);
-                        insertCmd.Parameters.AddWithValue("@customerName", customerName); // Use actual customer name (order number)
-                        insertCmd.Parameters.AddWithValue("@menuName", item.MenuName);
-                        insertCmd.Parameters.AddWithValue("@quantity", item.Quantity);
-                        insertCmd.Parameters.AddWithValue("@price", item.Price);
-                        insertCmd.Parameters.AddWithValue("@totalPrice", item.Price * item.Quantity);
-                        insertCmd.ExecuteNonQuery();
-                    }
-                    else // If item exists, update the quantity and total price
-                    {
-                        string updateQuery = "UPDATE pending_transactions SET quantity = quantity + @quantity, total_price = total_price + @totalPrice " +
-                                             "WHERE customer_name = @customerName AND menu_name = @menuName";
-                        MySqlCommand updateCmd = new MySqlCommand(updateQuery, Connection.conn);
-                        updateCmd.Parameters.AddWithValue("@customerName", customerName); // Use actual customer name (order number)
-                        updateCmd.Parameters.AddWithValue("@menuName", item.MenuName);
-                        updateCmd.Parameters.AddWithValue("@quantity", item.Quantity);
-                        updateCmd.Parameters.AddWithValue("@totalPrice", item.Price * item.Quantity);
-                        updateCmd.ExecuteNonQuery();
-                    }
-                }
-                MessageBox.Show("Order placed successfully!");
-                orderedItems.Clear(); // Clear the in-memory list
-                LoadMenus(); // Refresh the UI
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error placing order: {ex.Message}");
-            }
-            finally
-            {
-                Connection.close();
-            }
-        }
-
-
-
-
 
         private void AddItemToOrder(string menuId, string menuName, decimal price, int quantity)
         {
-            OrderedItem item = new OrderedItem
+            var existingItem = orderedItems.FirstOrDefault(item => item.MenuId == menuId);
+
+            if (existingItem != null)
             {
-                MenuId = menuId,
-                MenuName = menuName,
-                Price = price,
-                Quantity = quantity
-            };
-
-            orderedItems.Add(item);
+                existingItem.Quantity += quantity;
+            }
+            else
+            {
+                orderedItems.Add(new OrderedItem
+                {
+                    MenuId = menuId,
+                    MenuName = menuName,
+                    Price = price,
+                    Quantity = quantity
+                });
+            }
         }
-
-
-
 
 
         private void UpdateTotalLabel()
@@ -377,32 +323,40 @@ namespace Proyek_PAD
         {
         }
 
+
+
         private void placeOrderButton_Click(object sender, EventArgs e)
         {
 
-        
-
             if (orderedItems.Count > 0)
             {
-                // PlaceOrderToDatabase();
+                // Instantiate Form7
                 Form7 form7 = new Form7();
+
+                // Populate listBox2 in Form7 with ordered items
                 foreach (var item in orderedItems)
                 {
-                    form7.textBox2.Text += $"{item.MenuName}\r\n";
+                    form7.listBox2.Items.Add($"{item.MenuName} - Qty: {item.Quantity}");
                 }
+
+                // Show Form7 as a dialog
                 DialogResult res = form7.ShowDialog();
-                if(res == DialogResult.OK)
+
+                if (res == DialogResult.OK)
                 {
-                    //tolong lek isa buatno total e ilang dr screen sapa
+                    // Clear the order and UI elements if the dialog result is OK
                     orderedItems.Clear();
                     listBox1.Items.Clear();
-                    GenerateOrderNumber();
+                    GenerateOrderNumber(); // Generate a new order number
+                    UpdateTotalLabel();    // Reset or update the total price display (implementation required)
                 }
             }
             else
             {
                 MessageBox.Show("No items in the order!");
             }
+
+
         }
 
         private void ORDER_NUMBER_Click(object sender, EventArgs e)
@@ -440,20 +394,19 @@ namespace Proyek_PAD
                 itemQuantities[key] = 0;
             }
 
-            // Update the quantity labels in the UI without refreshing
+            // Refresh quantity labels in the UI
             foreach (Control control in panel1.Controls)
             {
                 if (control is Panel menuPanel)
                 {
-                    foreach (Control menuControl in menuPanel.Controls)
+                    Label qtyLabel = menuPanel.Controls.OfType<Label>().FirstOrDefault(l => l.Font.Size == 12);
+                    if (qtyLabel != null)
                     {
-                        if (menuControl is Label qtyLabel && qtyLabel.Font.Size == 12) // Assuming qtyLabel is the quantity label
-                        {
-                            qtyLabel.Text = "0"; // Set quantity to 0
-                        }
+                        qtyLabel.Text = "0";
                     }
                 }
             }
+
         }
     }
 
