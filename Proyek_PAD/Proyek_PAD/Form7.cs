@@ -13,6 +13,7 @@ namespace Proyek_PAD
         int transId;
         public Form7()
         {
+            transId = 0;
             discountId = 0;
             InitializeComponent();
             textBox2.Enabled = false;
@@ -118,28 +119,34 @@ namespace Proyek_PAD
             listBox1.Items.Clear();
         }
 
+        private void insertPaymentMethod()
+        {
+            
+        }
         private void insertExtraCharge()
         {
-            if (listBox1.Items.Count > 0)
+            if(listBox1.Items.Count > 0)
             {
                 try
                 {
                     Connection.open();
-                    string query = "INSERT INTO extra_charge_trans (transaksi_id,extra_charge_id) VALUES (@trans_id,@extra_charge_id)";
+                    string query = "INSERT INTO extra_charge_trans (transaksi_id, extra_charge_id) VALUES (@trans_id, @extra_charge_id)";
                     MySqlCommand cmd = new MySqlCommand(query, Connection.conn);
-
-                    foreach (var item in listBox1.Items)
+                    foreach (extraCharge item in listBox1.Items)
                     {
-
+                        cmd.Parameters.Clear();
+                        cmd.Parameters.AddWithValue("@trans_id", transId);
+                        cmd.Parameters.AddWithValue("@extra_charge_id", item.id);
+                        cmd.ExecuteNonQuery();
                     }
                 }
-                catch (Exception ex)
+                catch(Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
                 finally
                 {
-                    Connection.close();
+
                 }
             }
         }
@@ -163,7 +170,6 @@ namespace Proyek_PAD
                     MySqlCommand cmd = new MySqlCommand(query, Connection.conn);
                     cmd.ExecuteNonQuery();
                     transId = (int)cmd.LastInsertedId;
-
                 }
             }
             catch (Exception ex)
@@ -182,8 +188,8 @@ namespace Proyek_PAD
             this.DialogResult = DialogResult.OK;
             this.Close();
             insertTransaksi();
-            //insertExtraCharge();
-            MessageBox.Show("Order Sukses!!");
+            insertExtraCharge();
+            MessageBox.Show("Order Sukses!");     
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -204,12 +210,17 @@ namespace Proyek_PAD
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             loadPayment2();
+            numericUpDown2.Visible = true;
+            label12.Visible = true;
             comboBox2.Visible = true;
             label6.Visible = true;
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
+            numericUpDown2.Value = 0;
+            numericUpDown2.Visible = false;
+            label12.Visible = false;
             comboBox2.Visible = false;
             label6.Visible = false;
         }
@@ -250,10 +261,28 @@ namespace Proyek_PAD
                 Connection.close();
             }
         }
+        public class extraCharge
+        {
+            public int id { get; set; }
+            public string name { get; set; }
+
+            public override string ToString()
+            {
+                return name;
+            }
+        }
         private void button5_Click(object sender, EventArgs e)
         {
-            string item = comboBox3.GetItemText(comboBox3.SelectedItem);
-            listBox1.Items.Add(item);
+            if(comboBox3.SelectedItem != null)
+            {
+                DataRowView drv = (DataRowView)comboBox3.SelectedItem;
+                extraCharge ex = new extraCharge
+                {
+                    id = Convert.ToInt32(drv["extra_charge_id"]),
+                    name = drv["extra_name"].ToString()
+                };
+                listBox1.Items.Add(ex);
+            }
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
