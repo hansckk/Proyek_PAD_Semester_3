@@ -52,13 +52,13 @@ namespace Proyek_PAD
                     int panelWidth = 200;
                     int panelHeight = 180;
 
-                    // Map category to resource prefix
-                    Dictionary<string, string> categoryToPrefix = new Dictionary<string, string>
-            {
-                { "makanan", "MAKAN" },
-                { "minuman", "MINUM" },
-                { "snack", "SNACK" }
-            };
+                    // Remove this redundant categoryToPrefix definition
+                    // Dictionary<string, string> categoryToPrefix = new Dictionary<string, string>
+                    // {
+                    //     { "makanan", "MAKAN" },
+                    //     { "minuman", "MINUM" },
+                    //     { "snack", "SNACK" }
+                    // };
 
                     while (reader.Read())
                     {
@@ -122,7 +122,7 @@ namespace Proyek_PAD
                             SizeMode = PictureBoxSizeMode.Zoom
                         };
 
-                        // Get the prefix based on the current selected category
+                        // Use the class-level categoryToPrefix
                         string resourcePrefix = categoryToPrefix.ContainsKey(currentselected.ToLower())
                             ? categoryToPrefix[currentselected.ToLower()]
                             : "DEFAULT";
@@ -156,7 +156,7 @@ namespace Proyek_PAD
                             UpdateTotalLabel();
 
                             // Check if the item already exists in orderedItems
-                            var existingItem = orderedItems.FirstOrDefault(i => i.MenuId == id);
+                            var existingItem = orderedItems.FirstOrDefault(i => i.MenuItem.Id == id); // Use MenuItem.Id
                             if (existingItem != null)
                             {
                                 // If item already exists, update the quantity
@@ -172,6 +172,7 @@ namespace Proyek_PAD
                             UpdateListBox();
                         };
 
+
                         decreaseQty.Click += (s, e) =>
                         {
                             if (qty > 0)
@@ -181,7 +182,7 @@ namespace Proyek_PAD
                                 itemQuantities[id] = qty;
 
                                 // Update or remove the item from orderedItems
-                                var orderedItem = orderedItems.FirstOrDefault(i => i.MenuId == id);
+                                var orderedItem = orderedItems.FirstOrDefault(i => i.MenuItem.Id == id); // Use MenuItem.Id here
                                 if (orderedItem != null)
                                 {
                                     orderedItem.Quantity = qty;
@@ -198,6 +199,7 @@ namespace Proyek_PAD
                                 UpdateListBox();
                             }
                         };
+
 
                         menuPanel.Controls.Add(nameLabel);
                         menuPanel.Controls.Add(priceLabel);
@@ -231,12 +233,10 @@ namespace Proyek_PAD
         }
 
 
-
-
-
         private void AddItemToOrder(string menuId, string menuName, decimal price, int quantity)
         {
-            var existingItem = orderedItems.FirstOrDefault(item => item.MenuId == menuId);
+            var menuItem = new MenuItem(menuId, menuName); // Create MenuItem object
+            var existingItem = orderedItems.FirstOrDefault(item => item.MenuItem.Id == menuId); // Compare by MenuItem.Id
 
             if (existingItem != null)
             {
@@ -244,15 +244,15 @@ namespace Proyek_PAD
             }
             else
             {
-                orderedItems.Add(new OrderedItem
-                {
-                    MenuId = menuId,
-                    MenuName = menuName,
-                    Price = price,
-                    Quantity = quantity
-                });
+                orderedItems.Add(new OrderedItem(menuItem, quantity, price)); // Use OrderedItem constructor with MenuItem
             }
+
+            totalPrice += price * quantity; // Update total price
+            UpdateTotalLabel();
+            UpdateListBox();
         }
+
+
 
 
         private void UpdateTotalLabel()
@@ -260,14 +260,41 @@ namespace Proyek_PAD
             Total_label.Text = $"{totalPrice:N0}";
         }
 
+        public class MenuItem
+        {
+            public string Id { get; }
+            public string Name { get; }
+
+            public MenuItem(string id, string name)
+            {
+                Id = id;
+                Name = name;
+            }
+        }
+
         public class OrderedItem
         {
-            public string MenuId { get; set; }
-            public string MenuName { get; set; }
+            public MenuItem MenuItem { get; set; }
             public int Quantity { get; set; }
             public decimal Price { get; set; }
             public decimal TotalPrice => Price * Quantity;
+
+            public OrderedItem(MenuItem menuItem, int quantity, decimal price)
+            {
+                MenuItem = menuItem;
+                Quantity = quantity;
+                Price = price;
+            }
+
+            public override string ToString()
+            {
+                return $"{MenuItem.Name} X{Quantity}";
+            }
         }
+
+
+
+
 
         private void UpdateListBox()
         {
@@ -275,8 +302,7 @@ namespace Proyek_PAD
 
             foreach (var item in orderedItems)
             {
-                string listItem = $"{item.MenuName} x{item.Quantity}";
-                listBox1.Items.Add(listItem);
+                listBox1.Items.Add(item.ToString());
             }
         }
 
@@ -327,37 +353,30 @@ namespace Proyek_PAD
 
         private void placeOrderButton_Click(object sender, EventArgs e)
         {
-
             if (orderedItems.Count > 0)
             {
-                // Instantiate Form7
                 Form7 form7 = new Form7();
-
-                // Populate listBox2 in Form7 with ordered items
                 foreach (var item in orderedItems)
                 {
-                    form7.listBox2.Items.Add($"{item.MenuName} - Qty: {item.Quantity}");
+                    form7.listBox2.Items.Add(item.ToString());
                 }
 
-                // Show Form7 as a dialog
                 DialogResult res = form7.ShowDialog();
-
                 if (res == DialogResult.OK)
                 {
-                    // Clear the order and UI elements if the dialog result is OK
                     orderedItems.Clear();
                     listBox1.Items.Clear();
-                    GenerateOrderNumber(); // Generate a new order number
-                    UpdateTotalLabel();    // Reset or update the total price display (implementation required)
+                    GenerateOrderNumber();
+                    totalPrice = 0;
+                    UpdateTotalLabel();
                 }
             }
             else
             {
                 MessageBox.Show("No items in the order!");
             }
-
-
         }
+
 
         private void ORDER_NUMBER_Click(object sender, EventArgs e)
         {
@@ -383,18 +402,16 @@ namespace Proyek_PAD
 
         private void button1_Click(object sender, EventArgs e)
         {
-            orderedItems.Clear(); // Clear the list of ordered items
-            listBox1.Items.Clear(); // Clear the ListBox
-            totalPrice = 0; // Reset total price to 0
-            UpdateTotalLabel(); // Update the total price label
+            orderedItems.Clear();
+            listBox1.Items.Clear();
+            totalPrice = 0;
+            UpdateTotalLabel();
 
-            // Reset all quantities in the dictionary
             foreach (var key in itemQuantities.Keys.ToList())
             {
                 itemQuantities[key] = 0;
             }
 
-            // Refresh quantity labels in the UI
             foreach (Control control in panel1.Controls)
             {
                 if (control is Panel menuPanel)
@@ -406,7 +423,6 @@ namespace Proyek_PAD
                     }
                 }
             }
-
         }
     }
 
