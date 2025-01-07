@@ -142,7 +142,6 @@ namespace Proyek_PAD
         {
             // Hapus inputan kecuali textBox2
             comboBox1.SelectedIndex = -1;
-            textBox1.Clear();
             textBox3.Text = "";
             listBox1.Items.Clear();
         }

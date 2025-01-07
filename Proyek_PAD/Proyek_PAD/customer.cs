@@ -185,20 +185,23 @@ namespace Proyek_PAD
                                 var orderedItem = orderedItems.FirstOrDefault(i => i.MenuItem.Id == id); // Use MenuItem.Id here
                                 if (orderedItem != null)
                                 {
-                                    orderedItem.Quantity = qty;
                                     if (qty == 0)
                                     {
-                                        orderedItems.Remove(orderedItem);
+                                        orderedItems.Remove(orderedItem); // Remove the item if quantity is zero
+                                    }
+                                    else
+                                    {
+                                        orderedItem.Quantity = qty; // Update the quantity
                                     }
                                 }
 
-                                totalPrice -= price;
-                                UpdateTotalLabel();
-
-                                // Update the ListBox
-                                UpdateListBox();
+                                // Recalculate total price from orderedItems instead of incrementally adjusting
+                                totalPrice = orderedItems.Sum(item => item.Quantity * item.Price);
+                                UpdateTotalLabel(); // Update the label with the new total price
+                                UpdateListBox();    // Update the order list
                             }
                         };
+
 
 
                         menuPanel.Controls.Add(nameLabel);
