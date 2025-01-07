@@ -80,7 +80,7 @@ namespace Proyek_PAD
             try
             {
                 // Query to get data from the pending_transactions table
-                query = "SELECT transaksi_id, customer_name, menu_id, quantity, price FROM transaksi_details";
+                query = "SELECT transaksi_id AS 'Transaksi ID',time_ordered AS 'Time Ordered' FROM transaksi WHERE status = 'pending'";
                 MySqlCommand cmd = new MySqlCommand(query, con);
 
                 // Open connection to the database
@@ -100,7 +100,8 @@ namespace Proyek_PAD
                 reader.Close();
 
                 // Customize the DataGridView after the data has been loaded
-                CustomizeDataGridView();
+                // tak command iki bntr -hans
+                //CustomizeDataGridView();
             }
             catch (Exception ex)
             {
