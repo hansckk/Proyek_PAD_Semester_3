@@ -61,70 +61,80 @@ namespace Proyek_PAD
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(7, 9);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(15, 26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(147, 29);
+            this.label1.Size = new System.Drawing.Size(210, 43);
             this.label1.TabIndex = 0;
             this.label1.Text = "Order Anda";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 76);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(39, 144);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(126, 17);
+            this.label3.Size = new System.Drawing.Size(156, 36);
             this.label3.TabIndex = 2;
             this.label3.Text = "Payment Method : ";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(153, 69);
+            this.comboBox1.Location = new System.Drawing.Point(201, 151);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(225, 24);
+            this.comboBox1.Size = new System.Drawing.Size(267, 24);
             this.comboBox1.TabIndex = 4;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 311);
+            this.button1.BackColor = System.Drawing.Color.Red;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(12, 477);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(144, 50);
+            this.button1.Size = new System.Drawing.Size(220, 90);
             this.button1.TabIndex = 5;
             this.button1.Text = "Back";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(570, 311);
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(909, 477);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(144, 50);
+            this.button3.Size = new System.Drawing.Size(220, 90);
             this.button3.TabIndex = 7;
             this.button3.Text = "Order";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(397, 48);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(606, 98);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 17);
+            this.label4.Size = new System.Drawing.Size(99, 36);
             this.label4.TabIndex = 9;
             this.label4.Text = "Menu : ";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(156, 44);
+            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton1.Location = new System.Drawing.Point(206, 104);
             this.radioButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(53, 21);
+            this.radioButton1.Size = new System.Drawing.Size(58, 24);
             this.radioButton1.TabIndex = 10;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Yes";
@@ -134,10 +144,11 @@ namespace Proyek_PAD
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(215, 44);
+            this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton2.Location = new System.Drawing.Point(417, 104);
             this.radioButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(47, 21);
+            this.radioButton2.Size = new System.Drawing.Size(51, 24);
             this.radioButton2.TabIndex = 11;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "No";
@@ -146,53 +157,58 @@ namespace Proyek_PAD
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 48);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(61, 98);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(102, 17);
+            this.label5.Size = new System.Drawing.Size(126, 36);
             this.label5.TabIndex = 12;
-            this.label5.Text = "Split Payment: ";
+            this.label5.Text = "Split Payment : ";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 187);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(17, 326);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(146, 17);
+            this.label6.Size = new System.Drawing.Size(170, 36);
             this.label6.TabIndex = 13;
             this.label6.Text = "Payment Method #2 : ";
             this.label6.Visible = false;
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(152, 180);
+            this.comboBox2.Location = new System.Drawing.Point(206, 326);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(223, 24);
+            this.comboBox2.Size = new System.Drawing.Size(262, 24);
             this.comboBox2.TabIndex = 14;
             this.comboBox2.Visible = false;
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(8, 131);
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(51, 228);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(109, 17);
+            this.label7.Size = new System.Drawing.Size(136, 36);
             this.label7.TabIndex = 15;
-            this.label7.Text = "Enter Discount: ";
+            this.label7.Text = "Enter Discount : ";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(152, 126);
+            this.textBox3.Location = new System.Drawing.Point(206, 236);
             this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(125, 22);
+            this.textBox3.Size = new System.Drawing.Size(156, 22);
             this.textBox3.TabIndex = 16;
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(286, 125);
+            this.button4.Location = new System.Drawing.Point(375, 236);
             this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(93, 23);
@@ -203,56 +219,62 @@ namespace Proyek_PAD
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(308, 311);
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(485, 477);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(144, 50);
+            this.button2.Size = new System.Drawing.Size(220, 90);
             this.button2.TabIndex = 6;
             this.button2.Text = "Clear";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(495, 262);
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(606, 367);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(71, 17);
+            this.label8.Size = new System.Drawing.Size(99, 36);
             this.label8.TabIndex = 18;
-            this.label8.Text = "Discount: ";
+            this.label8.Text = "Discount : ";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label8.Visible = false;
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label9
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(8, 159);
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(65, 273);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(90, 17);
+            this.label9.Size = new System.Drawing.Size(118, 36);
             this.label9.TabIndex = 19;
-            this.label9.Text = "Extra Charge";
+            this.label9.Text = "Extra Charge : ";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // comboBox3
             // 
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(152, 152);
+            this.comboBox3.Location = new System.Drawing.Point(206, 281);
             this.comboBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(125, 24);
+            this.comboBox3.Size = new System.Drawing.Size(156, 24);
             this.comboBox3.TabIndex = 20;
             // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(499, 175);
+            this.listBox1.Location = new System.Drawing.Point(711, 250);
             this.listBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(217, 84);
+            this.listBox1.Size = new System.Drawing.Size(333, 100);
             this.listBox1.TabIndex = 21;
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(285, 152);
+            this.button5.Location = new System.Drawing.Point(375, 281);
             this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(93, 23);
@@ -263,35 +285,40 @@ namespace Proyek_PAD
             // 
             // label10
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(397, 175);
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(565, 245);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(94, 17);
+            this.label10.Size = new System.Drawing.Size(128, 36);
             this.label10.TabIndex = 23;
             this.label10.Text = "Extra Charge:";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // label11
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(8, 102);
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(119, 198);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(44, 17);
+            this.label11.Size = new System.Drawing.Size(76, 22);
             this.label11.TabIndex = 24;
-            this.label11.Text = "Total:";
+            this.label11.Text = "Total :";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // label12
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(9, 213);
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(109, 376);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(64, 17);
+            this.label12.Size = new System.Drawing.Size(78, 36);
             this.label12.TabIndex = 26;
             this.label12.Text = "Total #2:";
             this.label12.Visible = false;
+            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(153, 97);
+            this.numericUpDown1.Location = new System.Drawing.Point(206, 200);
             this.numericUpDown1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             1410065407,
@@ -299,12 +326,12 @@ namespace Proyek_PAD
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(227, 22);
+            this.numericUpDown1.Size = new System.Drawing.Size(262, 22);
             this.numericUpDown1.TabIndex = 28;
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(153, 208);
+            this.numericUpDown2.Location = new System.Drawing.Point(206, 376);
             this.numericUpDown2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             1410065407,
@@ -312,24 +339,25 @@ namespace Proyek_PAD
             0,
             0});
             this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(227, 22);
+            this.numericUpDown2.Size = new System.Drawing.Size(262, 22);
             this.numericUpDown2.TabIndex = 29;
             // 
             // listBox2
             // 
             this.listBox2.FormattingEnabled = true;
             this.listBox2.ItemHeight = 16;
-            this.listBox2.Location = new System.Drawing.Point(497, 48);
+            this.listBox2.Location = new System.Drawing.Point(711, 106);
             this.listBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(217, 100);
+            this.listBox2.Size = new System.Drawing.Size(333, 116);
             this.listBox2.TabIndex = 30;
             // 
             // Form7
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(731, 372);
+            this.BackColor = System.Drawing.Color.Yellow;
+            this.ClientSize = new System.Drawing.Size(1152, 607);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.numericUpDown2);
             this.Controls.Add(this.numericUpDown1);

@@ -443,6 +443,16 @@ namespace Proyek_PAD.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap minus_horizontal_straight_line {
+            get {
+                object obj = ResourceManager.GetObject("minus-horizontal-straight-line", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap SNACK001 {
             get {
                 object obj = ResourceManager.GetObject("SNACK001", resourceCulture);

@@ -484,5 +484,28 @@ namespace Proyek_PAD
                 DialogResult res = df.ShowDialog();
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            customer Cust = new customer();
+            this.Hide();
+            DialogResult res = Cust.ShowDialog();
+
+            if (res == DialogResult.OK)
+            {
+                this.Show();
+            }
+            else
+            {
+                this.Close();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form8 form8 = new Form8();
+            form8.Show();
+            this.Hide();
+        }
     }
 }

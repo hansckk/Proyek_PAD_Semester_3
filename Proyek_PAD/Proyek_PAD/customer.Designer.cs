@@ -37,8 +37,8 @@ namespace Proyek_PAD
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -49,7 +49,7 @@ namespace Proyek_PAD
             this.label3 = new System.Windows.Forms.Label();
             this.placeOrderButton = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -60,12 +60,12 @@ namespace Proyek_PAD
             // panel1
             // 
             this.panel1.AutoScroll = true;
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Location = new System.Drawing.Point(16, 96);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(876, 477);
+            this.panel1.Size = new System.Drawing.Size(876, 522);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -73,7 +73,7 @@ namespace Proyek_PAD
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(16, -2);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(112, 91);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -97,7 +97,7 @@ namespace Proyek_PAD
             this.radioButton1.AutoSize = true;
             this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton1.Location = new System.Drawing.Point(23, 4);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButton1.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(146, 35);
             this.radioButton1.TabIndex = 3;
@@ -111,7 +111,7 @@ namespace Proyek_PAD
             this.radioButton2.AutoSize = true;
             this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton2.Location = new System.Drawing.Point(23, 47);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButton2.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(145, 35);
             this.radioButton2.TabIndex = 4;
@@ -125,7 +125,7 @@ namespace Proyek_PAD
             this.radioButton3.AutoSize = true;
             this.radioButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton3.Location = new System.Drawing.Point(23, 90);
-            this.radioButton3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButton3.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(111, 35);
             this.radioButton3.TabIndex = 5;
@@ -137,32 +137,21 @@ namespace Proyek_PAD
             // panel2
             // 
             this.panel2.AutoScroll = true;
-            this.panel2.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.radioButton1);
             this.panel2.Controls.Add(this.radioButton3);
             this.panel2.Controls.Add(this.radioButton2);
-            this.panel2.Location = new System.Drawing.Point(901, 50);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Location = new System.Drawing.Point(903, 96);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(236, 141);
             this.panel2.TabIndex = 1;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(939, 11);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(151, 36);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Category :";
-            // 
             // panel3
             // 
             this.panel3.AutoScroll = true;
-            this.panel3.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.label5);
@@ -171,11 +160,24 @@ namespace Proyek_PAD
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.placeOrderButton);
-            this.panel3.Location = new System.Drawing.Point(901, 199);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Location = new System.Drawing.Point(903, 245);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(236, 373);
             this.panel3.TabIndex = 4;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Red;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(6, 308);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(107, 57);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Clear";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label5
             // 
@@ -190,10 +192,11 @@ namespace Proyek_PAD
             // 
             // listBox1
             // 
+            this.listBox1.BackColor = System.Drawing.Color.Yellow;
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 16;
             this.listBox1.Location = new System.Drawing.Point(4, 135);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(4);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(220, 100);
             this.listBox1.TabIndex = 9;
@@ -202,11 +205,11 @@ namespace Proyek_PAD
             // panel5
             // 
             this.panel5.AutoScroll = true;
-            this.panel5.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panel5.BackColor = System.Drawing.Color.Yellow;
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel5.Controls.Add(this.ORDER_NUMBER);
             this.panel5.Location = new System.Drawing.Point(4, 46);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(220, 51);
             this.panel5.TabIndex = 8;
@@ -238,12 +241,12 @@ namespace Proyek_PAD
             // panel4
             // 
             this.panel4.AutoScroll = true;
-            this.panel4.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panel4.BackColor = System.Drawing.Color.Yellow;
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel4.Controls.Add(this.Total_label);
             this.panel4.Controls.Add(this.label3);
             this.panel4.Location = new System.Drawing.Point(4, 249);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(220, 51);
             this.panel4.TabIndex = 5;
@@ -274,41 +277,45 @@ namespace Proyek_PAD
             // 
             // placeOrderButton
             // 
+            this.placeOrderButton.BackColor = System.Drawing.Color.Lime;
             this.placeOrderButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.placeOrderButton.Location = new System.Drawing.Point(121, 308);
-            this.placeOrderButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.placeOrderButton.Margin = new System.Windows.Forms.Padding(4);
             this.placeOrderButton.Name = "placeOrderButton";
             this.placeOrderButton.Size = new System.Drawing.Size(107, 57);
             this.placeOrderButton.TabIndex = 0;
             this.placeOrderButton.Text = "Next";
-            this.placeOrderButton.UseVisualStyleBackColor = true;
+            this.placeOrderButton.UseVisualStyleBackColor = false;
             this.placeOrderButton.Click += new System.EventHandler(this.placeOrderButton_Click);
             // 
-            // button1
+            // button2
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(6, 308);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(107, 57);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Clear";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button2.BackColor = System.Drawing.Color.Red;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(1011, 19);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(122, 57);
+            this.button2.TabIndex = 12;
+            this.button2.Text = "Back";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // customer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1152, 588);
+            this.BackColor = System.Drawing.Color.Yellow;
+            this.ClientSize = new System.Drawing.Size(1152, 633);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "customer";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Customer";
             this.Load += new System.EventHandler(this.Form6_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -334,7 +341,6 @@ namespace Proyek_PAD
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button placeOrderButton;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
@@ -347,5 +353,6 @@ namespace Proyek_PAD
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

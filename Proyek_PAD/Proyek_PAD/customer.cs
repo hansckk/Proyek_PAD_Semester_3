@@ -386,6 +386,11 @@ namespace Proyek_PAD
                 }
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // buat back, masih blm gatau error apao
+        }
     }
 
 

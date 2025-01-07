@@ -488,18 +488,7 @@ namespace Proyek_PAD
 
         private void button46_Click(object sender, EventArgs e)
         {
-            customer Cust = new customer();
-            this.Hide();
-            DialogResult res = Cust.ShowDialog();
-
-            if(res == DialogResult.OK)
-            {
-                this.Show();
-            }
-            else
-            {
-                this.Close();
-            }
+            
         }
     }
 }

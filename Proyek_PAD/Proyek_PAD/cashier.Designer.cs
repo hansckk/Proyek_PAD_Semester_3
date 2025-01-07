@@ -38,6 +38,8 @@ namespace Proyek_PAD
             this.timePanel = new System.Windows.Forms.Panel();
             this.workerLabel = new System.Windows.Forms.Label();
             this.logoutButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.logo = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.displayDataGridView)).BeginInit();
             this.timePanel.SuspendLayout();
@@ -49,15 +51,16 @@ namespace Proyek_PAD
             this.displayDataGridView.AllowUserToAddRows = false;
             this.displayDataGridView.AllowUserToDeleteRows = false;
             this.displayDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.displayDataGridView.BackgroundColor = System.Drawing.Color.Yellow;
             this.displayDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.displayDataGridView.Location = new System.Drawing.Point(11, 65);
+            this.displayDataGridView.Location = new System.Drawing.Point(11, 88);
             this.displayDataGridView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.displayDataGridView.Name = "displayDataGridView";
             this.displayDataGridView.ReadOnly = true;
             this.displayDataGridView.RowHeadersWidth = 51;
             this.displayDataGridView.RowTemplate.Height = 24;
             this.displayDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.displayDataGridView.Size = new System.Drawing.Size(1177, 754);
+            this.displayDataGridView.Size = new System.Drawing.Size(1178, 525);
             this.displayDataGridView.TabIndex = 1;
             this.displayDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.displayDataGridView_CellDoubleClick);
             // 
@@ -92,7 +95,7 @@ namespace Proyek_PAD
             // 
             // timePanel
             // 
-            this.timePanel.BackColor = System.Drawing.Color.Silver;
+            this.timePanel.BackColor = System.Drawing.Color.White;
             this.timePanel.Controls.Add(this.dayLabel);
             this.timePanel.Controls.Add(this.timeLabel);
             this.timePanel.Location = new System.Drawing.Point(858, 11);
@@ -113,7 +116,7 @@ namespace Proyek_PAD
             // 
             // logoutButton
             // 
-            this.logoutButton.BackColor = System.Drawing.Color.GhostWhite;
+            this.logoutButton.BackColor = System.Drawing.Color.Red;
             this.logoutButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logoutButton.Location = new System.Drawing.Point(1049, 11);
             this.logoutButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -123,6 +126,32 @@ namespace Proyek_PAD
             this.logoutButton.Text = "LOGOUT";
             this.logoutButton.UseVisualStyleBackColor = false;
             this.logoutButton.Click += new System.EventHandler(this.logoutButton_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Yellow;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(1025, 644);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(164, 60);
+            this.button1.TabIndex = 31;
+            this.button1.Text = "Customer";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Yellow;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(829, 644);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(164, 60);
+            this.button2.TabIndex = 32;
+            this.button2.Text = "Member";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // logo
             // 
@@ -139,8 +168,10 @@ namespace Proyek_PAD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Silver;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1200, 749);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.logoutButton);
             this.Controls.Add(this.workerLabel);
             this.Controls.Add(this.timePanel);
@@ -174,6 +205,8 @@ namespace Proyek_PAD
         private System.Windows.Forms.Panel timePanel;
         private System.Windows.Forms.Label workerLabel;
         private System.Windows.Forms.Button logoutButton;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
 
