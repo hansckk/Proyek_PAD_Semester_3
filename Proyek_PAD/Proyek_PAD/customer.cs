@@ -17,7 +17,7 @@ namespace Proyek_PAD
         string currentselected = "Makanan"; // DEFAULT
         decimal totalPrice = 0;
         private Dictionary<string, int> itemQuantities = new Dictionary<string, int>();
-        private List<OrderedItem> orderedItems = new List<OrderedItem>();
+        private List<orderedItem> orderedItems = new List<orderedItem>();
 
         private int counter = 1; // Counter for tracking the image sequence
         Dictionary<string, string> categoryToPrefix = new Dictionary<string, string>
@@ -235,7 +235,7 @@ namespace Proyek_PAD
 
         private void AddItemToOrder(string menuId, string menuName, decimal price, int quantity)
         {
-            var menuItem = new MenuItem(menuId, menuName); // Create MenuItem object
+            var menuItem = new menuItem(menuId, menuName); // Create MenuItem object
             var existingItem = orderedItems.FirstOrDefault(item => item.MenuItem.Id == menuId); // Compare by MenuItem.Id
 
             if (existingItem != null)
@@ -244,7 +244,7 @@ namespace Proyek_PAD
             }
             else
             {
-                orderedItems.Add(new OrderedItem(menuItem, quantity, price)); // Use OrderedItem constructor with MenuItem
+                orderedItems.Add(new orderedItem(menuItem, quantity, price)); // Use OrderedItem constructor with MenuItem
             }
 
             totalPrice += price * quantity; // Update total price
@@ -252,48 +252,10 @@ namespace Proyek_PAD
             UpdateListBox();
         }
 
-
-
-
         private void UpdateTotalLabel()
         {
             Total_label.Text = $"{totalPrice:N0}";
         }
-
-        public class MenuItem
-        {
-            public string Id { get; }
-            public string Name { get; }
-
-            public MenuItem(string id, string name)
-            {
-                Id = id;
-                Name = name;
-            }
-        }
-
-        public class OrderedItem
-        {
-            public MenuItem MenuItem { get; set; }
-            public int Quantity { get; set; }
-            public decimal Price { get; set; }
-            public decimal TotalPrice => Price * Quantity;
-
-            public OrderedItem(MenuItem menuItem, int quantity, decimal price)
-            {
-                MenuItem = menuItem;
-                Quantity = quantity;
-                Price = price;
-            }
-
-            public override string ToString()
-            {
-                return $"{MenuItem.Name} X{Quantity}";
-            }
-        }
-
-
-
 
 
         private void UpdateListBox()
@@ -356,11 +318,8 @@ namespace Proyek_PAD
             if (orderedItems.Count > 0)
             {
                 Form7 form7 = new Form7();
-                foreach (var item in orderedItems)
-                {
-                    form7.listBox2.Items.Add(item.ToString());
-                }
-
+                form7.orderedItems = new List<orderedItem>(orderedItems);
+                form7.updateOrderList();
                 DialogResult res = form7.ShowDialog();
                 if (res == DialogResult.OK)
                 {

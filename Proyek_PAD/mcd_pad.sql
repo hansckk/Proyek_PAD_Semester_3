@@ -32,10 +32,6 @@ CREATE TABLE `checklog` (
 
 /*Data for the table `checklog` */
 
-insert  into `checklog`(`log_id`,`crew_id`,`start_time`,`end_time`) values 
-('FRI1',1,'2024-12-27 17:18:38','2024-12-27 17:18:54'),
-('FRI2',1,'2024-12-27 17:31:18','2024-12-27 17:34:10');
-
 /*Table structure for table `customers` */
 
 DROP TABLE IF EXISTS `customers`;
@@ -297,32 +293,31 @@ CREATE TABLE `transaksi` (
   `employee_id` int(11) DEFAULT NULL,
   `status` enum('berhasil','gagal','pending') NOT NULL,
   `diskon_id` int(11) DEFAULT NULL,
+  `queue` int(11) DEFAULT NULL,
+  `time_ordered` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`transaksi_id`),
   KEY `employee_id` (`employee_id`),
   KEY `diskon_id` (`diskon_id`),
   CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `karyawan` (`crew_id`),
   CONSTRAINT `transaksi_ibfk_4` FOREIGN KEY (`diskon_id`) REFERENCES `diskon` (`diskon_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `transaksi` */
-
-insert  into `transaksi`(`transaksi_id`,`employee_id`,`status`,`diskon_id`) values 
-(5,NULL,'pending',NULL),
-(6,NULL,'pending',1),
-(7,NULL,'pending',NULL);
 
 /*Table structure for table `transaksi_details` */
 
 DROP TABLE IF EXISTS `transaksi_details`;
 
 CREATE TABLE `transaksi_details` (
-  `customer_name` varchar(255) DEFAULT NULL,
-  `menu_id` varchar(255) DEFAULT NULL,
-  `quantity` int(11) DEFAULT NULL,
-  `price` int(11) DEFAULT NULL,
-  `transaksi_id` int(11) DEFAULT NULL,
+  `customer_id` int(11) DEFAULT NULL,
+  `menu_id` varchar(255) NOT NULL,
+  `transaksi_id` int(11) NOT NULL,
   KEY `transaksi_id` (`transaksi_id`),
-  CONSTRAINT `transaksi_details_ibfk_1` FOREIGN KEY (`transaksi_id`) REFERENCES `transaksi` (`transaksi_id`)
+  KEY `menu_id` (`menu_id`),
+  KEY `customer_id` (`customer_id`),
+  CONSTRAINT `transaksi_details_ibfk_1` FOREIGN KEY (`transaksi_id`) REFERENCES `transaksi` (`transaksi_id`),
+  CONSTRAINT `transaksi_details_ibfk_2` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id_menu`),
+  CONSTRAINT `transaksi_details_ibfk_3` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id_customer`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `transaksi_details` */

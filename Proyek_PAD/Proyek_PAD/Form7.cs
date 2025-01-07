@@ -2,6 +2,7 @@
 using System.Data;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Collections.Generic;
 
 
 namespace Proyek_PAD
@@ -9,6 +10,7 @@ namespace Proyek_PAD
     //krng beberapa wkwk
     public partial class Form7 : Form
     {
+        public List<orderedItem> orderedItems { get; set; }
         int discountId;
         int transId;
         public Form7()
@@ -19,7 +21,33 @@ namespace Proyek_PAD
             
         }
 
+        public void updateOrderList()
+        {
+            listBox2.Items.Clear();
+            foreach (var item in orderedItems)
+            {
+                listBox2.Items.Add(new listBoxItem
+                {
+                    displayText = item.ToString(),
+                    menuId = item.MenuItem.Id,
+                    quantity = item.Quantity
+                });
+            }
+        }
 
+        private class listBoxItem
+        {
+            public string displayText { get; set; }
+            public string menuId { get; set; }
+            public int quantity { get; set; }
+
+            public override string ToString()
+            {
+                return displayText;
+            }
+
+
+        }
 
         private void Form7_Load(object sender, EventArgs e)
         {
@@ -119,9 +147,62 @@ namespace Proyek_PAD
             listBox1.Items.Clear();
         }
 
+        private void insertMenu()
+        {
+            try
+            {
+                Connection.open();
+                string query = "INSERT INTO transaksi_details(menu_id,transaksi_id) VALUES (@menu_id,@trans_id)";
+                MySqlCommand cmd = new MySqlCommand(query, Connection.conn);
+                foreach (listBoxItem item in listBox2.Items)
+                {
+                    for (int i = 0; i < item.quantity; i++)
+                    {
+                        cmd.Parameters.Clear();
+                        cmd.Parameters.AddWithValue("@menu_id",item.menuId);
+                        cmd.Parameters.AddWithValue("@trans_id", transId);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                Connection.close();
+            }
+        }
+
         private void insertPaymentMethod()
         {
-            
+            try
+            {
+                Connection.open();
+                string query = "INSERT INTO payment_trans(transaksi_id,payment_method,total) VALUES (@trans_id,@payment_method,@total)";
+                MySqlCommand cmd = new MySqlCommand(query, Connection.conn);
+                cmd.Parameters.AddWithValue("@trans_id", transId);
+                cmd.Parameters.AddWithValue("@payment_method",comboBox1.SelectedValue);
+                cmd.Parameters.AddWithValue("@total", (int)numericUpDown1.Value);
+                cmd.ExecuteNonQuery();
+                if (radioButton1.Checked)
+                {
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("@trans_id", transId);
+                    cmd.Parameters.AddWithValue("@payment_method",comboBox3.SelectedValue);
+                    cmd.Parameters.AddWithValue("@total", (int)numericUpDown2.Value);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                Connection.close();
+            }
         }
         private void insertExtraCharge()
         {
@@ -189,6 +270,8 @@ namespace Proyek_PAD
             this.Close();
             insertTransaksi();
             insertExtraCharge();
+            insertMenu();
+            insertPaymentMethod();
             MessageBox.Show("Order Sukses!");     
         }
 
