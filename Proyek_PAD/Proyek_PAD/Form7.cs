@@ -419,9 +419,9 @@ namespace Proyek_PAD
         }
         private void checkMember()
         {
-            if (!int.TryParse(textBox1.Text.Trim(), out int inputId)) // Cek apakah input adalah angka
+            if (!int.TryParse(textBox1.Text.Trim(), out int inputId)) 
             {
-                panel1.Visible = false; // Sembunyikan panel jika input bukan angka
+                panel1.Visible = false; 
                 return;
             }
 
@@ -435,11 +435,11 @@ namespace Proyek_PAD
 
                 if (count > 0)
                 {
-                    panel1.Visible = true; // Tampilkan panel jika id_customer ditemukan
+                    panel1.Visible = true; 
                 }
                 else
                 {
-                    panel1.Visible = false; // Sembunyikan panel jika id_customer tidak ditemukan
+                    panel1.Visible = false; 
                 }
             }
             catch (Exception ex)
