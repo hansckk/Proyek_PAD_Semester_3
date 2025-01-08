@@ -23,14 +23,19 @@ DROP TABLE IF EXISTS `checklog`;
 CREATE TABLE `checklog` (
   `log_id` varchar(20) NOT NULL,
   `crew_id` int(11) NOT NULL,
-  `start_time` datetime NOT NULL,
-  `end_time` datetime NOT NULL,
+  `start_time` datetime DEFAULT NULL,
+  `end_time` datetime DEFAULT NULL,
   PRIMARY KEY (`log_id`),
   KEY `crew_id` (`crew_id`),
   CONSTRAINT `checklog_ibfk_1` FOREIGN KEY (`crew_id`) REFERENCES `karyawan` (`crew_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `checklog` */
+
+insert  into `checklog`(`log_id`,`crew_id`,`start_time`,`end_time`) values 
+('TUE1',1,'2025-01-07 22:17:36','0000-00-00 00:00:00'),
+('TUE2',1,'2025-01-07 22:18:23','0000-00-00 00:00:00'),
+('TUE3',1,'2025-01-07 22:18:38','0000-00-00 00:00:00');
 
 /*Table structure for table `customers` */
 
@@ -43,7 +48,7 @@ CREATE TABLE `customers` (
   `email_customer` varchar(50) DEFAULT NULL,
   `alamat_customer` text DEFAULT NULL,
   PRIMARY KEY (`id_customer`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `customers` */
 
