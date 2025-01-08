@@ -51,16 +51,16 @@ namespace Proyek_PAD
             this.displayDataGridView.AllowUserToAddRows = false;
             this.displayDataGridView.AllowUserToDeleteRows = false;
             this.displayDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.displayDataGridView.BackgroundColor = System.Drawing.Color.Yellow;
+            this.displayDataGridView.BackgroundColor = System.Drawing.Color.White;
             this.displayDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.displayDataGridView.Location = new System.Drawing.Point(11, 88);
+            this.displayDataGridView.Location = new System.Drawing.Point(11, 97);
             this.displayDataGridView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.displayDataGridView.Name = "displayDataGridView";
             this.displayDataGridView.ReadOnly = true;
             this.displayDataGridView.RowHeadersWidth = 51;
             this.displayDataGridView.RowTemplate.Height = 24;
             this.displayDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.displayDataGridView.Size = new System.Drawing.Size(1178, 525);
+            this.displayDataGridView.Size = new System.Drawing.Size(1178, 552);
             this.displayDataGridView.TabIndex = 1;
             this.displayDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.displayDataGridView_CellDoubleClick);
             // 
@@ -95,33 +95,34 @@ namespace Proyek_PAD
             // 
             // timePanel
             // 
-            this.timePanel.BackColor = System.Drawing.Color.White;
+            this.timePanel.BackColor = System.Drawing.Color.Yellow;
             this.timePanel.Controls.Add(this.dayLabel);
             this.timePanel.Controls.Add(this.timeLabel);
-            this.timePanel.Location = new System.Drawing.Point(858, 11);
+            this.timePanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.timePanel.Location = new System.Drawing.Point(787, 25);
             this.timePanel.Name = "timePanel";
-            this.timePanel.Size = new System.Drawing.Size(186, 48);
+            this.timePanel.Size = new System.Drawing.Size(221, 47);
             this.timePanel.TabIndex = 28;
             // 
             // workerLabel
             // 
             this.workerLabel.AutoSize = true;
-            this.workerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.workerLabel.Location = new System.Drawing.Point(62, 11);
+            this.workerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.workerLabel.Location = new System.Drawing.Point(85, 25);
             this.workerLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.workerLabel.Name = "workerLabel";
-            this.workerLabel.Size = new System.Drawing.Size(154, 36);
+            this.workerLabel.Size = new System.Drawing.Size(176, 39);
             this.workerLabel.TabIndex = 29;
             this.workerLabel.Text = "Welcome,";
             // 
             // logoutButton
             // 
             this.logoutButton.BackColor = System.Drawing.Color.Red;
-            this.logoutButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logoutButton.Location = new System.Drawing.Point(1049, 11);
+            this.logoutButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.logoutButton.Location = new System.Drawing.Point(1013, 25);
             this.logoutButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.logoutButton.Name = "logoutButton";
-            this.logoutButton.Size = new System.Drawing.Size(140, 48);
+            this.logoutButton.Size = new System.Drawing.Size(176, 51);
             this.logoutButton.TabIndex = 30;
             this.logoutButton.Text = "LOGOUT";
             this.logoutButton.UseVisualStyleBackColor = false;
@@ -129,12 +130,12 @@ namespace Proyek_PAD
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.Yellow;
+            this.button1.BackColor = System.Drawing.Color.White;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(1025, 644);
+            this.button1.Location = new System.Drawing.Point(1012, 661);
             this.button1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(164, 60);
+            this.button1.Size = new System.Drawing.Size(173, 77);
             this.button1.TabIndex = 31;
             this.button1.Text = "Customer";
             this.button1.UseVisualStyleBackColor = false;
@@ -142,12 +143,12 @@ namespace Proyek_PAD
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.Yellow;
+            this.button2.BackColor = System.Drawing.Color.White;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(829, 644);
+            this.button2.Location = new System.Drawing.Point(814, 661);
             this.button2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(164, 60);
+            this.button2.Size = new System.Drawing.Size(194, 77);
             this.button2.TabIndex = 32;
             this.button2.Text = "Member";
             this.button2.UseVisualStyleBackColor = false;
@@ -159,7 +160,7 @@ namespace Proyek_PAD
             this.logo.Location = new System.Drawing.Point(11, 11);
             this.logo.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.logo.Name = "logo";
-            this.logo.Size = new System.Drawing.Size(47, 48);
+            this.logo.Size = new System.Drawing.Size(70, 65);
             this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.logo.TabIndex = 16;
             this.logo.TabStop = false;
@@ -168,8 +169,8 @@ namespace Proyek_PAD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1200, 749);
+            this.BackColor = System.Drawing.Color.Yellow;
+            this.ClientSize = new System.Drawing.Size(1200, 750);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.logoutButton);

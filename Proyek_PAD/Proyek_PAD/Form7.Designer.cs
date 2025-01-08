@@ -73,7 +73,7 @@ namespace Proyek_PAD
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(39, 144);
+            this.label3.Location = new System.Drawing.Point(39, 155);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(156, 36);
             this.label3.TabIndex = 2;
@@ -83,11 +83,12 @@ namespace Proyek_PAD
             // 
             // comboBox1
             // 
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(201, 151);
+            this.comboBox1.Location = new System.Drawing.Point(201, 162);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(267, 24);
+            this.comboBox1.Size = new System.Drawing.Size(267, 30);
             this.comboBox1.TabIndex = 4;
             // 
             // button1
@@ -119,7 +120,7 @@ namespace Proyek_PAD
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(606, 98);
+            this.label4.Location = new System.Drawing.Point(606, 110);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(99, 36);
             this.label4.TabIndex = 9;
@@ -130,11 +131,11 @@ namespace Proyek_PAD
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(206, 104);
+            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton1.Location = new System.Drawing.Point(201, 117);
             this.radioButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(58, 24);
+            this.radioButton1.Size = new System.Drawing.Size(63, 28);
             this.radioButton1.TabIndex = 10;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Yes";
@@ -144,11 +145,11 @@ namespace Proyek_PAD
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton2.Location = new System.Drawing.Point(417, 104);
+            this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton2.Location = new System.Drawing.Point(412, 117);
             this.radioButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(51, 24);
+            this.radioButton2.Size = new System.Drawing.Size(56, 28);
             this.radioButton2.TabIndex = 11;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "No";
@@ -158,7 +159,7 @@ namespace Proyek_PAD
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(61, 98);
+            this.label5.Location = new System.Drawing.Point(56, 111);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(126, 36);
             this.label5.TabIndex = 12;
@@ -169,9 +170,9 @@ namespace Proyek_PAD
             // label6
             // 
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(17, 326);
+            this.label6.Location = new System.Drawing.Point(17, 353);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(170, 36);
+            this.label6.Size = new System.Drawing.Size(170, 32);
             this.label6.TabIndex = 13;
             this.label6.Text = "Payment Method #2 : ";
             this.label6.Visible = false;
@@ -179,18 +180,19 @@ namespace Proyek_PAD
             // 
             // comboBox2
             // 
+            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(206, 326);
+            this.comboBox2.Location = new System.Drawing.Point(206, 353);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(262, 24);
+            this.comboBox2.Size = new System.Drawing.Size(262, 30);
             this.comboBox2.TabIndex = 14;
             this.comboBox2.Visible = false;
             // 
             // label7
             // 
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(51, 228);
+            this.label7.Location = new System.Drawing.Point(51, 242);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(136, 36);
             this.label7.TabIndex = 15;
@@ -200,21 +202,23 @@ namespace Proyek_PAD
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(206, 236);
+            this.textBox3.Location = new System.Drawing.Point(206, 250);
             this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(156, 22);
+            this.textBox3.Size = new System.Drawing.Size(156, 28);
             this.textBox3.TabIndex = 16;
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(375, 236);
+            this.button4.BackColor = System.Drawing.Color.White;
+            this.button4.Location = new System.Drawing.Point(375, 250);
             this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(93, 23);
+            this.button4.Size = new System.Drawing.Size(93, 31);
             this.button4.TabIndex = 17;
             this.button4.Text = "SEARCH";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button2
@@ -233,7 +237,7 @@ namespace Proyek_PAD
             // label8
             // 
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(606, 367);
+            this.label8.Location = new System.Drawing.Point(606, 395);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(99, 36);
             this.label8.TabIndex = 18;
@@ -245,7 +249,7 @@ namespace Proyek_PAD
             // label9
             // 
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(65, 273);
+            this.label9.Location = new System.Drawing.Point(65, 290);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(118, 36);
             this.label9.TabIndex = 19;
@@ -255,38 +259,40 @@ namespace Proyek_PAD
             // 
             // comboBox3
             // 
+            this.comboBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(206, 281);
+            this.comboBox3.Location = new System.Drawing.Point(206, 298);
             this.comboBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(156, 24);
+            this.comboBox3.Size = new System.Drawing.Size(156, 30);
             this.comboBox3.TabIndex = 20;
             // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(711, 250);
+            this.listBox1.Location = new System.Drawing.Point(711, 283);
             this.listBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(333, 100);
+            this.listBox1.Size = new System.Drawing.Size(418, 100);
             this.listBox1.TabIndex = 21;
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(375, 281);
+            this.button5.BackColor = System.Drawing.Color.White;
+            this.button5.Location = new System.Drawing.Point(375, 298);
             this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(93, 23);
+            this.button5.Size = new System.Drawing.Size(93, 30);
             this.button5.TabIndex = 22;
             this.button5.Text = "ADD";
-            this.button5.UseVisualStyleBackColor = true;
+            this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // label10
             // 
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(565, 245);
+            this.label10.Location = new System.Drawing.Point(565, 278);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(128, 36);
             this.label10.TabIndex = 23;
@@ -297,7 +303,7 @@ namespace Proyek_PAD
             // label11
             // 
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(119, 198);
+            this.label11.Location = new System.Drawing.Point(119, 209);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(76, 22);
             this.label11.TabIndex = 24;
@@ -308,7 +314,7 @@ namespace Proyek_PAD
             // label12
             // 
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(109, 376);
+            this.label12.Location = new System.Drawing.Point(109, 403);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(78, 36);
             this.label12.TabIndex = 26;
@@ -318,7 +324,8 @@ namespace Proyek_PAD
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(206, 200);
+            this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDown1.Location = new System.Drawing.Point(206, 206);
             this.numericUpDown1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             1410065407,
@@ -326,12 +333,13 @@ namespace Proyek_PAD
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(262, 22);
+            this.numericUpDown1.Size = new System.Drawing.Size(262, 28);
             this.numericUpDown1.TabIndex = 28;
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(206, 376);
+            this.numericUpDown2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDown2.Location = new System.Drawing.Point(206, 403);
             this.numericUpDown2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             1410065407,
@@ -339,17 +347,17 @@ namespace Proyek_PAD
             0,
             0});
             this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(262, 22);
+            this.numericUpDown2.Size = new System.Drawing.Size(262, 28);
             this.numericUpDown2.TabIndex = 29;
             // 
             // listBox2
             // 
             this.listBox2.FormattingEnabled = true;
             this.listBox2.ItemHeight = 16;
-            this.listBox2.Location = new System.Drawing.Point(711, 106);
+            this.listBox2.Location = new System.Drawing.Point(711, 118);
             this.listBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(333, 116);
+            this.listBox2.Size = new System.Drawing.Size(418, 116);
             this.listBox2.TabIndex = 30;
             // 
             // Form7

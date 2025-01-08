@@ -36,13 +36,15 @@ namespace Proyek_PAD
             this.laporan_btn = new System.Windows.Forms.Button();
             this.checklog_btn = new System.Windows.Forms.Button();
             this.back_button = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // laporan_label
             // 
             this.laporan_label.AutoSize = true;
             this.laporan_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.laporan_label.Location = new System.Drawing.Point(255, 9);
+            this.laporan_label.Location = new System.Drawing.Point(605, 28);
             this.laporan_label.Name = "laporan_label";
             this.laporan_label.Size = new System.Drawing.Size(182, 38);
             this.laporan_label.TabIndex = 0;
@@ -51,69 +53,89 @@ namespace Proyek_PAD
             // laporan_transaksi_btn
             // 
             this.laporan_transaksi_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.laporan_transaksi_btn.Location = new System.Drawing.Point(476, 157);
+            this.laporan_transaksi_btn.Location = new System.Drawing.Point(12, 97);
             this.laporan_transaksi_btn.Name = "laporan_transaksi_btn";
             this.laporan_transaksi_btn.Size = new System.Drawing.Size(225, 100);
             this.laporan_transaksi_btn.TabIndex = 1;
             this.laporan_transaksi_btn.Text = "LAPORAN TRANSAKSI GAGAL";
             this.laporan_transaksi_btn.UseVisualStyleBackColor = true;
+            this.laporan_transaksi_btn.Click += new System.EventHandler(this.laporan_transaksi_btn_Click);
             // 
             // selled_menu_btn
             // 
             this.selled_menu_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.selled_menu_btn.Location = new System.Drawing.Point(243, 157);
+            this.selled_menu_btn.Location = new System.Drawing.Point(12, 203);
             this.selled_menu_btn.Name = "selled_menu_btn";
             this.selled_menu_btn.Size = new System.Drawing.Size(225, 100);
             this.selled_menu_btn.TabIndex = 2;
             this.selled_menu_btn.Text = "LAPORAN STOK MAKANAN";
             this.selled_menu_btn.UseVisualStyleBackColor = true;
+            this.selled_menu_btn.Click += new System.EventHandler(this.selled_menu_btn_Click);
             // 
             // best_seller_btn
             // 
             this.best_seller_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.best_seller_btn.Location = new System.Drawing.Point(12, 51);
+            this.best_seller_btn.Location = new System.Drawing.Point(12, 521);
             this.best_seller_btn.Name = "best_seller_btn";
             this.best_seller_btn.Size = new System.Drawing.Size(225, 100);
             this.best_seller_btn.TabIndex = 3;
             this.best_seller_btn.Text = "BEST SELLER OF THE MONTH";
             this.best_seller_btn.UseVisualStyleBackColor = true;
+            this.best_seller_btn.Click += new System.EventHandler(this.best_seller_btn_Click);
             // 
             // laporan_btn
             // 
             this.laporan_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.laporan_btn.Location = new System.Drawing.Point(12, 157);
+            this.laporan_btn.Location = new System.Drawing.Point(12, 309);
             this.laporan_btn.Name = "laporan_btn";
             this.laporan_btn.Size = new System.Drawing.Size(225, 100);
             this.laporan_btn.TabIndex = 4;
             this.laporan_btn.Text = "LAPORAN PENJUALAN HARIAN";
             this.laporan_btn.UseVisualStyleBackColor = true;
+            this.laporan_btn.Click += new System.EventHandler(this.laporan_btn_Click);
             // 
             // checklog_btn
             // 
             this.checklog_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.checklog_btn.Location = new System.Drawing.Point(243, 51);
+            this.checklog_btn.Location = new System.Drawing.Point(12, 415);
             this.checklog_btn.Name = "checklog_btn";
             this.checklog_btn.Size = new System.Drawing.Size(225, 100);
             this.checklog_btn.TabIndex = 5;
             this.checklog_btn.Text = "CHECKLOG";
             this.checklog_btn.UseVisualStyleBackColor = true;
+            this.checklog_btn.Click += new System.EventHandler(this.checklog_btn_Click);
             // 
             // back_button
             // 
+            this.back_button.BackColor = System.Drawing.Color.Red;
             this.back_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.back_button.Location = new System.Drawing.Point(619, 9);
+            this.back_button.Location = new System.Drawing.Point(12, 12);
             this.back_button.Name = "back_button";
-            this.back_button.Size = new System.Drawing.Size(80, 30);
+            this.back_button.Size = new System.Drawing.Size(225, 79);
             this.back_button.TabIndex = 6;
             this.back_button.Text = "Back";
-            this.back_button.UseVisualStyleBackColor = true;
+            this.back_button.UseVisualStyleBackColor = false;
             this.back_button.Click += new System.EventHandler(this.back_button_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(257, 97);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(883, 524);
+            this.dataGridView1.TabIndex = 7;
             // 
             // laporan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(713, 273);
+            this.BackColor = System.Drawing.Color.Yellow;
+            this.ClientSize = new System.Drawing.Size(1152, 633);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.back_button);
             this.Controls.Add(this.checklog_btn);
             this.Controls.Add(this.laporan_btn);
@@ -125,6 +147,8 @@ namespace Proyek_PAD
             this.Name = "laporan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form7";
+            this.Load += new System.EventHandler(this.laporan_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,5 +163,6 @@ namespace Proyek_PAD
         private System.Windows.Forms.Button laporan_btn;
         private System.Windows.Forms.Button checklog_btn;
         private System.Windows.Forms.Button back_button;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

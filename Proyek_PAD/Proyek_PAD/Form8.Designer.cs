@@ -127,7 +127,7 @@ namespace Proyek_PAD
             this.textBox3.Location = new System.Drawing.Point(595, 370);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(212, 38);
+            this.textBox3.Size = new System.Drawing.Size(249, 38);
             this.textBox3.TabIndex = 14;
             // 
             // label4
@@ -146,7 +146,7 @@ namespace Proyek_PAD
             this.textBox4.Location = new System.Drawing.Point(595, 441);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(212, 38);
+            this.textBox4.Size = new System.Drawing.Size(249, 38);
             this.textBox4.TabIndex = 16;
             // 
             // label5

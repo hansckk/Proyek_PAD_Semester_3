@@ -507,5 +507,12 @@ namespace Proyek_PAD
             form8.Show();
             this.Hide();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            laporan lap = new laporan();
+            lap.Show();
+            this.Hide();
+        }
     }
 }

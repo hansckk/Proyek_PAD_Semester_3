@@ -323,6 +323,7 @@ namespace Proyek_PAD
                 Form7 form7 = new Form7();
                 form7.orderedItems = new List<orderedItem>(orderedItems);
                 form7.updateOrderList();
+                this.Hide();
                 DialogResult res = form7.ShowDialog();
                 if (res == DialogResult.OK)
                 {
@@ -331,6 +332,7 @@ namespace Proyek_PAD
                     GenerateOrderNumber();
                     totalPrice = 0;
                     UpdateTotalLabel();
+                    
                 }
             }
             else

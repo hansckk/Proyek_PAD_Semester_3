@@ -65,7 +65,8 @@ namespace Proyek_PAD
 
         private void button4_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
+            loginForm login = new loginForm();
+            login.Show();
             this.Close();
         }
     }
