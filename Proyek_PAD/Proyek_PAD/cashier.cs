@@ -504,15 +504,19 @@ namespace Proyek_PAD
         private void button2_Click(object sender, EventArgs e)
         {
             Form8 form8 = new Form8();
-            form8.Show();
             this.Hide();
+            DialogResult res = form8.ShowDialog();
+
+            if (res == DialogResult.OK)
+            {
+                this.Show();
+            }
+            else
+            {
+                this.Close();
+            }
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            laporan lap = new laporan();
-            lap.Show();
-            this.Hide();
-        }
+      
     }
 }

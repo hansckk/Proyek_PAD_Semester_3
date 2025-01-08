@@ -18,7 +18,9 @@ namespace Proyek_PAD
             transId = 0;
             discountId = 0;
             InitializeComponent();
-            
+            panel1.Visible = false;
+            textBox1.TextChanged += textBox1_TextChanged;
+
         }
 
         public void updateOrderList()
@@ -410,5 +412,45 @@ namespace Proyek_PAD
         {
 
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            checkMember();
+        }
+        private void checkMember()
+        {
+            if (!int.TryParse(textBox1.Text.Trim(), out int inputId)) // Cek apakah input adalah angka
+            {
+                panel1.Visible = false; // Sembunyikan panel jika input bukan angka
+                return;
+            }
+
+            try
+            {
+                Connection.open();
+                string query = "SELECT COUNT(*) FROM customers WHERE id_customer = @id_customer";
+                MySqlCommand cmd = new MySqlCommand(query, Connection.conn);
+                cmd.Parameters.AddWithValue("@id_customer", inputId);
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                if (count > 0)
+                {
+                    panel1.Visible = true; // Tampilkan panel jika id_customer ditemukan
+                }
+                else
+                {
+                    panel1.Visible = false; // Sembunyikan panel jika id_customer tidak ditemukan
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error checking customer ID: {ex.Message}");
+            }
+            finally
+            {
+                Connection.close();
+            }
+        }
+
     }
 }
