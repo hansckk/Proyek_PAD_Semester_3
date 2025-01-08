@@ -14,8 +14,11 @@ namespace Proyek_PAD
     public partial class Form8 : Form
     {
         private string connectionString = "Server=localhost;Database=mcd_pad;Uid=root;Pwd=;";
-        public Form8()
+        private cashier _cashierform;
+
+        public Form8(cashier cashierform)
         {
+            _cashierform = cashierform;
             InitializeComponent();
             button3.Enabled = false;
             button4.Enabled = false;
@@ -53,6 +56,8 @@ namespace Proyek_PAD
 
         private void button5_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            _cashierform.Show();
             // back
         }
 

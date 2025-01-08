@@ -10,11 +10,14 @@ namespace Proyek_PAD
     //krng beberapa wkwk
     public partial class Form7 : Form
     {
+        private customer _customerForm;
+
         public List<orderedItem> orderedItems { get; set; }
         int discountId;
         int transId;
-        public Form7()
+        public Form7(customer customerForm)
         {
+            _customerForm = customerForm;
             transId = 0;
             discountId = 0;
             InitializeComponent();
@@ -137,7 +140,15 @@ namespace Proyek_PAD
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (_customerForm != null)
+            {
+                _customerForm.Show(); // Show customer form
+                this.Close(); // Close Form7
+            }
+            else
+            {
+                MessageBox.Show("Customer form reference is missing.");
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)

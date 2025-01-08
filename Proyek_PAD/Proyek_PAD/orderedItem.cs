@@ -33,7 +33,7 @@ namespace Proyek_PAD
 
         public override string ToString()
         {
-            return $"{MenuItem.Name} X{Quantity}";
+            return $"x{Quantity} {MenuItem.Name}";
         }
     }
 }

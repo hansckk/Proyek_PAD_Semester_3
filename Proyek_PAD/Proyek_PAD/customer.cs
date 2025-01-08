@@ -14,6 +14,7 @@ namespace Proyek_PAD
     
     public partial class customer : Form
     {
+        private cashier _cashierform;
         string currentselected = "Makanan"; // DEFAULT
         decimal totalPrice = 0;
         private Dictionary<string, int> itemQuantities = new Dictionary<string, int>();
@@ -27,8 +28,9 @@ namespace Proyek_PAD
             { "snack", "SNACK" }
         };
 
-        public customer()
+        public customer(cashier cashierform)
         {
+            _cashierform = cashierform;
             InitializeComponent();
             LoadMenus();
         }
@@ -320,19 +322,26 @@ namespace Proyek_PAD
         {
             if (orderedItems.Count > 0)
             {
-                Form7 form7 = new Form7();
-                form7.orderedItems = new List<orderedItem>(orderedItems);
-                form7.updateOrderList();
-                this.Hide();
-                DialogResult res = form7.ShowDialog();
-                if (res == DialogResult.OK)
+                try
                 {
-                    orderedItems.Clear();
-                    listBox1.Items.Clear();
-                    GenerateOrderNumber();
-                    totalPrice = 0;
-                    UpdateTotalLabel();
-                    
+                    Form7 form7 = new Form7(this); // Pass customer form reference
+                    form7.orderedItems = new List<orderedItem>(orderedItems);
+                    form7.updateOrderList();
+                    this.Hide(); // Hide customer form
+                    DialogResult res = form7.ShowDialog();
+                    if (res == DialogResult.OK)
+                    {
+                        orderedItems.Clear();
+                        listBox1.Items.Clear();
+                        GenerateOrderNumber();
+                        totalPrice = 0;
+                        UpdateTotalLabel();
+                    }
+                    this.Show(); // Show customer form again after Form7 closes
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}");
                 }
             }
             else
@@ -340,6 +349,7 @@ namespace Proyek_PAD
                 MessageBox.Show("No items in the order!");
             }
         }
+
 
 
         private void ORDER_NUMBER_Click(object sender, EventArgs e)
@@ -389,8 +399,10 @@ namespace Proyek_PAD
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) // back button
         {
+            this.Hide();
+            _cashierform.Show();
             // buat back, masih blm gatau error apao
         }
     }

@@ -487,36 +487,38 @@ namespace Proyek_PAD
 
         private void button1_Click(object sender, EventArgs e)
         {
-            customer Cust = new customer();
-            this.Hide();
-            DialogResult res = Cust.ShowDialog();
-
-            if (res == DialogResult.OK)
+            try
             {
+                customer Cust = new customer(this);
+                this.Hide();
+                DialogResult res = Cust.ShowDialog();
                 this.Show();
+
             }
-            else
+            catch (Exception ex)
             {
-                this.Close();
+                MessageBox.Show($"Error: {ex.Message}");
             }
+
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Form8 form8 = new Form8();
-            this.Hide();
-            DialogResult res = form8.ShowDialog();
-
-            if (res == DialogResult.OK)
+            try
             {
-                this.Show();
+                Form8 form8 = new Form8(this); // Pass reference of 'customer'
+                this.Hide(); // Hide 'customer' form
+                form8.ShowDialog(); // Use ShowDialog to keep control flow
+                this.Show(); // Restore 'customer' form visibility when returning
             }
-            else
+            catch (Exception ex)
             {
-                this.Close();
+                MessageBox.Show($"Error: {ex.Message}");
             }
         }
 
-      
+
+
     }
 }

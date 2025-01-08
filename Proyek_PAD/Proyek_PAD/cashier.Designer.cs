@@ -72,7 +72,7 @@ namespace Proyek_PAD
             this.dayLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.dayLabel.Name = "dayLabel";
             this.dayLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dayLabel.Size = new System.Drawing.Size(42, 18);
+            this.dayLabel.Size = new System.Drawing.Size(34, 15);
             this.dayLabel.TabIndex = 20;
             this.dayLabel.Text = "Day :";
             // 
@@ -84,7 +84,7 @@ namespace Proyek_PAD
             this.timeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.timeLabel.Name = "timeLabel";
             this.timeLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.timeLabel.Size = new System.Drawing.Size(49, 18);
+            this.timeLabel.Size = new System.Drawing.Size(41, 15);
             this.timeLabel.TabIndex = 21;
             this.timeLabel.Text = "Time: ";
             // 
@@ -95,7 +95,7 @@ namespace Proyek_PAD
             // 
             // timePanel
             // 
-            this.timePanel.BackColor = System.Drawing.Color.Yellow;
+            this.timePanel.BackColor = System.Drawing.Color.Gold;
             this.timePanel.Controls.Add(this.dayLabel);
             this.timePanel.Controls.Add(this.timeLabel);
             this.timePanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -111,7 +111,7 @@ namespace Proyek_PAD
             this.workerLabel.Location = new System.Drawing.Point(85, 25);
             this.workerLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.workerLabel.Name = "workerLabel";
-            this.workerLabel.Size = new System.Drawing.Size(176, 39);
+            this.workerLabel.Size = new System.Drawing.Size(142, 31);
             this.workerLabel.TabIndex = 29;
             this.workerLabel.Text = "Welcome,";
             // 
@@ -167,10 +167,10 @@ namespace Proyek_PAD
             // 
             // cashier
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Yellow;
-            this.ClientSize = new System.Drawing.Size(1200, 750);
+            this.BackColor = System.Drawing.Color.Gold;
+            this.ClientSize = new System.Drawing.Size(1200, 749);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.logoutButton);
