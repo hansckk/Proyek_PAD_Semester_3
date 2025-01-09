@@ -154,25 +154,25 @@ namespace Proyek_PAD
 
                             itemQuantities[id] = qty;
 
-                            totalPrice += price;
-                            UpdateTotalLabel();
-
                             // Check if the item already exists in orderedItems
                             var existingItem = orderedItems.FirstOrDefault(i => i.MenuItem.Id == id); // Use MenuItem.Id
                             if (existingItem != null)
                             {
-                                // If item already exists, update the quantity
+                                // Update total price by adding only the price for one unit
+                                totalPrice += price;
                                 existingItem.Quantity = qty;
                             }
                             else
                             {
                                 // If item doesn't exist, add it to the orderedItems list
-                                AddItemToOrder(id, name, price, qty);
+                                AddItemToOrder(id, name, price, qty); // This handles adding the price correctly for the first addition
                             }
 
-                            // Update the ListBox
-                            UpdateListBox();
+                            UpdateListBox();  // Update the order list
+                            UpdateTotalLabel(); // Update the total price label
                         };
+
+
 
 
                         decreaseQty.Click += (s, e) =>
