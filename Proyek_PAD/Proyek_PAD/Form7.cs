@@ -15,17 +15,15 @@ namespace Proyek_PAD
         public List<orderedItem> orderedItems { get; set; }
         int discountId;
         int transId;
+        int idCustomer;
         public Form7(customer customerForm)
         {
             _customerForm = customerForm;
+            idCustomer = 0;
             transId = 0;
             discountId = 0;
             InitializeComponent();
             panel1.Visible = false;
-            textBox1.TextChanged += textBox1_TextChanged;
-           
-
-            
         }
 
         public void updateOrderList()
@@ -245,39 +243,53 @@ namespace Proyek_PAD
                 }
             }
         }
+
+        private void insertCustomerId()
+        {
+            if(idCustomer > 0)
+            {
+                try
+                {
+                    Connection.open();
+                    string query = "UPDATE transaksi_details SET customer_id = @idCustomer WHERE transaksi_id = @transid";
+                    MySqlCommand cmd = new MySqlCommand(query, Connection.conn);
+                    cmd.Parameters.AddWithValue("@idCustomer", idCustomer);
+                    cmd.Parameters.AddWithValue("@transId", transId);
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    Connection.open();
+                }
+            }
+
+        }
         private void insertTransaksi()
         {
             try
             {
                 Connection.open();
-
-                // Step 1: Get the employee_id from checklog based on the current time after the start_time
-                int employeeId = -1;
-                string query = "SELECT crew_id FROM checklog WHERE start_time <= NOW() ORDER BY start_time DESC LIMIT 1";
-                MySqlCommand cmd = new MySqlCommand(query, Connection.conn);
-                MySqlDataReader reader = cmd.ExecuteReader();
-
-                if (reader.Read())
+                if(discountId > 0)
                 {
-                    employeeId = Convert.ToInt32(reader["crew_id"]);
-                }
-
-                // Step 2: Insert a new transaction with employee_id
-                if (employeeId != -1)
-                {
-                    string insertQuery = "INSERT INTO transaksi(status, diskon_id, employee_id) VALUES ('pending', @diskon_id, @employee_id)";
-                    MySqlCommand insertCmd = new MySqlCommand(insertQuery, Connection.conn);
-                    insertCmd.Parameters.AddWithValue("@diskon_id", discountId);
-                    insertCmd.Parameters.AddWithValue("@employee_id", employeeId);
-                    insertCmd.ExecuteNonQuery();
-                    transId = (int)insertCmd.LastInsertedId;
+                    string query = "INSERT INTO transaksi(status,diskon_id) VALUES ('pending', @diskon_id)";
+                    MySqlCommand cmd = new MySqlCommand(query, Connection.conn);
+                    cmd.Parameters.AddWithValue("@diskon_id",discountId);
+                    cmd.ExecuteNonQuery();
+                    transId = (int)cmd.LastInsertedId;
                 }
                 else
                 {
-                    MessageBox.Show("No available employee during this time.");
+                    string query = "INSERT INTO transaksi (STATUS) VALUES ('pending')";
+                    MySqlCommand cmd = new MySqlCommand(query, Connection.conn);
+                    cmd.ExecuteNonQuery();
+                    transId = (int)cmd.LastInsertedId;
                 }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -296,6 +308,7 @@ namespace Proyek_PAD
             insertExtraCharge();
             insertMenu();
             insertPaymentMethod();
+            insertCustomerId();
             MessageBox.Show("Order Sukses!");     
         }
 
@@ -327,18 +340,20 @@ namespace Proyek_PAD
                 MySqlCommand cmd = new MySqlCommand(query, Connection.conn);
                 cmd.Parameters.AddWithValue("@kode", textBox3.Text);
                 MySqlDataReader r = cmd.ExecuteReader();
-                if (r.Read())
+                if (r.HasRows)
                 {
+                    r.Read();
                     textBox3.Text = "";
                     label8.Visible = true;
                     discountId = Convert.ToInt32(r["diskon_id"]);
                     string diskonNama = r["diskon_name"].ToString();
-                    label8.Text = $"Discount: {diskonNama}";
+                    MessageBox.Show(diskonNama);
+                    label8.Text = "Discount: " + diskonNama;
                 }
                 else
                 {
                     MessageBox.Show("Discount Not Found");
-                    label8.Text = "Discount:";
+                    label8.Text = "Discount: ";
                     label8.Visible = false;
                     textBox3.Text = "";
                     discountId = 0;
@@ -438,42 +453,42 @@ namespace Proyek_PAD
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            checkMember();
+           
         }
-        private void checkMember()
-        {
-            if (!int.TryParse(textBox1.Text.Trim(), out int inputId)) 
-            {
-                panel1.Visible = false; 
-                return;
-            }
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+            checkCustomer();
+        }
+
+        private void checkCustomer()
+        {
             try
             {
                 Connection.open();
-                string query = "SELECT COUNT(*) FROM customers WHERE id_customer = @id_customer";
+                string query = "SELECT * FROM customers WHERE id_customer = @id";
                 MySqlCommand cmd = new MySqlCommand(query, Connection.conn);
-                cmd.Parameters.AddWithValue("@id_customer", inputId);
-                int count = Convert.ToInt32(cmd.ExecuteScalar());
-
-                if (count > 0)
+                cmd.Parameters.AddWithValue("@id", textBox1.Text);
+                MySqlDataReader r = cmd.ExecuteReader();
+                if (r.HasRows)
                 {
-                    panel1.Visible = true; 
+                    idCustomer = Convert.ToInt32(textBox1.Text);
+                    panel1.Visible = true;
                 }
                 else
                 {
-                    panel1.Visible = false; 
+                    panel1.Visible = false;
+                    textBox3.Text = "";
                 }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
-                MessageBox.Show($"Error checking customer ID: {ex.Message}");
+                MessageBox.Show(ex.Message);
             }
             finally
             {
                 Connection.close();
             }
         }
-
     }
 }

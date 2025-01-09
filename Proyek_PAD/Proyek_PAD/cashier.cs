@@ -225,7 +225,7 @@ namespace Proyek_PAD
                 this.Hide();
                 DialogResult res = Cust.ShowDialog();
                 this.Show();
-
+                LoadPendingTransactions();
 
             }
             catch (Exception ex)
