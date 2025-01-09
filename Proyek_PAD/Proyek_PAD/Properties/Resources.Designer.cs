@@ -873,6 +873,26 @@ namespace Proyek_PAD.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ronald {
+            get {
+                object obj = ResourceManager.GetObject("ronald", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ronald1 {
+            get {
+                object obj = ResourceManager.GetObject("ronald1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap SNACK001 {
             get {
                 object obj = ResourceManager.GetObject("SNACK001", resourceCulture);
