@@ -23,7 +23,9 @@ namespace Proyek_PAD
             InitializeComponent();
             panel1.Visible = false;
             textBox1.TextChanged += textBox1_TextChanged;
+           
 
+            
         }
 
         public void updateOrderList()
@@ -248,21 +250,31 @@ namespace Proyek_PAD
             try
             {
                 Connection.open();
-                if (discountId > 0)
-                {
-                    string query = "INSERT INTO transaksi(status,diskon_id) VALUES ('pending', @diskon_id)";
-                    MySqlCommand cmd = new MySqlCommand(query, Connection.conn);
-                    cmd.Parameters.AddWithValue("@diskon_id", discountId);
-                    cmd.ExecuteNonQuery();
-                    transId = (int)cmd.LastInsertedId;
 
+                // Step 1: Get the employee_id from checklog based on the current time after the start_time
+                int employeeId = -1;
+                string query = "SELECT crew_id FROM checklog WHERE start_time <= NOW() ORDER BY start_time DESC LIMIT 1";
+                MySqlCommand cmd = new MySqlCommand(query, Connection.conn);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    employeeId = Convert.ToInt32(reader["crew_id"]);
+                }
+
+                // Step 2: Insert a new transaction with employee_id
+                if (employeeId != -1)
+                {
+                    string insertQuery = "INSERT INTO transaksi(status, diskon_id, employee_id) VALUES ('pending', @diskon_id, @employee_id)";
+                    MySqlCommand insertCmd = new MySqlCommand(insertQuery, Connection.conn);
+                    insertCmd.Parameters.AddWithValue("@diskon_id", discountId);
+                    insertCmd.Parameters.AddWithValue("@employee_id", employeeId);
+                    insertCmd.ExecuteNonQuery();
+                    transId = (int)insertCmd.LastInsertedId;
                 }
                 else
                 {
-                    string query = "INSERT INTO transaksi (STATUS) VALUES ('pending')";
-                    MySqlCommand cmd = new MySqlCommand(query, Connection.conn);
-                    cmd.ExecuteNonQuery();
-                    transId = (int)cmd.LastInsertedId;
+                    MessageBox.Show("No available employee during this time.");
                 }
             }
             catch (Exception ex)

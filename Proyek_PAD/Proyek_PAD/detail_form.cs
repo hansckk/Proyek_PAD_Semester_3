@@ -118,6 +118,9 @@ namespace Proyek_PAD
             loadMenuListBox();
         }
 
-        
+        private void acceptButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

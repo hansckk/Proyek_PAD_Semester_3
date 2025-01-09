@@ -128,43 +128,12 @@ namespace Proyek_PAD
             {
                 con.Close();
             }
-            //try
-            //{
-            //    using (MySqlConnection connection = new MySqlConnection(connectionString))
-            //    {
-            //        connection.Open();
-
-            //        using (MySqlCommand command = new MySqlCommand(query, connection))
-            //        {
-            //            command.Parameters.AddWithValue("@username", username);
-            //            command.Parameters.AddWithValue("@password", password);
-
-            //            int count = Convert.ToInt32(command.ExecuteScalar());
-
-            //            if (count == 1)
-            //            {
-            //                pictureBox2.Visible = true; 
-
-            //                loadingDuration = 3000;
-            //                loadingTimer.Start();
-            //            }
-            //            else
-            //            {
-            //                MessageBox.Show("Username atau password salah.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //            }
-            //        }
-            //        connection.Close();
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show($"Terjadi kesalahan: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+           
         }
 
         private void InsertCheckLog(int crewId)
         {
-            string dayPrefix = DateTime.Now.ToString("ddd").ToUpper(); // 3 huruf awal hari (e.g., THU)
+            string dayPrefix = DateTime.Now.ToString("ddd").ToUpper();
             DateTime now = DateTime.Now;
             string timeNow = now.ToString("yyyy-MM-dd HH:mm:ss");
 
@@ -174,15 +143,12 @@ namespace Proyek_PAD
                 {
                     connection.Open();
 
-                    // Cari log_id terakhir dengan prefix hari ini
                     string selectQuery = $"SELECT COUNT(*) FROM checklog WHERE log_id LIKE '{dayPrefix}%'";
                     MySqlCommand selectCmd = new MySqlCommand(selectQuery, connection);
                     int logCount = Convert.ToInt32(selectCmd.ExecuteScalar());
 
-                    // Buat log_id baru dengan format <3huruf hari><angka urut>
                     string logId = $"{dayPrefix}{logCount + 1}";
 
-                    // Insert data ke tabel checklog
                     string insertQuery = "INSERT INTO checklog (log_id, crew_id, start_time) VALUES (@log_id, @crew_id, @start_time)";
                     MySqlCommand insertCmd = new MySqlCommand(insertQuery, connection);
                     insertCmd.Parameters.AddWithValue("@log_id", logId);

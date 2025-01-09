@@ -100,6 +100,7 @@ namespace Proyek_PAD
             this.acceptButton.Size = new System.Drawing.Size(144, 87);
             this.acceptButton.TabIndex = 6;
             this.acceptButton.UseVisualStyleBackColor = false;
+            this.acceptButton.Click += new System.EventHandler(this.acceptButton_Click);
             // 
             // cancelButton
             // 
