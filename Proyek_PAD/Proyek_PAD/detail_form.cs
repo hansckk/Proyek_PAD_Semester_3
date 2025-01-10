@@ -15,19 +15,96 @@ namespace Proyek_PAD
     {
         int transId;
         int totalMenu;
-        public details_form(int transId)
+        int crewID;
+        public details_form(int transId,int id)
         {
             totalMenu = 0;
             this.transId = transId;
+            this.crewID = id;
             InitializeComponent();
         }
 
+        private void showDiscount(int id)
+        {
+            if(id > 0)
+            {
+                try
+                {
+                    Connection.open();
+                    string query = "SELECT diskon_name FROM diskon WHERE diskon_id = @id";
+                    MySqlCommand cmd = new MySqlCommand(query, Connection.conn);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    MySqlDataReader r = cmd.ExecuteReader();
+                    if (r.HasRows)
+                    {
+                        while (r.Read())
+                        {
+                            string name = r.GetString("diskon_name");
+                            diskonLabel.Visible = true;
+                            diskonLabel.Text = "Discount: " + name;
+                        }
+                    }
+                    else
+                    {
+                        diskonLabel.Visible = false;
+                    }
+                    r.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    Connection.close();
+                }
+            }
+        }
         private void getDiscount()
+        {
+            int id = 0;
+            try
+            {
+                Connection.open();
+                string query = "SELECT * FROM transaksi WHERE diskon_id IS NOT NULL AND transaksi_id = @trans_id";
+                MySqlCommand cmd = new MySqlCommand(query, Connection.conn);
+                cmd.Parameters.AddWithValue("@trans_id", transId);
+                MySqlDataReader r = cmd.ExecuteReader();
+                if (r.HasRows)
+                {
+                    while (r.Read())
+                    {
+                        id = r.GetInt32("diskon_id");
+                    }
+                }
+                r.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                Connection.close();
+            }
+            showDiscount(id);
+        }
+        private void getPPN()
+        {
+            int taxHarga = (int)Math.Round(totalMenu * 0.12);
+            ppnLabel.Text = "PPN 12%: " + taxHarga;
+        }
+
+        private void getTotalExtraCharge()
         {
             try
             {
                 Connection.open();
-                string query = "";
+                string query = "SELECT SUM(ec.extra_charge_harga) FROM extra_charge_trans ect JOIN extra_charge ec ON ect.extra_charge_id = ec.extra_charge_id WHERE ect.transaksi_id = @trans_id";
+                MySqlCommand cmd = new MySqlCommand(query, Connection.conn);
+                cmd.Parameters.AddWithValue("@trans_id",transId);
+                int total = Convert.ToInt32(cmd.ExecuteScalar());
+                totalExtraChargeLabel.Text = "Total: " + total;
             }
             catch(Exception ex)
             {
@@ -38,12 +115,6 @@ namespace Proyek_PAD
                 Connection.close();
             }
         }
-        private void getPPN()
-        {
-            int taxHarga = (int)Math.Round(totalMenu * 0.12);
-            ppnLabel.Text = "PPN 12%: " + taxHarga;
-        }
-
         private void getTotalMenu()
         {
             try
@@ -110,15 +181,83 @@ namespace Proyek_PAD
                 Connection.close();
             }
         }
+
+        private void getName()
+        {
+            try
+            {
+                Connection.open();
+                string query = "SELECT c.nama_customer FROM transaksi_details td JOIN customers c ON td.customer_id = c.id_customer WHERE td.transaksi_id = @trans_id";
+                MySqlCommand cmd = new MySqlCommand(query, Connection.conn);
+                cmd.Parameters.AddWithValue("@trans_id", transId);
+                MySqlDataReader r = cmd.ExecuteReader();
+                if (r.HasRows)
+                {
+                    while (r.Read())
+                    {
+                        string name = r.GetString("nama_customer");
+                        memberNameLabel.Visible = true;
+                        memberNameLabel.Text = "Name: " + name;
+                    }
+                }   
+                else
+                {
+                    memberNameLabel.Visible = false;
+                }
+                r.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                Connection.close();
+            }
+        }
+
+        private void loadPaymentMethod()
+        {
+            try
+            {
+                Connection.open();
+                string query = "SELECT pm.nama_payment AS 'Nama Payment', pt.total AS 'Total' FROM payment_trans pt JOIN payment_method pm ON pt.payment_method = pm.payment_id WHERE transaksi_id = @trans_id";
+                MySqlCommand cmd = new MySqlCommand(query, Connection.conn);
+                cmd.Parameters.AddWithValue("@trans_id", transId);
+                MySqlDataReader r = cmd.ExecuteReader();
+                DataTable dt = new DataTable();
+                dt.Load(r);
+                paymentMethodDataGridView.DataSource = dt;
+                r.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                Connection.close();
+            }
+        }
         private void details_form_Load(object sender, EventArgs e)
         {
+            getName();
             getTotalMenu();
+            getTotalExtraCharge();
             getPPN();
             loadExtraCharge();
             loadMenuListBox();
+            loadPaymentMethod();
+            getDiscount();
+            getName();
         }
 
         private void acceptButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
         {
 
         }

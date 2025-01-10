@@ -72,13 +72,13 @@ namespace Proyek_PAD
             string username = usernameTextBox.Text.Trim();
             string password = passwordTextBox.Text.Trim();
 
-            if (username == "admin" && password == "admin")
-            {
-                manager form4 = new manager();
-                form4.Show();
-                this.Hide();
-                return;
-            }
+            //if (username == "admin" && password == "admin")
+            //{
+            //    manager form4 = new manager();
+            //    form4.Show();
+            //    this.Hide();
+            //    return;
+            //}
             try
             {
                 query = "SELECT* FROM karyawan WHERE nama = @username AND password = @password";
@@ -180,7 +180,7 @@ namespace Proyek_PAD
                     InsertCheckLog(crewId); // Insert log ke tabel checklog
                 }
 
-                cashier form1 = new cashier(usernameTextBox.Text.Trim());
+                cashier form1 = new cashier(usernameTextBox.Text.Trim(),crewId);
                 clear();
                 this.Hide();
 

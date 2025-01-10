@@ -46,6 +46,7 @@ namespace Proyek_PAD
             this.button38 = new System.Windows.Forms.Button();
             this.button39 = new System.Windows.Forms.Button();
             this.button26 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
             this.button27 = new System.Windows.Forms.Button();
             this.button28 = new System.Windows.Forms.Button();
             this.button29 = new System.Windows.Forms.Button();
@@ -68,7 +69,6 @@ namespace Proyek_PAD
             this.button16 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
             this.button18 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
@@ -307,6 +307,17 @@ namespace Proyek_PAD
             this.button26.Text = "Z";
             this.button26.UseVisualStyleBackColor = true;
             // 
+            // button13
+            // 
+            this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button13.Location = new System.Drawing.Point(11, 217);
+            this.button13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(127, 90);
+            this.button13.TabIndex = 12;
+            this.button13.Text = "CAPSLOCK";
+            this.button13.UseVisualStyleBackColor = true;
+            // 
             // button27
             // 
             this.button27.Location = new System.Drawing.Point(240, 217);
@@ -526,17 +537,6 @@ namespace Proyek_PAD
             this.button18.TabIndex = 13;
             this.button18.Text = "G";
             this.button18.UseVisualStyleBackColor = true;
-            // 
-            // button13
-            // 
-            this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.Location = new System.Drawing.Point(11, 217);
-            this.button13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(127, 90);
-            this.button13.TabIndex = 12;
-            this.button13.Text = "CAPSLOCK";
-            this.button13.UseVisualStyleBackColor = true;
             // 
             // button10
             // 

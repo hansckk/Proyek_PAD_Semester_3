@@ -18,7 +18,8 @@ namespace Proyek_PAD
         public string worker;
         string[] food;
         List<image> menuImg;
-        public cashier(string u)
+        int crewID;
+        public cashier(string u, int id)
         {
             menuImg = new List<image>();
             food = new string[3];
@@ -27,6 +28,7 @@ namespace Proyek_PAD
             food[2] = "SNACK";
             worker = u;
             query = "";
+            crewID = id;
             con = new MySqlConnection("Server=localhost;Database=mcd_pad;User Id=root;Password=;");
             InitializeComponent();
         }
@@ -117,7 +119,6 @@ namespace Proyek_PAD
         private void Cashier_Load(object sender, EventArgs e)
         {
             workerLabel.Text = "Welcome, " + worker;
-            
             dayLabel.Text = "Day: " + DateTime.Now.ToString("dddd, d - M - yyyy");
             timeLabel.Text = "Time: " + DateTime.Now.ToString("HH:mm");
             LoadPendingTransactions();
@@ -212,7 +213,7 @@ namespace Proyek_PAD
             if(e.RowIndex >= 0)
             {
                 id = Convert.ToInt32(displayDataGridView.Rows[e.RowIndex].Cells[0].Value);
-                details_form df = new details_form(id);
+                details_form df = new details_form(id,crewID);
                 DialogResult res = df.ShowDialog();
             }
         }
