@@ -14,6 +14,7 @@ namespace Proyek_PAD
     
     public partial class customer : Form
     {
+        int orderNumber;
         private cashier _cashierform;
         string currentselected = "Makanan"; // DEFAULT
         decimal totalPrice = 0;
@@ -30,6 +31,7 @@ namespace Proyek_PAD
 
         public customer(cashier cashierform)
         {
+            orderNumber = 0;
             _cashierform = cashierform;
             InitializeComponent();
             LoadMenus();
@@ -324,7 +326,7 @@ namespace Proyek_PAD
             {
                 try
                 {
-                    Form7 form7 = new Form7(this); // Pass customer form reference
+                    Form7 form7 = new Form7(this,(int)totalPrice,orderNumber); // Pass customer form reference
                     form7.orderedItems = new List<orderedItem>(orderedItems);
                     form7.updateOrderList();
                     this.Hide(); // Hide customer form
@@ -360,7 +362,7 @@ namespace Proyek_PAD
         private void GenerateOrderNumber()
         {
             Random random = new Random();
-            int orderNumber = random.Next(1000, 9999); // Generate a 4-digit random number
+            orderNumber = random.Next(1000, 9999); // Generate a 4-digit random number
             ORDER_NUMBER.Text = orderNumber.ToString(); // Display it in the ORDER_NUMBER label
         }
 

@@ -16,14 +16,22 @@ namespace Proyek_PAD
         int discountId;
         int transId;
         int idCustomer;
-        public Form7(customer customerForm)
+        int totalOrder;
+        int orderNumber;
+        int extraTotal;
+        int total;
+        int diskonPercentage;
+        public Form7(customer customerForm,int total,int o)
         {
+            diskonPercentage = 0;
+            orderNumber = o;
+            totalOrder = total;
             _customerForm = customerForm;
             idCustomer = 0;
             transId = 0;
             discountId = 0;
             InitializeComponent();
-            panel1.Visible = false;
+            loadHarga();
         }
 
         public void updateOrderList()
@@ -53,9 +61,36 @@ namespace Proyek_PAD
 
 
         }
+        private void loadHarga()
+        {
+            total = 0;
+            if(discountId > 0)
+            {
+                int ppn = (int)Math.Ceiling(totalOrder * 0.12);
+                int disc = (int)Math.Ceiling(totalOrder * diskonPercentage / 100.0);
+                label20.Visible = true;
+                label21.Visible = true;
+                label21.Text = disc.ToString();
+                total = totalOrder + ppn + extraTotal - disc;
+                label19.Text = totalOrder.ToString();
+                label17.Text = ppn.ToString();
+                label18.Text = total.ToString();
+            }
+            else
+            {
+                int ppn = (int)Math.Ceiling(totalOrder * 0.12);
+                total = totalOrder + ppn + extraTotal;
+                label19.Text = totalOrder.ToString();
+                label17.Text = ppn.ToString();
+                label18.Text = total.ToString();
+                label20.Visible = false;
+                label21.Visible = false;
+            }
 
+        }
         private void Form7_Load(object sender, EventArgs e)
         {
+            panel1.Visible = false;
             radioButton2.Checked = true;
             loadExtraCharge();
             LoadPaymentMethods1();
@@ -275,16 +310,18 @@ namespace Proyek_PAD
                 Connection.open();
                 if(discountId > 0)
                 {
-                    string query = "INSERT INTO transaksi(status,diskon_id) VALUES ('pending', @diskon_id)";
+                    string query = "INSERT INTO transaksi(status,diskon_id,queue) VALUES ('pending', @diskon_id, @orderNumber)";
                     MySqlCommand cmd = new MySqlCommand(query, Connection.conn);
                     cmd.Parameters.AddWithValue("@diskon_id",discountId);
+                    cmd.Parameters.AddWithValue("@orderNumber", orderNumber);
                     cmd.ExecuteNonQuery();
                     transId = (int)cmd.LastInsertedId;
                 }
                 else
                 {
-                    string query = "INSERT INTO transaksi (STATUS) VALUES ('pending')";
+                    string query = "INSERT INTO transaksi (status,queue) VALUES ('pending',@orderNumber)";
                     MySqlCommand cmd = new MySqlCommand(query, Connection.conn);
+                    cmd.Parameters.AddWithValue("@orderNumber", orderNumber);
                     cmd.ExecuteNonQuery();
                     transId = (int)cmd.LastInsertedId;
                 }
@@ -299,17 +336,59 @@ namespace Proyek_PAD
             }
         }
 
+        private bool checkPayment()
+        {
+            bool paymentStatus = false;
+            if (radioButton1.Checked)
+            {
+                if ((int)numericUpDown1.Value + (int)numericUpDown2.Value < total)
+                {
+                    MessageBox.Show("Payment Kurang!");
+                }
+                else if ((int)numericUpDown1.Value + (int)numericUpDown2.Value > total)
+                {
+                    MessageBox.Show("Payment Berlebihan");
+                }
+                else
+                {
+                    paymentStatus = true;
+                }
+                
+            }
+            else
+            {
+                if ((int)numericUpDown1.Value < total)
+                {
+                    MessageBox.Show("Payment Kurang!");
+                }
+                else if((int)numericUpDown1.Value > total)
+                {
+                    MessageBox.Show("Payment Berlebihan");
+                }
+                else
+                {
+                    paymentStatus = true;
+                }
+            }
+
+
+            return paymentStatus;
+        }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
-            this.Close();
-            insertTransaksi();
-            insertExtraCharge();
-            insertMenu();
-            insertPaymentMethod();
-            insertCustomerId();
-            MessageBox.Show("Order Sukses!");     
+            bool check = checkPayment();
+            if (check)
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+                insertTransaksi();
+                insertExtraCharge();
+                insertMenu();
+                insertPaymentMethod();
+                insertCustomerId();
+                MessageBox.Show("Order Sukses!");
+            }
         }
 
 
@@ -343,19 +422,19 @@ namespace Proyek_PAD
                 if (r.HasRows)
                 {
                     r.Read();
-                    textBox3.Text = "";
-                    label8.Visible = true;
                     discountId = Convert.ToInt32(r["diskon_id"]);
                     string diskonNama = r["diskon_name"].ToString();
-                    MessageBox.Show(diskonNama);
-                    label8.Text = "Discount: " + diskonNama;
+                    diskonPercentage = Convert.ToInt32(r["diskon_percent"]);
+                    discountLabel.Visible = true;
+                    label8.Visible = true;
+                    label8.Text = diskonNama;
+                    loadHarga();
                 }
                 else
                 {
                     MessageBox.Show("Discount Not Found");
-                    label8.Text = "Discount: ";
+                    discountLabel.Visible = false;
                     label8.Visible = false;
-                    textBox3.Text = "";
                     discountId = 0;
                 }
 
@@ -373,6 +452,8 @@ namespace Proyek_PAD
         {
             public int id { get; set; }
             public string name { get; set; }
+            
+            public int harga { get; set; }
 
             public override string ToString()
             {
@@ -381,6 +462,18 @@ namespace Proyek_PAD
         }
 
 
+        private void calculateTotalExtra()
+        {
+            extraTotal = 0;
+            foreach (var item in listBox1.Items)
+            {
+                if(item is extraCharge extra)
+                {
+                    extraTotal += extra.harga;
+                }
+            }
+            label14.Text = "TOTAL: " + extraTotal;
+        }
 
         private void button5_Click(object sender, EventArgs e)
         {
@@ -390,10 +483,12 @@ namespace Proyek_PAD
                 extraCharge ex = new extraCharge
                 {
                     id = Convert.ToInt32(drv["extra_charge_id"]),
-                    name = drv["extra_name"].ToString()
+                    name = drv["extra_name"].ToString(),
+                    harga = Convert.ToInt32(drv["extra_charge_harga"])
                 };
                 listBox1.Items.Add(ex);
             }
+            calculateTotalExtra();
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -489,6 +584,16 @@ namespace Proyek_PAD
             {
                 Connection.close();
             }
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void discountLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

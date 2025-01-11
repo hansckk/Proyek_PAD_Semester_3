@@ -19,8 +19,10 @@ namespace Proyek_PAD
         int totalExtraCharge;
         int crewID;
         string crewName;
+        int taxHarga;
         public details_form(int transId,int id,string u)
         {
+            taxHarga = 0;
             totalMenu = 0;
             totalExtraCharge = 0;
             diskon = 0;
@@ -100,7 +102,7 @@ namespace Proyek_PAD
         }
         private void getPPN()
         {
-            int taxHarga = (int)Math.Round(totalMenu * 0.12);
+            taxHarga = (int)Math.Ceiling(totalMenu * 0.12);
             ppnLabel.Text = "PPN 12%: " + taxHarga;
         }
 
@@ -112,7 +114,8 @@ namespace Proyek_PAD
                 string query = "SELECT SUM(ec.extra_charge_harga) FROM extra_charge_trans ect JOIN extra_charge ec ON ect.extra_charge_id = ec.extra_charge_id WHERE ect.transaksi_id = @trans_id";
                 MySqlCommand cmd = new MySqlCommand(query, Connection.conn);
                 cmd.Parameters.AddWithValue("@trans_id",transId);
-                totalExtraCharge = Convert.ToInt32(cmd.ExecuteScalar());
+                object res = cmd.ExecuteScalar();
+                totalExtraCharge = (res == DBNull.Value || res == null) ? 0 : Convert.ToInt32(res);
                 totalExtraChargeLabel.Text = "Total: " + totalExtraCharge;
             }
             catch(Exception ex)
@@ -132,7 +135,8 @@ namespace Proyek_PAD
                 string query = "SELECT SUM(m.harga_menu) FROM transaksi t JOIN transaksi_details td ON t.transaksi_id = td.transaksi_id JOIN menu m ON td.menu_id = m.id_menu WHERE t.transaksi_id = @trans_id";
                 MySqlCommand cmd = new MySqlCommand(query, Connection.conn);
                 cmd.Parameters.AddWithValue("@trans_id", transId);
-                totalMenu = Convert.ToInt32(cmd.ExecuteScalar());
+                object result = cmd.ExecuteScalar();
+                totalMenu = (result == DBNull.Value || result == null) ? 0 : Convert.ToInt32(result);
                 totalMenuLabel.Text = "Total Menu: " + totalMenu.ToString();
             }
             catch (Exception ex)
@@ -256,7 +260,7 @@ namespace Proyek_PAD
             {
                 discAmount = Math.Ceiling((diskon / 100.0) * totalMenu);
             }
-            int total = totalMenu + totalExtraCharge - (int)discAmount;
+            int total = totalMenu + totalExtraCharge + taxHarga - (int)discAmount;
             totalOrderLabel.Text = "TOTAL: " + total;
         }
         private void details_form_Load(object sender, EventArgs e)
@@ -281,7 +285,7 @@ namespace Proyek_PAD
                 string query = "UPDATE transaksi SET STATUS = @status, employee_id = @crewID WHERE transaksi_id = @trans_id";
                 MySqlCommand cmd = new MySqlCommand(query, Connection.conn);
                 cmd.Parameters.AddWithValue("@status",status);
-                cmd.Parameters.AddWithValue("@crewId", crewID);
+                cmd.Parameters.AddWithValue("@crewID", crewID);
                 cmd.Parameters.AddWithValue("@trans_id", transId);
                 cmd.ExecuteNonQuery();
             }
@@ -303,7 +307,7 @@ namespace Proyek_PAD
                 this.Hide();
                 DialogResult res = nota.ShowDialog();
                 this.Show();
-
+                this.DialogResult = DialogResult.OK;
             }
             catch (Exception ex)
             {
@@ -314,7 +318,7 @@ namespace Proyek_PAD
         private void cancelButton_Click(object sender, EventArgs e)
         {
             updateTrans("gagal");
-            this.Close();
+            this.DialogResult = DialogResult.OK;
         }
     }
 }

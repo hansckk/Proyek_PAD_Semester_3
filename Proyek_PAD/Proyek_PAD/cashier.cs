@@ -217,8 +217,11 @@ namespace Proyek_PAD
                 id = Convert.ToInt32(displayDataGridView.Rows[e.RowIndex].Cells[0].Value);
                 details_form df = new details_form(id,crewID,worker);
                 DialogResult res = df.ShowDialog();
+                if(res == DialogResult.OK)
+                {
+                    LoadPendingTransactions();
+                }
             }
-            LoadPendingTransactions();
         }
 
         private void button1_Click(object sender, EventArgs e)

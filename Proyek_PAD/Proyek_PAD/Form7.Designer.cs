@@ -44,7 +44,6 @@ namespace Proyek_PAD
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
@@ -59,6 +58,17 @@ namespace Proyek_PAD
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
+            this.discountLabel = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.panel1.SuspendLayout();
@@ -125,12 +135,12 @@ namespace Proyek_PAD
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(667, 117);
+            this.label4.Location = new System.Drawing.Point(625, 118);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(99, 36);
             this.label4.TabIndex = 9;
             this.label4.Text = "Menu : ";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // radioButton1
@@ -239,18 +249,6 @@ namespace Proyek_PAD
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // label8
-            // 
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(625, 462);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(99, 36);
-            this.label8.TabIndex = 18;
-            this.label8.Text = "Discount : ";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label8.Visible = false;
-            this.label8.Click += new System.EventHandler(this.label8_Click);
-            // 
             // label9
             // 
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -303,7 +301,7 @@ namespace Proyek_PAD
             this.label10.Size = new System.Drawing.Size(128, 41);
             this.label10.TabIndex = 23;
             this.label10.Text = "Extra Charge :";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // label11
@@ -409,12 +407,139 @@ namespace Proyek_PAD
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
+            // discountLabel
+            // 
+            this.discountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.discountLabel.Location = new System.Drawing.Point(767, 462);
+            this.discountLabel.Name = "discountLabel";
+            this.discountLabel.Size = new System.Drawing.Size(141, 41);
+            this.discountLabel.TabIndex = 33;
+            this.discountLabel.Text = "Discount: ";
+            this.discountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.discountLabel.Visible = false;
+            this.discountLabel.Click += new System.EventHandler(this.discountLabel_Click);
+            // 
+            // label8
+            // 
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(914, 462);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(234, 41);
+            this.label8.TabIndex = 34;
+            this.label8.Text = "DISCOUNT PLACEHOLDER";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label8.Visible = false;
+            // 
+            // label13
+            // 
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(767, 282);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(141, 41);
+            this.label13.TabIndex = 35;
+            this.label13.Text = "TOTAL:";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label14
+            // 
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(624, 379);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(141, 41);
+            this.label14.TabIndex = 36;
+            this.label14.Text = "TOTAL:";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label14.Click += new System.EventHandler(this.label14_Click);
+            // 
+            // label15
+            // 
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(767, 579);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(141, 41);
+            this.label15.TabIndex = 37;
+            this.label15.Text = "TOTAL:";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label16
+            // 
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(767, 538);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(141, 41);
+            this.label16.TabIndex = 38;
+            this.label16.Text = "PPN 12%:";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label17
+            // 
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(914, 538);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(234, 41);
+            this.label17.TabIndex = 39;
+            this.label17.Text = "placeholder";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label18
+            // 
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(914, 579);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(234, 41);
+            this.label18.TabIndex = 40;
+            this.label18.Text = "placeholder";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label19
+            // 
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(914, 282);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(234, 41);
+            this.label19.TabIndex = 41;
+            this.label19.Text = "placeholder";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label20
+            // 
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(767, 496);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(141, 41);
+            this.label20.TabIndex = 42;
+            this.label20.Text = "TOTAL:";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label20.Visible = false;
+            // 
+            // label21
+            // 
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(914, 496);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(234, 41);
+            this.label21.TabIndex = 43;
+            this.label21.Text = "DISCOUNT PLACEHOLDER";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label21.Visible = false;
+            // 
             // Form7
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gold;
             this.ClientSize = new System.Drawing.Size(1200, 750);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.discountLabel);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
@@ -429,7 +554,6 @@ namespace Proyek_PAD
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -475,7 +599,6 @@ namespace Proyek_PAD
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.ListBox listBox1;
@@ -490,5 +613,16 @@ namespace Proyek_PAD
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Label discountLabel;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
     }
 }
