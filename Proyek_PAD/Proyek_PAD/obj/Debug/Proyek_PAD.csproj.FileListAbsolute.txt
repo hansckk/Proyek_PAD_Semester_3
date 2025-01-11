@@ -116,3 +116,4 @@ D:\KULIAH\SEMESTER  3\PROJECT_PAD\Proyek_PAD_Semester_3\Proyek_PAD\Proyek_PAD\ob
 C:\Users\User\Desktop\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.Form8.resources
 C:\Users\Hans Christian\OneDrive\Desktop\Tugas Semester 3\Proyek_PAD_Semester_3\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.Form8.resources
 C:\Users\User\Desktop\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.nota_form.resources
+C:\Users\Hans Christian\OneDrive\Desktop\Tugas Semester 3\Proyek_PAD_Semester_3\Proyek_PAD\Proyek_PAD\obj\Debug\Proyek_PAD.nota_form.resources

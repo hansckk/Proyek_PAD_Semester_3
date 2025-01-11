@@ -13,13 +13,17 @@ namespace Proyek_PAD
 {
     public partial class details_form : Form
     {
+        int diskon;
         int transId;
         int totalMenu;
+        int totalExtraCharge;
         int crewID;
         string crewName;
         public details_form(int transId,int id,string u)
         {
             totalMenu = 0;
+            totalExtraCharge = 0;
+            diskon = 0;
             this.transId = transId;
             this.crewID = id;
             crewName = u;
@@ -34,7 +38,7 @@ namespace Proyek_PAD
                 try
                 {
                     Connection.open();
-                    string query = "SELECT diskon_name FROM diskon WHERE diskon_id = @id";
+                    string query = "SELECT * FROM diskon WHERE diskon_id = @id";
                     MySqlCommand cmd = new MySqlCommand(query, Connection.conn);
                     cmd.Parameters.AddWithValue("@id", id);
                     MySqlDataReader r = cmd.ExecuteReader();
@@ -43,6 +47,7 @@ namespace Proyek_PAD
                         while (r.Read())
                         {
                             string name = r.GetString("diskon_name");
+                            diskon = r.GetInt32("diskon_percent");
                             diskonLabel.Visible = true;
                             diskonLabel.Text = "Discount: " + name;
                         }
@@ -77,6 +82,7 @@ namespace Proyek_PAD
                 {
                     while (r.Read())
                     {
+                        
                         id = r.GetInt32("diskon_id");
                     }
                 }
@@ -106,8 +112,8 @@ namespace Proyek_PAD
                 string query = "SELECT SUM(ec.extra_charge_harga) FROM extra_charge_trans ect JOIN extra_charge ec ON ect.extra_charge_id = ec.extra_charge_id WHERE ect.transaksi_id = @trans_id";
                 MySqlCommand cmd = new MySqlCommand(query, Connection.conn);
                 cmd.Parameters.AddWithValue("@trans_id",transId);
-                int total = Convert.ToInt32(cmd.ExecuteScalar());
-                totalExtraChargeLabel.Text = "Total: " + total;
+                totalExtraCharge = Convert.ToInt32(cmd.ExecuteScalar());
+                totalExtraChargeLabel.Text = "Total: " + totalExtraCharge;
             }
             catch(Exception ex)
             {
@@ -242,6 +248,17 @@ namespace Proyek_PAD
                 Connection.close();
             }
         }
+
+        private void hitungTotal()
+        {
+            double discAmount = 0;
+            if(diskon > 0)
+            {
+                discAmount = Math.Ceiling((diskon / 100.0) * totalMenu);
+            }
+            int total = totalMenu + totalExtraCharge - (int)discAmount;
+            totalOrderLabel.Text = "TOTAL: " + total;
+        }
         private void details_form_Load(object sender, EventArgs e)
         {
             getName();
@@ -253,12 +270,35 @@ namespace Proyek_PAD
             loadPaymentMethod();
             getDiscount();
             getName();
+            hitungTotal();
         }
 
+        private void updateTrans(string status)
+        {
+            try
+            {
+                Connection.open();
+                string query = "UPDATE transaksi SET STATUS = @status, employee_id = @crewID WHERE transaksi_id = @trans_id";
+                MySqlCommand cmd = new MySqlCommand(query, Connection.conn);
+                cmd.Parameters.AddWithValue("@status",status);
+                cmd.Parameters.AddWithValue("@crewId", crewID);
+                cmd.Parameters.AddWithValue("@trans_id", transId);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                Connection.close();
+            }
+        }
         private void acceptButton_Click(object sender, EventArgs e)
         {
             try
             {
+                updateTrans("berhasil");
                 nota_form nota = new nota_form(crewName);
                 this.Hide();
                 DialogResult res = nota.ShowDialog();
@@ -273,7 +313,8 @@ namespace Proyek_PAD
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-
+            updateTrans("gagal");
+            this.Close();
         }
     }
 }

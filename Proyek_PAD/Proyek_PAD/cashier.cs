@@ -218,6 +218,7 @@ namespace Proyek_PAD
                 details_form df = new details_form(id,crewID,worker);
                 DialogResult res = df.ShowDialog();
             }
+            LoadPendingTransactions();
         }
 
         private void button1_Click(object sender, EventArgs e)

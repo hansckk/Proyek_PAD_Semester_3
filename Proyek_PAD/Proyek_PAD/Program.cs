@@ -16,7 +16,7 @@ namespace Proyek_PAD
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new nota_form("Irvin"));
+            Application.Run(new loginForm());
         }
     }
 }
