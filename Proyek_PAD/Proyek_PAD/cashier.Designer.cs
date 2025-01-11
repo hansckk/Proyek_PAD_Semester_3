@@ -41,7 +41,6 @@ namespace Proyek_PAD
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.logo = new System.Windows.Forms.PictureBox();
-            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.CrystalReport11 = new Proyek_PAD.CrystalReport1();
             ((System.ComponentModel.ISupportInitialize)(this.displayDataGridView)).BeginInit();
             this.timePanel.SuspendLayout();
@@ -168,24 +167,12 @@ namespace Proyek_PAD
             this.logo.TabIndex = 16;
             this.logo.TabStop = false;
             // 
-            // crystalReportViewer1
-            // 
-            this.crystalReportViewer1.ActiveViewIndex = -1;
-            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crystalReportViewer1.Location = new System.Drawing.Point(238, 461);
-            this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.Size = new System.Drawing.Size(553, 277);
-            this.crystalReportViewer1.TabIndex = 33;
-            this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
-            // 
             // cashier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gold;
             this.ClientSize = new System.Drawing.Size(1200, 749);
-            this.Controls.Add(this.crystalReportViewer1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.logoutButton);
@@ -224,7 +211,6 @@ namespace Proyek_PAD
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private CrystalReport1 CrystalReport11;
-        public CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
     }
 }
 

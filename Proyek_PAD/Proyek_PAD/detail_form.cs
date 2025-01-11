@@ -16,12 +16,15 @@ namespace Proyek_PAD
         int transId;
         int totalMenu;
         int crewID;
-        public details_form(int transId,int id)
+        string crewName;
+        public details_form(int transId,int id,string u)
         {
             totalMenu = 0;
             this.transId = transId;
             this.crewID = id;
+            crewName = u;
             InitializeComponent();
+            
         }
 
         private void showDiscount(int id)
@@ -254,7 +257,18 @@ namespace Proyek_PAD
 
         private void acceptButton_Click(object sender, EventArgs e)
         {
+            try
+            {
+                nota_form nota = new nota_form(crewName);
+                this.Hide();
+                DialogResult res = nota.ShowDialog();
+                this.Show();
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
         }
 
         private void cancelButton_Click(object sender, EventArgs e)

@@ -32,12 +32,7 @@ namespace Proyek_PAD
             crewID = id;
             con = new MySqlConnection("Server=localhost;Database=mcd_pad;User Id=root;Password=;");
             InitializeComponent();
-            // code crystal report e ojok diatas InitializeComponent(); lek gak null error ngkok
-            CrystalReport1 report = new CrystalReport1();
-            report.SetDatabaseLogon("<user_id>", "<password>", "localhost", "mcd_pad");
-            report.SetParameterValue("crewnama", u);
-            crystalReportViewer1.ReportSource = report;
-            crystalReportViewer1.Refresh();
+           
         }
 
    
@@ -220,7 +215,7 @@ namespace Proyek_PAD
             if(e.RowIndex >= 0)
             {
                 id = Convert.ToInt32(displayDataGridView.Rows[e.RowIndex].Cells[0].Value);
-                details_form df = new details_form(id,crewID);
+                details_form df = new details_form(id,crewID,worker);
                 DialogResult res = df.ShowDialog();
             }
         }

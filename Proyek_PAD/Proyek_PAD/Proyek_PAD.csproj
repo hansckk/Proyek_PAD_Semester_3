@@ -67,6 +67,12 @@
     <Compile Include="Form8.Designer.cs">
       <DependentUpon>Form8.cs</DependentUpon>
     </Compile>
+    <Compile Include="nota_form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nota_form.Designer.cs">
+      <DependentUpon>nota_form.cs</DependentUpon>
+    </Compile>
     <Compile Include="orderedItem.cs" />
     <Compile Include="detail_form.cs">
       <SubType>Form</SubType>
@@ -147,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form8.resx">
       <DependentUpon>Form8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nota_form.resx">
+      <DependentUpon>nota_form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="quantity.resx">
       <DependentUpon>quantity.cs</DependentUpon>
