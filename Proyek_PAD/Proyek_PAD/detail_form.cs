@@ -31,6 +31,8 @@ namespace Proyek_PAD
             crewName = u;
             InitializeComponent();
             
+
+
         }
 
         private void showDiscount(int id)
@@ -303,7 +305,7 @@ namespace Proyek_PAD
             try
             {
                 updateTrans("berhasil");
-                nota_form nota = new nota_form(crewName);
+                nota_form nota = new nota_form(transId,crewName);
                 this.Hide();
                 DialogResult res = nota.ShowDialog();
                 this.Show();

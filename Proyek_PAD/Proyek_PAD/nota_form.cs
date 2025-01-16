@@ -12,12 +12,13 @@ namespace Proyek_PAD
 {
     public partial class nota_form : Form
     {
-        public nota_form(string u)
+        public nota_form(int id,string u)
         {
             InitializeComponent();
             // code crystal report e ojok diatas InitializeComponent(); lek gak null error ngkok
             CrystalReport1 report = new CrystalReport1();
             report.SetDatabaseLogon("<user_id>", "<password>", "localhost", "mcd_pad");
+            report.SetParameterValue("transid", id);
             report.SetParameterValue("crewnama", u);
             crystalReportViewer1.ReportSource = report;
             crystalReportViewer1.Refresh();
