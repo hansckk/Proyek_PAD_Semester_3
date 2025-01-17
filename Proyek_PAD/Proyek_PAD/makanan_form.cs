@@ -34,6 +34,17 @@ namespace Proyek_PAD
                 adapter.Fill(table);
 
                 dataGridView1.DataSource = table;
+
+                if (dataGridView1.Columns.Contains("id_menu"))
+                    dataGridView1.Columns["id_menu"].HeaderText = "ID";
+                if (dataGridView1.Columns.Contains("nama_menu"))
+                    dataGridView1.Columns["nama_menu"].HeaderText = "Nama";
+                if (dataGridView1.Columns.Contains("harga_menu"))
+                    dataGridView1.Columns["harga_menu"].HeaderText = "Harga";
+                if (dataGridView1.Columns.Contains("quantity"))
+                    dataGridView1.Columns["quantity"].HeaderText = "Jumlah";
+                if (dataGridView1.Columns.Contains("kategori"))
+                    dataGridView1.Columns["kategori"].HeaderText = "Kategori";
             }
             catch (Exception ex)
             {
@@ -44,6 +55,7 @@ namespace Proyek_PAD
                 Connection.close();
             }
         }
+
 
 
         private void button1_Click(object sender, EventArgs e) // INSERT
@@ -173,26 +185,23 @@ namespace Proyek_PAD
                 return;
             }
 
-            string kategori = comboBox1.SelectedItem.ToString();
-            string idMenu = GenerateIdMenu(kategori);
-
             if (dataGridView1.CurrentRow != null)
             {
-                string oldIdMenu = dataGridView1.CurrentRow.Cells["id_menu"].Value.ToString();
+                string idMenu = dataGridView1.CurrentRow.Cells["id_menu"].Value.ToString(); 
+                string kategori = comboBox1.SelectedItem.ToString();
 
                 try
                 {
                     Connection.open();
-                    string query = "UPDATE menu SET id_menu = @id_menu, nama_menu = @nama_menu, harga_menu = @harga_menu, " +
-                                   "quantity = @quantity, kategori = @kategori WHERE id_menu = @oldIdMenu";
+                    string query = "UPDATE menu SET nama_menu = @nama_menu, harga_menu = @harga_menu, " +
+                                   "quantity = @quantity, kategori = @kategori WHERE id_menu = @id_menu";
 
                     MySqlCommand cmd = new MySqlCommand(query, Connection.conn);
-                    cmd.Parameters.AddWithValue("@id_menu", idMenu); 
+                    cmd.Parameters.AddWithValue("@id_menu", idMenu);
                     cmd.Parameters.AddWithValue("@nama_menu", textBox1.Text);
                     cmd.Parameters.AddWithValue("@harga_menu", hargaMenu);
                     cmd.Parameters.AddWithValue("@quantity", quantity);
                     cmd.Parameters.AddWithValue("@kategori", kategori);
-                    cmd.Parameters.AddWithValue("@oldIdMenu", oldIdMenu);
 
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Data berhasil diupdate!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -285,6 +294,7 @@ namespace Proyek_PAD
         private void button5_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
+           
         }
     }
 }

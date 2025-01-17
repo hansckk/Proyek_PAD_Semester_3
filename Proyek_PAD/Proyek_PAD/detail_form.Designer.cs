@@ -46,6 +46,7 @@ namespace Proyek_PAD
             this.paymentMethodLabel = new System.Windows.Forms.Label();
             this.totalExtraChargeLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.menuDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.extraChargeDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.paymentMethodDataGridView)).BeginInit();
@@ -66,7 +67,7 @@ namespace Proyek_PAD
             // 
             this.diskonLabel.AutoSize = true;
             this.diskonLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.diskonLabel.Location = new System.Drawing.Point(477, 159);
+            this.diskonLabel.Location = new System.Drawing.Point(1002, 159);
             this.diskonLabel.Name = "diskonLabel";
             this.diskonLabel.Size = new System.Drawing.Size(83, 25);
             this.diskonLabel.TabIndex = 3;
@@ -77,7 +78,7 @@ namespace Proyek_PAD
             // 
             this.ppnLabel.AutoSize = true;
             this.ppnLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ppnLabel.Location = new System.Drawing.Point(477, 134);
+            this.ppnLabel.Location = new System.Drawing.Point(1002, 134);
             this.ppnLabel.Name = "ppnLabel";
             this.ppnLabel.Size = new System.Drawing.Size(103, 25);
             this.ppnLabel.TabIndex = 4;
@@ -87,7 +88,7 @@ namespace Proyek_PAD
             // 
             this.totalMenuLabel.AutoSize = true;
             this.totalMenuLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalMenuLabel.Location = new System.Drawing.Point(477, 109);
+            this.totalMenuLabel.Location = new System.Drawing.Point(1002, 109);
             this.totalMenuLabel.Name = "totalMenuLabel";
             this.totalMenuLabel.Size = new System.Drawing.Size(122, 25);
             this.totalMenuLabel.TabIndex = 5;
@@ -108,7 +109,7 @@ namespace Proyek_PAD
             // 
             this.cancelButton.BackColor = System.Drawing.Color.Red;
             this.cancelButton.Image = ((System.Drawing.Image)(resources.GetObject("cancelButton.Image")));
-            this.cancelButton.Location = new System.Drawing.Point(527, 658);
+            this.cancelButton.Location = new System.Drawing.Point(1044, 651);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(144, 87);
             this.cancelButton.TabIndex = 7;
@@ -139,6 +140,7 @@ namespace Proyek_PAD
             // menuDataGridView
             // 
             this.menuDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.menuDataGridView.BackgroundColor = System.Drawing.Color.White;
             this.menuDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.menuDataGridView.Location = new System.Drawing.Point(12, 109);
             this.menuDataGridView.Name = "menuDataGridView";
@@ -146,12 +148,13 @@ namespace Proyek_PAD
             this.menuDataGridView.RowHeadersWidth = 51;
             this.menuDataGridView.RowTemplate.Height = 24;
             this.menuDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.menuDataGridView.Size = new System.Drawing.Size(459, 129);
+            this.menuDataGridView.Size = new System.Drawing.Size(965, 129);
             this.menuDataGridView.TabIndex = 15;
             // 
             // extraChargeDataGridView
             // 
             this.extraChargeDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.extraChargeDataGridView.BackgroundColor = System.Drawing.Color.White;
             this.extraChargeDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.extraChargeDataGridView.Location = new System.Drawing.Point(12, 269);
             this.extraChargeDataGridView.Name = "extraChargeDataGridView";
@@ -159,7 +162,7 @@ namespace Proyek_PAD
             this.extraChargeDataGridView.RowHeadersWidth = 51;
             this.extraChargeDataGridView.RowTemplate.Height = 24;
             this.extraChargeDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.extraChargeDataGridView.Size = new System.Drawing.Size(459, 129);
+            this.extraChargeDataGridView.Size = new System.Drawing.Size(965, 129);
             this.extraChargeDataGridView.TabIndex = 16;
             // 
             // detailOrderLabel
@@ -185,6 +188,7 @@ namespace Proyek_PAD
             // paymentMethodDataGridView
             // 
             this.paymentMethodDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.paymentMethodDataGridView.BackgroundColor = System.Drawing.Color.White;
             this.paymentMethodDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.paymentMethodDataGridView.Location = new System.Drawing.Point(12, 444);
             this.paymentMethodDataGridView.Name = "paymentMethodDataGridView";
@@ -192,7 +196,7 @@ namespace Proyek_PAD
             this.paymentMethodDataGridView.RowHeadersWidth = 51;
             this.paymentMethodDataGridView.RowTemplate.Height = 24;
             this.paymentMethodDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.paymentMethodDataGridView.Size = new System.Drawing.Size(459, 129);
+            this.paymentMethodDataGridView.Size = new System.Drawing.Size(965, 129);
             this.paymentMethodDataGridView.TabIndex = 18;
             // 
             // paymentMethodLabel
@@ -209,7 +213,7 @@ namespace Proyek_PAD
             // 
             this.totalExtraChargeLabel.AutoSize = true;
             this.totalExtraChargeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalExtraChargeLabel.Location = new System.Drawing.Point(477, 269);
+            this.totalExtraChargeLabel.Location = new System.Drawing.Point(1002, 269);
             this.totalExtraChargeLabel.Name = "totalExtraChargeLabel";
             this.totalExtraChargeLabel.Size = new System.Drawing.Size(62, 25);
             this.totalExtraChargeLabel.TabIndex = 20;
@@ -217,19 +221,32 @@ namespace Proyek_PAD
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(849, 241);
+            this.pictureBox1.Location = new System.Drawing.Point(1018, 444);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(238, 216);
+            this.pictureBox1.Size = new System.Drawing.Size(170, 169);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 21;
             this.pictureBox1.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Red;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(1018, 17);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(170, 49);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "BACK";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // details_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Silver;
+            this.BackColor = System.Drawing.Color.Gold;
             this.ClientSize = new System.Drawing.Size(1200, 750);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.totalExtraChargeLabel);
             this.Controls.Add(this.paymentMethodLabel);
@@ -278,5 +295,6 @@ namespace Proyek_PAD
         private System.Windows.Forms.Label paymentMethodLabel;
         private System.Windows.Forms.Label totalExtraChargeLabel;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button button1;
     }
 }

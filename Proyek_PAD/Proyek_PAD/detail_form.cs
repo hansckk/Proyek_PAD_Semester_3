@@ -374,5 +374,10 @@ namespace Proyek_PAD
             updateTrans("gagal");
             this.DialogResult = DialogResult.OK;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

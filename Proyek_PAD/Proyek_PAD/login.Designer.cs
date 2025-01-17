@@ -687,14 +687,13 @@ namespace Proyek_PAD
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Proyek_PAD.Properties.Resources.loading;
-            this.pictureBox2.Location = new System.Drawing.Point(-6, -1);
+            this.pictureBox2.Location = new System.Drawing.Point(-3, -6);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(1209, 806);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 8;
             this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // loginForm
             // 
@@ -718,7 +717,6 @@ namespace Proyek_PAD
             this.Name = "loginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
-            this.Load += new System.EventHandler(this.loginForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.loginForm_KeyDown);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

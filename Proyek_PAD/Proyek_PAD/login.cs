@@ -390,7 +390,7 @@ namespace Proyek_PAD
 
         private void Button25_MouseUp(object sender, MouseEventArgs e)
         {
-            // salah pencet hehe
+            
         }
 
         private void AddTextBoxFocusEvents()
@@ -398,13 +398,15 @@ namespace Proyek_PAD
             usernameTextBox.GotFocus += (s, e) =>
             {
                 activeTextBox = usernameTextBox;
-               
+                panel1.Visible = true;
+
             };
 
             passwordTextBox.GotFocus += (s, e) =>
             {
                 activeTextBox = passwordTextBox;
-               
+                panel1.Visible = true;
+
             };
 
             usernameTextBox.LostFocus += (s, e) =>
@@ -422,7 +424,7 @@ namespace Proyek_PAD
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            panel1.Visible = false;
         }
 
         private void button45_Click(object sender, EventArgs e)
@@ -437,24 +439,7 @@ namespace Proyek_PAD
             }
         }
 
-        private void loginForm_Load(object sender, EventArgs e)
-        {
+        
 
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button46_Click(object sender, EventArgs e)
-        {
-            
-        }
     }
 }

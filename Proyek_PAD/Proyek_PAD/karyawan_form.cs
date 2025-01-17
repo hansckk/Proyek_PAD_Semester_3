@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
@@ -34,15 +28,19 @@ namespace Proyek_PAD
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
                     connection.Open();
-                  
-                    string query = "SELECT * FROM karyawan";
+
+                    // Query hanya untuk role_id = 1
+                    string query = "SELECT crew_id AS 'ID', nama AS 'Nama', sex AS 'Jenis Kelamin', umur AS 'Umur', nomor_telepon AS 'Nomor Telepon' FROM karyawan WHERE role_id = 2";
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
                         MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
-                
+
                         dataGridView1.DataSource = dataTable;
+
+                        // Otomatis menyesuaikan lebar kolom
+                        dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     }
                 }
             }
@@ -50,11 +48,6 @@ namespace Proyek_PAD
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-       
         }
 
         private void button1_Click(object sender, EventArgs e) // INSERT
@@ -84,8 +77,8 @@ namespace Proyek_PAD
                 {
                     connection.Open();
 
-                    string query = @"INSERT INTO karyawan (nama, sex, umur, nomor_telepon, password,role_id) 
-                             VALUES (@nama, @sex, @umur, @nomor_telepon, @password,2)";
+                    string query = @"INSERT INTO karyawan (nama, sex, umur, nomor_telepon, password, role_id) 
+                             VALUES (@nama, @sex, @umur, @nomor_telepon, @password, 2)";
 
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
@@ -113,7 +106,7 @@ namespace Proyek_PAD
             textBox2.Clear();
             radioButton1.Checked = false;
             radioButton2.Checked = false;
-            numericUpDown1.Value = 17; 
+            numericUpDown1.Value = 17;
             textBox3.Clear();
         }
 
@@ -127,7 +120,7 @@ namespace Proyek_PAD
                     return;
                 }
 
-                int idKasir = Convert.ToInt32(dataGridView1.CurrentRow.Cells["id_kasir"].Value);
+                int idKasir = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ID"].Value);
 
                 string namaKasir = textBox2.Text.Trim();
                 string sex = radioButton1.Checked ? "L" : (radioButton2.Checked ? "P" : null);
@@ -145,7 +138,8 @@ namespace Proyek_PAD
                     connection.Open();
 
                     string query = @"UPDATE karyawan SET nama = @nama, sex = @sex, umur = @umur, 
-                             nomor_telepon = @nomor_telepon, password_kasir = @password WHERE crew_id = @id";
+                             nomor_telepon = @nomor_telepon, password = @password 
+                             WHERE crew_id = @id AND role_id = 2";
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@id", idKasir);
@@ -153,7 +147,7 @@ namespace Proyek_PAD
                         command.Parameters.AddWithValue("@sex", sex);
                         command.Parameters.AddWithValue("@umur", umur);
                         command.Parameters.AddWithValue("@nomor_telepon", nomorTelepon);
-                        command.Parameters.AddWithValue("@password", namaKasir + "McD"); 
+                        command.Parameters.AddWithValue("@password", namaKasir + "McD");
 
                         command.ExecuteNonQuery();
                         MessageBox.Show("Data kasir berhasil diperbarui!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -169,7 +163,7 @@ namespace Proyek_PAD
             }
         }
 
-        private void button3_Click(object sender, EventArgs e) // DELTE
+        private void button3_Click(object sender, EventArgs e) // DELETE
         {
             try
             {
@@ -179,13 +173,13 @@ namespace Proyek_PAD
                     return;
                 }
 
-                int idKasir = Convert.ToInt32(dataGridView1.CurrentRow.Cells["id_kasir"].Value);
+                int idKasir = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ID"].Value);
 
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
                     connection.Open();
 
-                    string query = "DELETE FROM kasir WHERE id_kasir = @id";
+                    string query = "DELETE FROM karyawan WHERE crew_id = @id AND role_id = 2";
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@id", idKasir);
@@ -214,10 +208,10 @@ namespace Proyek_PAD
             {
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
 
-                textBox2.Text = row.Cells["nama_kasir"].Value.ToString();
-                string sex = row.Cells["sex"].Value.ToString();
-                numericUpDown1.Value = Convert.ToInt32(row.Cells["umur"].Value);
-                textBox3.Text = row.Cells["nomor_telepon"].Value.ToString();
+                textBox2.Text = row.Cells["Nama"].Value.ToString();
+                string sex = row.Cells["Jenis Kelamin"].Value.ToString();
+                numericUpDown1.Value = Convert.ToInt32(row.Cells["Umur"].Value);
+                textBox3.Text = row.Cells["Nomor Telepon"].Value.ToString();
 
                 if (sex == "L")
                     radioButton1.Checked = true;
@@ -231,7 +225,8 @@ namespace Proyek_PAD
 
         private void button5_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;   
+
+            this.DialogResult = DialogResult.OK;
         }
     }
 }

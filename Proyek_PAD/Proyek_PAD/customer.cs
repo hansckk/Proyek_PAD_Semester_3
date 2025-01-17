@@ -405,7 +405,7 @@ namespace Proyek_PAD
         {
             this.Hide();
             _cashierform.Show();
-            // buat back, masih blm gatau error apao
+           
         }
     }
 

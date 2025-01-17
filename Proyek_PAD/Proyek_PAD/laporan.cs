@@ -16,6 +16,8 @@ namespace Proyek_PAD
         public laporan()
         {
             InitializeComponent();
+            button1.Visible = false;
+            dateTimePicker1.Enabled = false;
         }
 
         private void back_button_Click(object sender, EventArgs e)
@@ -30,6 +32,9 @@ namespace Proyek_PAD
 
         private void laporan_transaksi_btn_Click(object sender, EventArgs e)
         {
+
+            dateTimePicker1.Enabled = false;
+
             try
             {
                 Connection.open();
@@ -53,6 +58,16 @@ namespace Proyek_PAD
                 adapter.Fill(dt);
 
                 dataGridView1.DataSource = dt;
+
+                dataGridView1.Columns[0].HeaderText = "Transaction ID";
+                dataGridView1.Columns[1].HeaderText = "Employee ID";
+                dataGridView1.Columns[2].HeaderText = "Status";
+                dataGridView1.Columns[3].HeaderText = "Discount ID";
+                dataGridView1.Columns[4].HeaderText = "Queue";
+                dataGridView1.Columns[5].HeaderText = "Time Ordered";
+
+                button1.Visible = true;
+                button1.Text = "Print transaksi gagal";
             }
             catch (Exception ex)
             {
@@ -66,12 +81,13 @@ namespace Proyek_PAD
 
         private void selled_menu_btn_Click(object sender, EventArgs e)
         {
+
+            dateTimePicker1.Enabled = false;
+
             try
             {
-                // Buka koneksi ke database
                 Connection.open();
 
-                // Query SQL untuk mengambil data menu
                 string query = @"
             SELECT 
                 id_menu, 
@@ -87,6 +103,14 @@ namespace Proyek_PAD
                 adapter.Fill(dt);
 
                 dataGridView1.DataSource = dt;
+
+                dataGridView1.Columns[0].HeaderText = "Menu ID";
+                dataGridView1.Columns[1].HeaderText = "Menu Name";
+                dataGridView1.Columns[2].HeaderText = "Quantity";
+                dataGridView1.Columns[3].HeaderText = "Category";
+
+                button1.Visible = true;
+                button1.Text = "Print stock makanan";
             }
             catch (Exception ex)
             {
@@ -100,29 +124,43 @@ namespace Proyek_PAD
 
         private void laporan_btn_Click(object sender, EventArgs e)
         {
+            dateTimePicker1.Enabled = true;
+
             try
             {
                 Connection.open();
 
                 string query = @"
-            SELECT 
-                transaksi_id, 
-                employee_id, 
-                status, 
-                diskon_id, 
-                queue, 
-                time_ordered
-            FROM 
-                transaksi
-            WHERE 
-                status = 'berhasil'";
+                SELECT 
+                    transaksi_id, 
+                    employee_id, 
+                    status, 
+                    diskon_id, 
+                    queue, 
+                    time_ordered
+                FROM 
+                    transaksi
+                WHERE 
+                    status = 'berhasil'";
 
                 MySqlCommand cmd = new MySqlCommand(query, Connection.conn);
+             
+
                 MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
 
                 dataGridView1.DataSource = dt;
+
+                dataGridView1.Columns[0].HeaderText = "Transaction ID";
+                dataGridView1.Columns[1].HeaderText = "Employee ID";
+                dataGridView1.Columns[2].HeaderText = "Status";
+                dataGridView1.Columns[3].HeaderText = "Discount ID";
+                dataGridView1.Columns[4].HeaderText = "Queue";
+                dataGridView1.Columns[5].HeaderText = "Time Ordered";
+
+                button1.Visible = true;
+                button1.Text = "Print semua transaksi";
             }
             catch (Exception ex)
             {
@@ -132,10 +170,62 @@ namespace Proyek_PAD
             {
                 Connection.close();
             }
+
+            dateTimePicker1.ValueChanged += (s, ev) =>
+            {
+                try
+                {
+                    Connection.open();
+
+                    string selectedDate = dateTimePicker1.Value.ToString("yyyy-MM-dd");
+                    string query = @"
+                SELECT 
+                    transaksi_id, 
+                    employee_id, 
+                    status, 
+                    diskon_id, 
+                    queue, 
+                    time_ordered
+                FROM 
+                    transaksi
+                WHERE 
+                    status = 'berhasil' AND DATE(time_ordered) = @selectedDate";
+
+                    MySqlCommand cmd = new MySqlCommand(query, Connection.conn);
+                    cmd.Parameters.AddWithValue("@selectedDate", selectedDate);
+
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    dataGridView1.DataSource = dt;
+
+                    dataGridView1.Columns[0].HeaderText = "Transaction ID";
+                    dataGridView1.Columns[1].HeaderText = "Employee ID";
+                    dataGridView1.Columns[2].HeaderText = "Status";
+                    dataGridView1.Columns[3].HeaderText = "Discount ID";
+                    dataGridView1.Columns[4].HeaderText = "Queue";
+                    dataGridView1.Columns[5].HeaderText = "Time Ordered";
+
+                    button1.Visible = true;
+                    button1.Text = "Print transaksi harian";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    Connection.close();
+                }
+            };
         }
 
         private void checklog_btn_Click(object sender, EventArgs e)
         {
+
+            dateTimePicker1.Enabled = false;
+
             try
             {
                 Connection.open();
@@ -160,6 +250,15 @@ namespace Proyek_PAD
                 adapter.Fill(dt);
 
                 dataGridView1.DataSource = dt;
+
+                dataGridView1.Columns[0].HeaderText = "Log ID";
+                dataGridView1.Columns[1].HeaderText = "Crew ID";
+                dataGridView1.Columns[2].HeaderText = "Crew Name";
+                dataGridView1.Columns[3].HeaderText = "Start Time";
+                dataGridView1.Columns[4].HeaderText = "End Time";
+
+                button1.Visible = true;
+                button1.Text = "Print laporan checklog";
             }
             catch (Exception ex)
             {
@@ -172,6 +271,11 @@ namespace Proyek_PAD
         }
 
         private void best_seller_btn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
         {
 
         }
