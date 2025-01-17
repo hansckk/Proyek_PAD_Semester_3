@@ -45,9 +45,11 @@ namespace Proyek_PAD
             this.paymentMethodDataGridView = new System.Windows.Forms.DataGridView();
             this.paymentMethodLabel = new System.Windows.Forms.Label();
             this.totalExtraChargeLabel = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.menuDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.extraChargeDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.paymentMethodDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuLabel
@@ -213,12 +215,22 @@ namespace Proyek_PAD
             this.totalExtraChargeLabel.TabIndex = 20;
             this.totalExtraChargeLabel.Text = "Total:";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(849, 241);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(238, 216);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 21;
+            this.pictureBox1.TabStop = false;
+            // 
             // details_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(683, 757);
+            this.ClientSize = new System.Drawing.Size(1200, 750);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.totalExtraChargeLabel);
             this.Controls.Add(this.paymentMethodLabel);
             this.Controls.Add(this.paymentMethodDataGridView);
@@ -243,6 +255,7 @@ namespace Proyek_PAD
             ((System.ComponentModel.ISupportInitialize)(this.menuDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.extraChargeDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.paymentMethodDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -264,5 +277,6 @@ namespace Proyek_PAD
         private System.Windows.Forms.DataGridView paymentMethodDataGridView;
         private System.Windows.Forms.Label paymentMethodLabel;
         private System.Windows.Forms.Label totalExtraChargeLabel;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using QRCoder;
 
 namespace Proyek_PAD
 {
@@ -300,12 +301,63 @@ namespace Proyek_PAD
                 Connection.close();
             }
         }
+
+        // lek gara gara iki terus crystal report e error command en ae, sak iki pisan ->private void GenerateQRCode()
+
+        private string GetMenuListFromGrid()
+        {
+            StringBuilder menuList = new StringBuilder();
+
+            foreach (DataGridViewRow row in menuDataGridView.Rows)
+            {
+                if (row.Cells["Nama Menu"].Value != null && row.Cells["Harga Menu"].Value != null)
+                {
+                    string menuName = row.Cells["Nama Menu"].Value.ToString();
+                    string menuPrice = row.Cells["Harga Menu"].Value.ToString();
+                    menuList.AppendLine($"- {menuName} ({menuPrice})");
+                }
+            }
+
+            return menuList.ToString();
+        }
+
+        private void GenerateQRCode()
+        {
+            try
+            {
+                // Membuat daftar menu dari menuDataGridView
+                string menuList = GetMenuListFromGrid();
+
+                // Membuat data untuk QR Code
+                string qrData = $"Transaction ID: {transId}\nCrew: {crewName}\nTotal: {totalMenu + totalExtraCharge + taxHarga - Math.Ceiling((diskon / 100.0) * totalMenu)}\nMenus:\n{menuList}";
+
+                using (QRCodeGenerator qrGenerator = new QRCodeGenerator())
+                {
+                    QRCodeData qrCodeData = qrGenerator.CreateQrCode(qrData, QRCodeGenerator.ECCLevel.Q);
+                    using (QRCode qrCode = new QRCode(qrCodeData))
+                    {
+                        using (Bitmap qrCodeImage = qrCode.GetGraphic(20))
+                        {
+                            pictureBox1.Image = new Bitmap(qrCodeImage);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error generating QR Code: {ex.Message}");
+            }
+        }
+
+
         private void acceptButton_Click(object sender, EventArgs e)
         {
             try
             {
                 updateTrans("berhasil");
-                nota_form nota = new nota_form(transId,crewName);
+                GenerateQRCode();
+
+                nota_form nota = new nota_form(transId, crewName);
                 this.Hide();
                 DialogResult res = nota.ShowDialog();
                 this.Show();
