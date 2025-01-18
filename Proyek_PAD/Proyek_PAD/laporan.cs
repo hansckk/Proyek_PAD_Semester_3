@@ -13,6 +13,7 @@ namespace Proyek_PAD
 {
     public partial class laporan : Form
     {
+
         public laporan()
         {
             InitializeComponent();
@@ -272,7 +273,53 @@ namespace Proyek_PAD
 
         private void best_seller_btn_Click(object sender, EventArgs e)
         {
+            dateTimePicker1.Enabled = false;
 
+            try
+            {
+                Connection.open();
+
+                string query = @"
+            SELECT 
+                transaksi_details.menu_id,
+                menu.nama_menu,
+                COUNT(transaksi_details.menu_id) AS total_dipesan
+            FROM 
+                transaksi
+            JOIN 
+                transaksi_details ON transaksi.transaksi_id = transaksi_details.transaksi_id
+            JOIN 
+                menu ON transaksi_details.menu_id = menu.id_menu
+            WHERE 
+                transaksi.status = 'berhasil'
+            GROUP BY 
+                transaksi_details.menu_id, menu.nama_menu
+            ORDER BY 
+                total_dipesan DESC
+            LIMIT 3";
+
+                MySqlCommand cmd = new MySqlCommand(query, Connection.conn);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                dataGridView1.DataSource = dt;
+
+                dataGridView1.Columns[0].HeaderText = "Menu ID";
+                dataGridView1.Columns[1].HeaderText = "Menu Name";
+                dataGridView1.Columns[2].HeaderText = "Total Sold";
+
+                button1.Visible = true;
+                button1.Text = "Print best seller menu";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Connection.close();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

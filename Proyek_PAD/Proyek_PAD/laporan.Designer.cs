@@ -84,7 +84,7 @@ namespace Proyek_PAD
             this.best_seller_btn.Name = "best_seller_btn";
             this.best_seller_btn.Size = new System.Drawing.Size(225, 100);
             this.best_seller_btn.TabIndex = 3;
-            this.best_seller_btn.Text = "BEST SELLER OF THE MONTH";
+            this.best_seller_btn.Text = "BEST SELLER ";
             this.best_seller_btn.UseVisualStyleBackColor = true;
             this.best_seller_btn.Click += new System.EventHandler(this.best_seller_btn_Click);
             // 
@@ -127,12 +127,15 @@ namespace Proyek_PAD
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(257, 97);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(883, 444);
